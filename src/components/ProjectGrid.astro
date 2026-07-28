@@ -8,12 +8,12 @@ const featured = projects.filter((project) => project.featured);
 <section class="section-shell section-block" id="projects" aria-labelledby="projects-title">
   <div class="section-intro">
     <div>
-      <p class="eyebrow">Selected project evidence</p>
-      <h2 id="projects-title">Architecture you can inspect.</h2>
+      <p class="eyebrow">Flagship project evidence</p>
+      <h2 id="projects-title">Substantial systems, not isolated keywords.</h2>
     </div>
     <p>
-      These are not decorative portfolio tiles. Each case study exposes purpose, interfaces,
-      decisions, delivery constraints, validation, and direct public evidence.
+      The first layer prioritizes substantial authored source systems. Each brief exposes purpose,
+      interfaces, decisions, delivery constraints, validation, and direct public evidence.
     </p>
   </div>
 
@@ -55,7 +55,7 @@ const featured = projects.filter((project) => project.featured);
   </div>
 
   <details class="project-index-panel">
-    <summary>Browse the complete evidence index</summary>
+    <summary>Browse all technical briefs</summary>
     <div class="project-index-grid">
       {
         projects.map((project) => (
@@ -70,4 +70,11 @@ const featured = projects.filter((project) => project.featured);
       }
     </div>
   </details>
+  <a class="project-catalogue-link" href={`${base}evidence/`}>
+    <span>
+      <strong>Need the full public record?</strong>
+      <small>Search every curated repository by estate, language, tier, and purpose.</small>
+    </span>
+    <span aria-hidden="true">Explore all evidence →</span>
+  </a>
 </section>
