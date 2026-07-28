@@ -14,3 +14,15 @@ export function matchesCommand(searchValue, commandValue) {
 export function matchesCapability(selectedGroup, cardGroup) {
   return selectedGroup === "all" || selectedGroup === cardGroup;
 }
+
+export function matchesRepository(filters, repository) {
+  const terms = normalizeSearch(filters.query).split(/\s+/).filter(Boolean);
+  const haystack = normalizeSearch(repository.search);
+
+  return (
+    (filters.owner === "all" || filters.owner === repository.owner) &&
+    (filters.tier === "all" || filters.tier === repository.tier) &&
+    (filters.language === "all" || filters.language === repository.language) &&
+    terms.every((term) => haystack.includes(term))
+  );
+}
