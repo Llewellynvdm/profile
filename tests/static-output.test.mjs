@@ -11,7 +11,10 @@ test("production output contains the required static routes", () => {
     "index.html",
     "404.html",
     "cv/index.html",
+    "evidence/index.html",
     "projects/joomla-component-builder/index.html",
+    "projects/octojoom-shell-deployment-platform/index.html",
+    "projects/getbible-engineering-ecosystem/index.html",
     "projects/getbiblesword-native-engine/index.html",
     "projects/joomla-mcp/index.html",
     "robots.txt",
@@ -34,7 +37,9 @@ test("the home page is semantic and correctly based for GitHub Pages", () => {
 
 test("core content is server-rendered and not dependent on JavaScript", () => {
   assert.match(index, /Capability is shown through application/);
-  assert.match(index, /Architecture you can inspect/);
+  assert.match(index, /Substantial systems, not isolated keywords/);
+  assert.match(index, /Complete public engineering estate/);
+  assert.match(index, /95 authored or directly maintained public repositories/);
   assert.match(index, /Sustained responsibility, not isolated snapshots/);
   assert.match(index, /Joomla Component Builder/);
 });
