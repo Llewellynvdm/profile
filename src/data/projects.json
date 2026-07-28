@@ -1,0 +1,411 @@
+[
+  {
+    "id": "jcb",
+    "slug": "joomla-component-builder",
+    "name": "Joomla Component Builder",
+    "eyebrow": "Generator platform · long-term stewardship",
+    "status": "Maintained",
+    "featured": true,
+    "summary": "A compiler-oriented development platform for generating native Joomla components, plugins, modules, and supporting code across multiple Joomla generations.",
+    "value": "JCB turns architecture, schemas, reusable code, and extension metadata into repeatable builds. Its significance is not a single component: it is the maintained system that produces and evolves families of systems.",
+    "role": "Principal architect and long-term steward since 2014/15; public canonical Git history from 2016.",
+    "stack": ["PHP", "Joomla 3–6", "JavaScript", "SQL", "XML", "CLI", "Git"],
+    "architecture": [
+      "Version-aware compilation separates shared intent from Joomla-generation-specific output.",
+      "Structured definitions drive extension generation instead of relying on one-off manual assembly.",
+      "Reusable Powers and Super Powers give generated systems stable references to shared implementation units.",
+      "Build, package, import/export, and repository-sync concerns are designed as parts of one lifecycle."
+    ],
+    "interfaces": [
+      "Joomla administration and command-line interfaces",
+      "Structured component, field, view, and extension definitions",
+      "Package and repository synchronization",
+      "Generated PHP, JavaScript, XML, SQL, and configuration assets"
+    ],
+    "decisions": [
+      "Encode repeatable architecture in generators while retaining version-specific output boundaries.",
+      "Treat backwards compatibility, upgrade paths, and long-term maintenance as first-class design constraints.",
+      "Separate reusable implementation units from any one generated extension."
+    ],
+    "quality": [
+      "Versioned releases and public change history",
+      "Generated output inspection and package validation",
+      "Sustained maintenance across Joomla generations",
+      "Extensive public documentation and contributor-facing material"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/joomengine/Joomla-Component-Builder"
+      },
+      {
+        "label": "Project documentation",
+        "url": "https://www.joomlacomponentbuilder.com/"
+      }
+    ]
+  },
+  {
+    "id": "getbible-v3",
+    "slug": "getbible-v3-publication-pipeline",
+    "name": "GetBible v3 publication pipeline",
+    "eyebrow": "Python · deterministic data engineering",
+    "status": "Active public engineering",
+    "featured": true,
+    "summary": "A Python 3.12 build system that converts SWORD module output into a deterministic, validated, checksummed static API.",
+    "value": "The pipeline creates a controlled publication boundary between native source extraction and downstream consumers. It validates framing and contracts, produces deterministic artifacts, and refuses publication when integrity conditions fail.",
+    "role": "Principal pipeline architect and maintainer.",
+    "stack": ["Python 3.12", "Bash", "NDJSON", "JSON", "Checksums", "GitHub Actions"],
+    "architecture": [
+      "Native SWORD extraction is consumed through a line-oriented NDJSON contract.",
+      "Transformation stages normalize content into versioned static API artifacts.",
+      "Validation checks framing, schemas, identifiers, checksums, and publication expectations.",
+      "Build output is deterministic so releases can be compared, reproduced, and audited."
+    ],
+    "interfaces": [
+      "GetBibleSWORD NDJSON v1 output",
+      "Static API v3 files and indexes",
+      "Builder CLI and Bash orchestration",
+      "Release and validation workflows"
+    ],
+    "decisions": [
+      "Use a streaming contract to keep the native and Python responsibilities independently testable.",
+      "Fail closed: malformed or incomplete inputs do not become public artifacts.",
+      "Preserve stable identifiers and editorial semantics across transformation."
+    ],
+    "quality": [
+      "Framing and schema validation",
+      "Checksum generation and verification",
+      "Deterministic output rules",
+      "Explicit publication gates"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/getbible/v3_builder"
+      }
+    ]
+  },
+  {
+    "id": "getbiblesword",
+    "slug": "getbiblesword-native-engine",
+    "name": "GetBibleSWORD",
+    "eyebrow": "C++20 · native extraction boundary",
+    "status": "Engineering preview",
+    "featured": true,
+    "summary": "A native C++20 extraction engine for CrossWire SWORD modules with a CLI, stable C ABI, deterministic NDJSON output, and cross-architecture releases.",
+    "value": "The engine isolates native library concerns behind explicit machine interfaces, allowing build pipelines and other consumers to use SWORD data without inheriting its implementation complexity.",
+    "role": "Architect and systems developer.",
+    "stack": ["C++20", "C", "CMake", "CrossWire SWORD", "NDJSON", "Linux"],
+    "architecture": [
+      "A native core reads SWORD modules and emits a versioned NDJSON protocol.",
+      "The command-line interface supports batch and pipeline operation.",
+      "A stable C ABI exposes library functionality to other runtimes without a C++ ABI dependency.",
+      "Release workflows target x86_64 and arm64."
+    ],
+    "interfaces": [
+      "CLI for extraction and inspection",
+      "Versioned NDJSON v1 stream",
+      "Stable C ABI through libgetbiblesword.so.1",
+      "Cross-architecture release artifacts"
+    ],
+    "decisions": [
+      "Use C++ for direct SWORD integration and a C ABI for broad language interoperability.",
+      "Keep output deterministic and line-oriented for validation, streaming, and failure isolation.",
+      "Treat the protocol as a contract rather than an incidental serialization detail."
+    ],
+    "quality": [
+      "Conformance validation",
+      "Deterministic serialization",
+      "Explicit ABI versioning",
+      "Automated x86_64 and arm64 builds"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/getbible/getbiblesword"
+      },
+      {
+        "label": "Public releases",
+        "url": "https://github.com/getbible/getbiblesword/releases"
+      }
+    ]
+  },
+  {
+    "id": "joomla-mcp",
+    "slug": "joomla-mcp",
+    "name": "Joomla MCP",
+    "eyebrow": "TypeScript · intelligent systems integration",
+    "status": "Active validation",
+    "featured": true,
+    "summary": "A TypeScript MCP server that maps a source-catalogued Joomla Web Services surface into structured tools with guarded write operations.",
+    "value": "The project connects agent reasoning to a real application platform while keeping tool contracts, write permissions, audit concerns, and transport boundaries explicit.",
+    "role": "Architect and maintainer.",
+    "stack": ["TypeScript", "MCP", "Node.js", "Joomla 6.1", "HTTP", "stdio"],
+    "architecture": [
+      "Route templates are catalogued from source and projected into MCP tools.",
+      "Read and write concerns are separated, with writes placed behind explicit guards.",
+      "Transport supports stdio and HTTP integration modes.",
+      "Companion and API layers isolate Joomla-specific behavior from protocol concerns."
+    ],
+    "interfaces": [
+      "Model Context Protocol tools",
+      "Joomla Web Services routes",
+      "stdio and HTTP transports",
+      "Companion extension boundary"
+    ],
+    "decisions": [
+      "Catalogue routes from source instead of relying on an unverified manual list.",
+      "Make mutating operations visibly different and explicitly controlled.",
+      "Report validation status accurately; a catalogued route is not automatically a production-certified route."
+    ],
+    "quality": [
+      "Typed tool definitions",
+      "Guarded writes",
+      "Audit-aware design",
+      "Public validation status and known limits"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/joomengine/joomla-mcp"
+      }
+    ]
+  },
+  {
+    "id": "opencode-platform",
+    "slug": "opencode-platform",
+    "name": "OpenCode Platform",
+    "eyebrow": "Incus · reproducible engineering environments",
+    "status": "Active public engineering",
+    "featured": true,
+    "summary": "A source-controlled family of Ubuntu 24.04 Incus VM images for PHP, Python, C++, TypeScript, and combined engineering work.",
+    "value": "The platform makes language environments, agent tooling, and operational boundaries reproducible while keeping credentials and network access outside the image source.",
+    "role": "Platform architect and maintainer.",
+    "stack": ["Incus", "Ubuntu 24.04", "Bash", "PHP", "Python", "C++", "TypeScript"],
+    "architecture": [
+      "Layered base, language-specific, and full images keep shared concerns centralized.",
+      "Source control is the definition of the environment rather than a manually configured machine.",
+      "Joomla MCP integration is available in relevant images without embedding deployment secrets.",
+      "Credential and network boundaries are documented as external operational concerns."
+    ],
+    "interfaces": [
+      "Incus image build definitions",
+      "Language-specific development environments",
+      "OpenCode and MCP tool integration",
+      "Host-provided credentials and network access"
+    ],
+    "decisions": [
+      "Prefer full virtual-machine isolation where development tasks need system-level tools.",
+      "Keep secrets out of images and source-controlled configuration.",
+      "Use a compositional image family instead of duplicating every toolchain."
+    ],
+    "quality": [
+      "Reproducible source definitions",
+      "Explicit image composition",
+      "Credential boundary documentation",
+      "Multi-language environment coverage"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/vast-development-method/opencode-platform"
+      }
+    ]
+  },
+  {
+    "id": "joomla-docker",
+    "slug": "joomla-docker",
+    "name": "Joomla Docker",
+    "eyebrow": "Official images · release operations",
+    "status": "Public maintenance evidence",
+    "featured": false,
+    "summary": "Official Joomla container image work covering repeatable builds, image variants, multi-architecture publication, and upstream delivery constraints.",
+    "value": "This work demonstrates framework knowledge at the delivery boundary: the application, runtime, operating image, release process, and official-images requirements must agree.",
+    "role": "Joomla Docker contributor and maintainer.",
+    "stack": ["Docker", "OCI images", "Bash", "GitHub Actions", "Multi-architecture"],
+    "architecture": [
+      "Image variants express supported runtime and web-server combinations.",
+      "Build definitions track Joomla releases and upstream base images.",
+      "Official-images integration adds review and publication constraints beyond a private image build."
+    ],
+    "interfaces": [
+      "Dockerfiles and image metadata",
+      "Official Images publication process",
+      "Automated build and validation workflows"
+    ],
+    "decisions": [
+      "Keep images reproducible and understandable from source.",
+      "Support architecture and runtime variants without hiding their differences.",
+      "Coordinate application releases with upstream container publication requirements."
+    ],
+    "quality": [
+      "Public source and change review",
+      "Multi-architecture builds",
+      "Official image publication process"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/joomla-docker/docker-joomla"
+      },
+      {
+        "label": "Official image",
+        "url": "https://hub.docker.com/_/joomla"
+      }
+    ]
+  },
+  {
+    "id": "super-powers",
+    "slug": "super-powers",
+    "name": "JCB Super Powers",
+    "eyebrow": "Reusable architecture · dependency registry",
+    "status": "Maintained",
+    "featured": false,
+    "summary": "A central registry of reusable, namespaced PHP classes, interfaces, traits, and abstractions referenced through stable identifiers and injected through JCB.",
+    "value": "The registry separates reusable architecture from individual generated systems and gives code units a stable identity across projects and build contexts.",
+    "role": "Architect and maintainer.",
+    "stack": ["PHP", "Joomla", "Dependency injection", "Git", "JCB"],
+    "architecture": [
+      "Reusable implementation units are stored independently from consuming extensions.",
+      "Stable identifiers allow generators to resolve and inject the required units.",
+      "Namespacing and explicit dependencies reduce accidental coupling."
+    ],
+    "interfaces": [
+      "Stable Power identifiers",
+      "JCB compilation and injection",
+      "Namespaced PHP units"
+    ],
+    "decisions": [
+      "Make reuse explicit and source-controlled instead of copying code between extensions.",
+      "Use stable references so generated projects can evolve independently of registry layout."
+    ],
+    "quality": ["Public source history", "Namespaced units", "Explicit dependency relationships"],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/joomengine/super-powers"
+      }
+    ]
+  },
+  {
+    "id": "getbible-flutter",
+    "slug": "getbible-flutter",
+    "name": "GetBible Flutter",
+    "eyebrow": "Dart · cross-platform native application",
+    "status": "In development",
+    "featured": false,
+    "summary": "A typed, local-data-first Flutter reader designed for Android, iOS, web, Windows, macOS, and Linux targets.",
+    "value": "The project extends the publication architecture into a private, cross-platform client with a typed domain model and local database boundary.",
+    "role": "Architect and developer.",
+    "stack": ["Dart", "Flutter", "Drift", "SQLite", "Cross-platform"],
+    "architecture": [
+      "Typed domain and data layers isolate application behavior from storage and presentation.",
+      "Drift and SQLite provide local persistence without requiring an account-based runtime service.",
+      "Platform targets share application logic while retaining target-specific packaging."
+    ],
+    "interfaces": [
+      "Local Drift and SQLite storage",
+      "Generated GetBible data",
+      "Flutter platform adapters"
+    ],
+    "decisions": [
+      "Prefer local data and privacy-preserving operation.",
+      "Keep development status explicit rather than implying completed store distribution."
+    ],
+    "quality": ["Typed domain model", "Local data boundary", "Cross-platform project structure"],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/getbible/flutter"
+      }
+    ]
+  },
+  {
+    "id": "joomla-service",
+    "slug": "joomla-service",
+    "name": "Joomla project service",
+    "eyebrow": "Open-source leadership · infrastructure · strategy",
+    "status": "2016–present official record",
+    "featured": false,
+    "summary": "A sustained official volunteer record spanning production, infrastructure, strategy, directory, language, testing, mentoring, and leadership responsibilities.",
+    "value": "The record demonstrates contribution beyond code: maintaining shared systems, coordinating work, reviewing changes, supporting contributors, and participating in project direction.",
+    "role": "Volunteer, maintainer, mentor, team leader, and strategy contributor across multiple teams.",
+    "stack": ["Joomla", "PHP", "Infrastructure", "Docker", "Testing", "Governance"],
+    "architecture": [
+      "Production and infrastructure responsibilities connect framework decisions to operational reality.",
+      "Strategy and working-group service connects implementation detail to project-wide direction.",
+      "Testing, mentoring, and directory work require cross-team communication and sustained maintenance."
+    ],
+    "interfaces": [
+      "Joomla volunteer teams",
+      "Production and infrastructure systems",
+      "Framework and software strategy work",
+      "Contributor mentoring and community communication"
+    ],
+    "decisions": [
+      "Treat community systems and documentation as maintained engineering products.",
+      "Contribute across code, operations, review, coordination, and teaching."
+    ],
+    "quality": [
+      "Public official volunteer profile",
+      "Long-running team record",
+      "Documented leadership and mentoring roles"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Official volunteer profile",
+        "url": "https://volunteers.joomla.org/joomlers/1396-llewellyn-van-der-merwe"
+      },
+      {
+        "label": "Joomla World Conference 2026 speakers",
+        "url": "https://conference.joomla.org/speakers"
+      }
+    ]
+  },
+  {
+    "id": "professional-record",
+    "slug": "professional-systems-record",
+    "name": "Long-running professional systems",
+    "eyebrow": "Client platforms · operations · continuity",
+    "status": "CV and dossier record",
+    "featured": false,
+    "summary": "A portfolio of institutional, commercial, workflow, information, and operational systems maintained across long working relationships.",
+    "value": "The record shows architecture under non-demo conditions: changing requirements, production continuity, hosting, security, data stewardship, support, and maintenance.",
+    "role": "Independent architect, developer, operator, and technical lead through Vast Development Method.",
+    "stack": ["PHP", "Joomla", "JavaScript", "SQL", "Linux", "Gitea", "Vaultwarden"],
+    "architecture": [
+      "Information and workflow systems are designed around the organization’s operating model.",
+      "Delivery includes hosting, maintenance, support, recovery, and change management.",
+      "Long-lived systems require migration and compatibility decisions as frameworks and infrastructure evolve."
+    ],
+    "interfaces": [
+      "Public websites and authenticated portals",
+      "Document and expert databases",
+      "Ordering and job-tracking workflows",
+      "Hosting, source control, and secrets infrastructure"
+    ],
+    "decisions": [
+      "Avoid publishing private client implementation details beyond the supplied professional record.",
+      "Represent continuing work by verified relationship and scope, not invented outcomes or metrics."
+    ],
+    "quality": [
+      "Long-running maintenance relationships",
+      "Production operations and support",
+      "CV and professional dossier evidence"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "NamPharm",
+        "url": "https://www.nampharm.com.na/"
+      },
+      {
+        "label": "East African Community",
+        "url": "https://www.eac.int/"
+      },
+      {
+        "label": "EU–EAC MARKUP context",
+        "url": "https://www.intracen.org/our-work/projects/eu-eac-market-access-upgrade-programme-markup"
+      }
+    ]
+  }
+]

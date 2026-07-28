@@ -1,0 +1,73 @@
+---
+import projects from "../data/projects.json";
+
+const base = import.meta.env.BASE_URL;
+const featured = projects.filter((project) => project.featured);
+---
+
+<section class="section-shell section-block" id="projects" aria-labelledby="projects-title">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">Selected project evidence</p>
+      <h2 id="projects-title">Architecture you can inspect.</h2>
+    </div>
+    <p>
+      These are not decorative portfolio tiles. Each case study exposes purpose, interfaces,
+      decisions, delivery constraints, validation, and direct public evidence.
+    </p>
+  </div>
+
+  <div class="project-feature-grid">
+    {
+      featured.map((project, index) => (
+        <article class={`project-card project-card-${index + 1}`}>
+          <div class="project-card-top">
+            <span class="project-index" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span class="status-chip">{project.status}</span>
+          </div>
+          <p class="project-eyebrow">{project.eyebrow}</p>
+          <h3>{project.name}</h3>
+          <p>{project.summary}</p>
+          <ul class="tag-list" aria-label={`${project.name} technology stack`}>
+            {project.stack.slice(0, 5).map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <div class="project-card-actions">
+            <a class="stretched-link" href={`${base}projects/${project.slug}/`}>
+              Open engineering brief <span aria-hidden="true">→</span>
+            </a>
+            <a
+              class="source-link"
+              href={project.evidenceLinks[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source <span class="sr-only">for {project.name}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <details class="project-index-panel">
+    <summary>Browse the complete evidence index</summary>
+    <div class="project-index-grid">
+      {
+        projects.map((project) => (
+          <a href={`${base}projects/${project.slug}/`}>
+            <span>
+              <strong>{project.name}</strong>
+              <small>{project.eyebrow}</small>
+            </span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))
+      }
+    </div>
+  </details>
+</section>

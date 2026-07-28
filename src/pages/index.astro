@@ -1,0 +1,276 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CapabilityMap from "../components/CapabilityMap.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import profile from "../data/profile.json";
+import projects from "../data/projects.json";
+
+const base = import.meta.env.BASE_URL;
+const projectMap = new Map(projects.map((project) => [project.id, project]));
+---
+
+<BaseLayout>
+  <Hero />
+
+  <section
+    class="section-shell section-block profile-section"
+    id="profile"
+    aria-labelledby="profile-title"
+  >
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Executive profile</p>
+        <h2 id="profile-title">One architectural view, from intent to operation.</h2>
+      </div>
+      <p>{profile.identity.positioning}</p>
+    </div>
+
+    <div class="differentiator-grid">
+      {
+        profile.differentiators.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.label}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="proof-band" aria-label="Selected professional evidence">
+      {
+        profile.proof.map((item) => (
+          <div>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+            <small>{item.note}</small>
+          </div>
+        ))
+      }
+    </div>
+    <p class="proof-note">
+      The 25.17M figure is a conservative evidence-ledger lower bound for changed lines in primarily
+      public Git history after selected mirror deduplication. It is not presented as surviving lines
+      of code, manual keystrokes, hours, or a quality score.
+    </p>
+  </section>
+
+  <CapabilityMap />
+  <ProjectGrid />
+
+  <section
+    class="section-shell section-block system-profile"
+    aria-labelledby="system-profile-title"
+  >
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Approved engineering profile</p>
+        <h2 id="system-profile-title">The whole system, in one view.</h2>
+      </div>
+      <p>
+        The profile graphic is also the site’s design grammar: layered architecture, explicit
+        interfaces, evidence at the edge, and production responsibility at the base.
+      </p>
+    </div>
+    <a class="profile-map-link" href={`${base}cv/`} aria-label="Open the detailed CV">
+      <img
+        class="profile-map profile-map-dark"
+        src={`${base}assets/profile-v4-dark.svg`}
+        alt="Dark engineering profile dashboard showing architecture, platform, production, technical capabilities, and career evidence"
+        loading="lazy"
+      />
+      <img
+        class="profile-map profile-map-light"
+        src={`${base}assets/profile-v4-light.svg`}
+        alt="Light engineering profile dashboard showing architecture, platform, production, technical capabilities, and career evidence"
+        loading="lazy"
+      />
+      <span class="map-action"
+        >Open the detailed professional record <span aria-hidden="true">→</span></span
+      >
+    </a>
+  </section>
+
+  <section
+    class="section-shell section-block architecture-section"
+    aria-labelledby="architecture-title"
+  >
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Engineering method</p>
+        <h2 id="architecture-title">A system is only complete when it can evolve.</h2>
+      </div>
+      <p>
+        The recurring pattern across generator, data, native, infrastructure, and AI work is a set
+        of explicit contracts connecting judgement to repeatable execution.
+      </p>
+    </div>
+
+    <div class="method-flow" aria-label="Engineering lifecycle">
+      <article>
+        <span class="flow-number">01</span>
+        <h3>Model</h3>
+        <p>Clarify the domain, invariants, data, ownership, and failure boundaries.</p>
+      </article>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <article>
+        <span class="flow-number">02</span>
+        <h3>Encode</h3>
+        <p>Turn decisions into types, schemas, generators, protocols, and reusable components.</p>
+      </article>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <article>
+        <span class="flow-number">03</span>
+        <h3>Deliver</h3>
+        <p>Build, validate, package, deploy, observe, recover, and document.</p>
+      </article>
+      <span class="flow-arrow" aria-hidden="true">→</span>
+      <article>
+        <span class="flow-number">04</span>
+        <h3>Evolve</h3>
+        <p>Maintain compatibility, migrate safely, absorb feedback, and reduce future drift.</p>
+      </article>
+    </div>
+  </section>
+
+  <section
+    class="section-shell section-block timeline-section"
+    id="timeline"
+    aria-labelledby="timeline-title"
+  >
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Professional trajectory</p>
+        <h2 id="timeline-title">Sustained responsibility, not isolated snapshots.</h2>
+      </div>
+      <p>
+        Engineering began in 2008. Official Joomla volunteer service began in 2016. The distinction
+        matters, and the timeline preserves it.
+      </p>
+    </div>
+
+    <div class="timeline-scroller" tabindex="0" aria-label="Scrollable professional timeline">
+      <ol class="timeline-list">
+        {
+          profile.timeline.map((item, index) => (
+            <li>
+              <span class="timeline-node" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p class="timeline-period">{item.period}</p>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section
+    class="section-shell section-block technology-section"
+    id="technology"
+    aria-labelledby="technology-title"
+  >
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Technology domains</p>
+        <h2 id="technology-title">Languages connected to shipped systems.</h2>
+      </div>
+      <p>
+        No proficiency bars and no arbitrary scores. Each language is shown with the engineering
+        context in which it is applied and a route to supporting evidence.
+      </p>
+    </div>
+
+    <div class="technology-grid">
+      {
+        profile.technologyDomains.map((technology) => (
+          <article class="technology-card">
+            <span
+              class="technology-mark"
+              data-tech={technology.name.toLowerCase()}
+              aria-hidden="true"
+            >
+              {technology.name === "C++"
+                ? "C++"
+                : technology.name === "TypeScript"
+                  ? "TS"
+                  : technology.name === "JavaScript"
+                    ? "JS"
+                    : technology.name === "Python"
+                      ? "Py"
+                      : technology.name.slice(0, 2)}
+            </span>
+            <div>
+              <h3>{technology.name}</h3>
+              <p>{technology.context}</p>
+              <div class="technology-evidence">
+                {technology.evidence.slice(0, 2).map((id) => {
+                  const project = projectMap.get(id);
+                  return project ? (
+                    <a href={`${base}projects/${project.slug}/`}>{project.name}</a>
+                  ) : null;
+                })}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    class="section-shell section-block leadership-section"
+    aria-labelledby="leadership-title"
+  >
+    <div class="leadership-panel">
+      <div class="leadership-copy">
+        <p class="eyebrow">Leadership, documentation & service</p>
+        <h2 id="leadership-title">
+          Technical influence is also maintenance, explanation, and trust.
+        </h2>
+        <p>
+          The professional record includes open-source direction, infrastructure responsibility,
+          testing, mentoring, documentation, conference teaching, and long-running client
+          relationships. These are engineering responsibilities, not an afterthought to code.
+        </p>
+        <a class="button button-secondary" href={`${base}projects/joomla-service/`}>
+          Review the public service record
+        </a>
+      </div>
+      <ul class="leadership-list">
+        {profile.service.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section
+    class="section-shell section-block contact-section"
+    id="contact"
+    aria-labelledby="contact-title"
+  >
+    <div class="contact-card">
+      <div>
+        <p class="eyebrow">Engineering conversation</p>
+        <h2 id="contact-title">Complex system, difficult migration, or platform decision?</h2>
+        <p>
+          Start with the objective, constraints, and evidence. The useful conversation is about the
+          system that needs to exist—and how it will remain dependable after launch.
+        </p>
+      </div>
+      <div class="contact-actions">
+        <a class="button button-primary" href={`mailto:${profile.identity.email}`}
+          >Start a conversation</a
+        >
+        <a class="button button-secondary" href="https://github.com/Llewellynvdm" rel="noreferrer">
+          Inspect GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <a class="text-button" href={`${base}documents/llewellyn-van-der-merwe-executive-cv.pdf`}>
+          Download executive CV <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

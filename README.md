@@ -1,1 +1,157 @@
-# profile
+# Llewellyn van der Merwe — professional profile
+
+An evidence-backed, progressively enhanced professional profile for a senior software and systems
+architect. The site is designed as an interactive technical dossier rather than a conventional
+résumé template: visitors can move from an executive overview to capabilities, project evidence,
+architectural decisions, and direct public sources.
+
+Expected production URL:
+[https://llewellynvdm.github.io/profile/](https://llewellynvdm.github.io/profile/)
+
+Production publication is intentionally limited to the `main` branch. Feature branches and pull
+requests validate the complete static output but do not publish the live site.
+
+## Architecture
+
+- **Astro 7 + TypeScript** for fully static, component-based output.
+- **Structured JSON content** in `src/data/` separates evidence and professional content from page
+  presentation.
+- **Progressive enhancement** keeps the complete narrative readable without JavaScript. TypeScript
+  adds capability filtering, keyboard navigation, a command palette, theme persistence, mobile
+  navigation, and print controls.
+- **Native HTML disclosure** provides technical depth without hiding the primary narrative.
+- **Centralized design tokens** in `src/styles/global.css` implement the approved SVG’s colour,
+  geometry, layering, and motion language in both light and dark themes.
+- **No backend, database, tracking, runtime secrets, web-font request, or required SaaS.**
+
+The Astro `base` is `/profile`, and all internal routes and public assets are built for the GitHub
+Pages project URL.
+
+## Prerequisites
+
+- Node.js `24.16.0` (see `.nvmrc`)
+- npm 11 or a compatible npm release
+
+## Local development
+
+```bash
+npm ci
+npm run dev
+```
+
+Astro prints the local preview URL. The production base path remains `/profile/`.
+
+## Validated commands
+
+```bash
+npm run format:check  # Prettier check
+npm run lint          # ESLint, including Astro and TypeScript
+npm run typecheck     # Astro and TypeScript diagnostics
+npm test              # Data integrity and interaction-logic tests
+npm run build         # Fully static production build in dist/
+npm run test:dist     # Production-output assertions
+npm run check:links   # Internal route, asset, and anchor validation
+npm run preview       # Preview the built site
+npm run validate      # Run the complete quality gate
+```
+
+`npm run validate` is the command used by both continuous integration and the production Pages
+workflow.
+
+## Content updates
+
+The professional source model is intentionally small:
+
+- `src/data/profile.json` — identity, differentiators, evidence metrics, capabilities, languages,
+  career record, education, and service.
+- `src/data/projects.json` — project summaries and deep-dive architecture, interfaces, decisions,
+  validation, and evidence links.
+
+To add a project:
+
+1. Add a unique `id` and URL-safe `slug` to `src/data/projects.json`.
+2. Include purpose, role, architecture, interfaces, decisions, quality/maintenance evidence, stack,
+   and at least one direct HTTPS source.
+3. Reference the project `id` from relevant capabilities or technology domains.
+4. Run `npm run validate`.
+
+The generated project route comes from `src/pages/projects/[slug].astro`; no page component is
+required for each additional project.
+
+## Evidence discipline
+
+The supplied executive CV and professional dossier are the primary sources of truth. Public project
+links are used to substantiate implementation details. The site deliberately:
+
+- separates Joomla engineering since 2008 from the official volunteer record beginning in 2016;
+- identifies current previews and active validation work without presenting them as completed
+  production certification;
+- marks incomplete degree study explicitly;
+- avoids invented outcomes, client metrics, skill percentages, proficiency bars, and unverifiable
+  rankings;
+- presents `25.17M` changed lines only as a scoped, conservative lower bound from primarily public
+  Git history after selected mirror deduplication—not as surviving code, keystrokes, hours, or a
+  quality score.
+
+Update claims only when they are supported by the professional record or a stable public source.
+
+## SVG and design system
+
+The approved dark and light engineering profile SVGs live in `public/assets/`. They remain native
+SVGs with their original view boxes and are shown at full available width. The website derives its
+layered architecture model, line work, restrained blue/cyan/green/purple palette, badges, motion,
+and system-map concepts from these files.
+
+The site does not depend on the SVG as a rasterized screenshot. Native HTML, CSS, and inline vector
+geometry extend the same design language into interactive, responsive components. Motion is
+disabled or shortened under `prefers-reduced-motion`.
+
+## GitHub Pages deployment
+
+Two workflows are provided:
+
+- `.github/workflows/ci.yml` validates pull requests and pushes to `main`.
+- `.github/workflows/deploy-pages.yml` builds and deploys only from `main`, using GitHub’s official
+  Pages artifact and OpenID Connect deployment flow.
+
+The deployment workflow uses no personal access token or custom secret. Its build job has
+`contents: read`; the deployment job adds only `pages: write` and `id-token: write`. Production
+deployments are serialized to prevent overlap.
+
+After review and merge, configure **Settings → Pages → Build and deployment → Source** to
+**GitHub Actions** if the repository has not already been configured.
+
+## Repository structure
+
+```text
+.
+├── .github/workflows/       CI and production-only Pages deployment
+├── public/
+│   ├── assets/              Approved SVGs, portrait, favicon, social preview
+│   └── documents/           Supplied executive CV and professional dossier
+├── scripts/                 Built-output link validation
+├── src/
+│   ├── components/          Shared site components
+│   ├── data/                Structured professional and project evidence
+│   ├── layouts/             Metadata, navigation, JSON-LD, and global shell
+│   ├── pages/               Home, CV, project briefs, sitemap, robots, 404
+│   ├── scripts/             Progressive-enhancement TypeScript
+│   └── styles/              Design tokens, responsive layout, print CSS
+└── tests/                   Data, interaction logic, and output assertions
+```
+
+## Accessibility, performance, and privacy
+
+- Semantic landmarks, heading order, skip link, keyboard navigation, visible focus, touch targets,
+  accessible disclosures, and labelled SVGs.
+- Light/dark themes, high-contrast resilience, reduced-motion support, and a responsive mobile
+  layout designed independently from the desktop composition.
+- System fonts, one small browser script, no client framework, no tracking, and no runtime
+  dependency on third-party services.
+- A print-specific CV presentation removes navigation and dark treatments, preserves evidence, and
+  avoids hiding core content.
+- The internal link checker verifies the `/profile/` base path, generated routes, assets, and
+  anchors after every build.
+
+The portrait is the real image embedded in the supplied executive CV. No generated representation
+of Llewellyn is used.

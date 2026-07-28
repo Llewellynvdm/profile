@@ -1,0 +1,80 @@
+---
+import profile from "../data/profile.json";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="hero section-shell" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow reveal">Senior engineering profile · Windhoek, Namibia</p>
+    <h1 id="hero-title" class="reveal reveal-delay-1">{profile.identity.name}</h1>
+    <p class="hero-title reveal reveal-delay-2">{profile.identity.title}</p>
+    <p class="hero-lead reveal reveal-delay-3">{profile.identity.summary}</p>
+    <div class="hero-actions reveal reveal-delay-4">
+      <a class="button button-primary" href="#projects">
+        Examine the evidence
+        <span aria-hidden="true">↓</span>
+      </a>
+      <a class="button button-secondary" href={`${base}cv/`}>Open detailed CV</a>
+      <button class="text-button" type="button" data-command-open>
+        Rapid navigation <kbd>⌘K</kbd>
+      </button>
+    </div>
+    <dl class="hero-facts reveal reveal-delay-4">
+      <div>
+        <dt>Engineering</dt>
+        <dd>Since 2008</dd>
+      </div>
+      <div>
+        <dt>Core pattern</dt>
+        <dd>Systems that build systems</dd>
+      </div>
+      <div>
+        <dt>Operating range</dt>
+        <dd>Architecture → production</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="hero-visual reveal reveal-delay-2" aria-label="Architecture to production system map">
+    <div class="portrait-frame">
+      <img
+        src={`${base}assets/llewellyn-van-der-merwe.webp`}
+        width="720"
+        height="720"
+        alt="Portrait of Llewellyn van der Merwe"
+        fetchpriority="high"
+      />
+      <div class="portrait-signal" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="system-orbit" aria-hidden="true">
+      <span class="orbit orbit-one"></span>
+      <span class="orbit orbit-two"></span>
+      <span class="orbit orbit-three"></span>
+    </div>
+    <nav class="architecture-stack" aria-label="Jump to engineering layers">
+      <a class="stack-layer stack-intelligence" href="#capabilities" data-stack-layer>
+        <span>Intelligence</span><small>reasoning → guarded execution</small>
+      </a>
+      <a class="stack-layer stack-architecture" href="#capabilities" data-stack-layer>
+        <span>Architecture</span><small>models → contracts → generators</small>
+      </a>
+      <a class="stack-layer stack-platforms" href="#projects" data-stack-layer>
+        <span>Platforms</span><small>tools → APIs → reusable systems</small>
+      </a>
+      <a class="stack-layer stack-production" href="#timeline" data-stack-layer>
+        <span>Production</span><small>delivery → operations → evolution</small>
+      </a>
+    </nav>
+    <div class="hero-callout callout-native">
+      <strong>C++ · Python</strong>
+      <span>native engine + publication pipeline</span>
+    </div>
+    <div class="hero-callout callout-platform">
+      <strong>PHP · TypeScript</strong>
+      <span>generators + intelligent interfaces</span>
+    </div>
+  </div>
+</section>

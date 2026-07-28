@@ -1,0 +1,99 @@
+---
+import profile from "../data/profile.json";
+import projects from "../data/projects.json";
+
+const projectMap = new Map(projects.map((project) => [project.id, project]));
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="section-shell section-block" id="capabilities" aria-labelledby="capabilities-title">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">Capability map</p>
+      <h2 id="capabilities-title">Capability is shown through application.</h2>
+    </div>
+    <p>
+      Filter the map by engineering layer. Each capability names how it has been applied and links
+      directly to project evidence or the documented professional record.
+    </p>
+  </div>
+
+  <div class="filter-bar" role="group" aria-label="Filter capabilities by engineering layer">
+    <button
+      class="filter-button is-active"
+      type="button"
+      data-capability-filter="all"
+      aria-pressed="true"
+    >
+      All layers
+    </button>
+    {
+      profile.capabilityGroups.map((group) => (
+        <button
+          class="filter-button"
+          type="button"
+          data-capability-filter={group.id}
+          aria-pressed="false"
+        >
+          {group.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="capability-layout">
+    <aside class="capability-axis" aria-label="Engineering system layers">
+      <span>Judgement</span>
+      <div class="axis-line" aria-hidden="true">
+        <i></i><i></i><i></i><i></i>
+      </div>
+      <span>Execution</span>
+    </aside>
+    <div class="capability-grid" aria-live="polite">
+      {
+        profile.capabilities.map((capability) => (
+          <article
+            class="capability-card"
+            id={`capability-${capability.id}`}
+            data-capability-card
+            data-group={capability.group}
+          >
+            <div class="capability-heading">
+              <span class={`capability-symbol symbol-${capability.group}`} aria-hidden="true">
+                {capability.symbol}
+              </span>
+              <div>
+                <p>
+                  {profile.capabilityGroups.find((group) => group.id === capability.group)?.label}
+                </p>
+                <h3>{capability.title}</h3>
+              </div>
+            </div>
+            <p class="capability-summary">{capability.summary}</p>
+            <details>
+              <summary>Application and evidence</summary>
+              <div class="capability-detail">
+                <p>{capability.application}</p>
+                <ul class="tag-list" aria-label={`${capability.title} technologies and methods`}>
+                  {capability.technologies.map((technology) => (
+                    <li>{technology}</li>
+                  ))}
+                </ul>
+                <div class="evidence-links">
+                  {capability.evidence.map((id) => {
+                    const project = projectMap.get(id);
+                    return project ? (
+                      <a href={`${base}projects/${project.slug}/`}>
+                        {project.name} <span aria-hidden="true">→</span>
+                      </a>
+                    ) : null;
+                  })}
+                </div>
+              </div>
+            </details>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
