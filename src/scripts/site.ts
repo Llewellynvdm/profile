@@ -1,4 +1,4 @@
-import { matchesCapability, matchesCommand } from "./filters.mjs";
+import { matchesCapability, matchesCommand, matchesRepository } from "./filters.mjs";
 
 document.documentElement.classList.add("js");
 
@@ -140,6 +140,100 @@ commandInput?.addEventListener("input", () => {
 
 for (const link of commandLinks) {
   link.addEventListener("click", () => dialog?.close());
+}
+
+const repositoryForm = document.querySelector<HTMLFormElement>("[data-repository-filters]");
+const repositoryQuery = document.querySelector<HTMLInputElement>("[data-repository-query]");
+const repositoryOwner = document.querySelector<HTMLSelectElement>("[data-repository-owner]");
+const repositoryTier = document.querySelector<HTMLSelectElement>("[data-repository-tier]");
+const repositoryLanguage = document.querySelector<HTMLSelectElement>("[data-repository-language]");
+const repositoryCards = Array.from(
+  document.querySelectorAll<HTMLElement>("[data-repository-card]"),
+);
+const repositoryCount = document.querySelector<HTMLElement>("[data-repository-count]");
+const repositoryEmpty = document.querySelector<HTMLElement>("[data-repository-empty]");
+
+function applyRepositoryFilters(updateAddress = true) {
+  if (
+    !repositoryForm ||
+    !repositoryQuery ||
+    !repositoryOwner ||
+    !repositoryTier ||
+    !repositoryLanguage
+  ) {
+    return;
+  }
+
+  const filters = {
+    query: repositoryQuery.value,
+    owner: repositoryOwner.value,
+    tier: repositoryTier.value,
+    language: repositoryLanguage.value,
+  };
+  let visible = 0;
+
+  for (const card of repositoryCards) {
+    const matches = matchesRepository(filters, {
+      search: card.dataset.search ?? "",
+      owner: card.dataset.owner ?? "",
+      tier: card.dataset.tier ?? "",
+      language: card.dataset.language ?? "",
+    });
+    card.hidden = !matches;
+    if (matches) visible += 1;
+  }
+
+  if (repositoryCount) repositoryCount.textContent = String(visible);
+  if (repositoryEmpty) repositoryEmpty.hidden = visible !== 0;
+
+  if (updateAddress) {
+    const url = new URL(window.location.href);
+    const values = [
+      ["query", filters.query.trim()],
+      ["owner", filters.owner],
+      ["tier", filters.tier],
+      ["language", filters.language],
+    ];
+    for (const [key, value] of values) {
+      if (!value || value === "all") url.searchParams.delete(key);
+      else url.searchParams.set(key, value);
+    }
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+  }
+}
+
+if (repositoryForm && repositoryQuery && repositoryOwner && repositoryTier && repositoryLanguage) {
+  const initial = new URL(window.location.href).searchParams;
+  const initialOwner = initial.get("owner");
+  const initialTier = initial.get("tier");
+  const initialLanguage = initial.get("language");
+
+  repositoryQuery.value = initial.get("query") ?? "";
+  if (
+    initialOwner &&
+    Array.from(repositoryOwner.options).some((option) => option.value === initialOwner)
+  ) {
+    repositoryOwner.value = initialOwner;
+  }
+  if (
+    initialTier &&
+    Array.from(repositoryTier.options).some((option) => option.value === initialTier)
+  ) {
+    repositoryTier.value = initialTier;
+  }
+  if (
+    initialLanguage &&
+    Array.from(repositoryLanguage.options).some((option) => option.value === initialLanguage)
+  ) {
+    repositoryLanguage.value = initialLanguage;
+  }
+
+  repositoryForm.addEventListener("input", () => applyRepositoryFilters());
+  repositoryForm.addEventListener("change", () => applyRepositoryFilters());
+  repositoryForm.addEventListener("reset", () => {
+    window.setTimeout(() => applyRepositoryFilters(), 0);
+  });
+  applyRepositoryFilters(false);
 }
 
 const revealItems = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
