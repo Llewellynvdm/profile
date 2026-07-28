@@ -1,0 +1,93 @@
+---
+import repositories from "../data/repositories.json";
+
+const base = import.meta.env.BASE_URL;
+const estates = [
+  {
+    owner: "joomengine",
+    label: "JoomEngine",
+    mark: "J",
+    summary:
+      "JCB, reusable code registries, packages, Joomla applications, documentation, Docker, and MCP.",
+  },
+  {
+    owner: "getbible",
+    label: "GetBible",
+    mark: "G",
+    summary:
+      "Native engines, builders, APIs, libraries, Joomla, Telegram, MCP, and cross-platform clients.",
+  },
+  {
+    owner: "octoleo",
+    label: "Octoleo",
+    mark: "$",
+    summary:
+      "Authored Shell systems for deployments, repositories, packages, containers, and operations.",
+  },
+  {
+    owner: "trueChristian",
+    label: "TrueChristian",
+    mark: "T",
+    summary:
+      "Scheduled publication, Joomla delivery, sermon distribution, and print-document engineering.",
+  },
+  {
+    owner: "Llewellynvdm",
+    label: "Personal record",
+    mark: "L",
+    summary:
+      "Earlier Joomla, Shell, C++, Python, developer-tool, and professional-profile evidence.",
+  },
+].map((estate) => ({
+  ...estate,
+  count: repositories.filter((repository) => repository.owner === estate.owner).length,
+}));
+---
+
+<section
+  class="section-shell section-block estate-section"
+  id="public-estate"
+  aria-labelledby="estate-title"
+>
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">Complete public engineering estate</p>
+      <h2 id="estate-title">The evidence is an ecosystem, not a shortlist.</h2>
+    </div>
+    <p>
+      {repositories.length} authored or directly maintained public repositories are organized by engineering
+      significance. Generated data and package outputs remain visible, but they are not allowed to outrank
+      the source systems that produce them.
+    </p>
+  </div>
+
+  <div class="estate-grid">
+    {
+      estates.map((estate) => (
+        <a href={`${base}evidence/?owner=${estate.owner}#repository-index`}>
+          <span class="estate-mark" aria-hidden="true">
+            {estate.mark}
+          </span>
+          <span>
+            <strong>{estate.label}</strong>
+            <small>{estate.count} repositories in the curated record</small>
+            <p>{estate.summary}</p>
+          </span>
+          <span class="estate-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="estate-action">
+    <a class="button button-primary" href={`${base}evidence/`}>
+      Explore all public evidence <span aria-hidden="true">→</span>
+    </a>
+    <p>
+      Search by repository, organization, language, evidence tier, or technical purpose. Every
+      record links directly to public source.
+    </p>
+  </div>
+</section>
