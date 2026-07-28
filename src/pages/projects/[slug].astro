@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import projects from "../../data/projects.json";
+import profile from "../../data/profile.json";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const linkedCapabilities = profile.capabilities.filter((capability) =>
+  capability.evidence.includes(project.id),
+);
+const currentIndex = projects.findIndex((item) => item.id === project.id);
+const previous = projects[(currentIndex - 1 + projects.length) % projects.length];
+const next = projects[(currentIndex + 1) % projects.length];
+---
+
+<BaseLayout
+  title={`${project.name} | Engineering evidence | Llewellyn van der Merwe`}
+  description={`${project.summary} Technical case study and public evidence.`}
+  pageClass="project-page"
+>
+  <article class="case-study">
+    <header class="case-hero section-shell">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href={base}>Profile</a>
+        <span aria-hidden="true">/</span>
+        <a href={`${base}#projects`}>Evidence</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{project.name}</span>
+      </nav>
+      <div class="case-heading">
+        <div>
+          <p class="eyebrow">{project.eyebrow}</p>
+          <h1>{project.name}</h1>
+          <p class="case-summary">{project.summary}</p>
+        </div>
+        <div class="case-status-panel">
+          <span class="status-chip">{project.status}</span>
+          <dl>
+            <div>
+              <dt>Role</dt>
+              <dd>{project.role}</dd>
+            </div>
+            <div>
+              <dt>Evidence</dt>
+              <dd>
+                {project.evidenceLinks.length} direct public link{
+                  project.evidenceLinks.length === 1 ? "" : "s"
+                }
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <ul class="tag-list case-stack" aria-label={`${project.name} stack`}>
+        {project.stack.map((item) => <li>{item}</li>)}
+      </ul>
+    </header>
+
+    <div class="case-body section-shell">
+      <aside class="case-nav">
+        <p class="eyebrow">In this brief</p>
+        <nav aria-label="Case study sections">
+          <a href="#purpose">Purpose</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#interfaces">Interfaces</a>
+          <a href="#decisions">Decisions</a>
+          <a href="#quality">Quality</a>
+          <a href="#evidence">Evidence</a>
+        </nav>
+      </aside>
+
+      <div class="case-content">
+        <section id="purpose">
+          <p class="eyebrow">Purpose and value</p>
+          <h2>Why this system exists</h2>
+          <p class="large-copy">{project.value}</p>
+          <div class="role-callout">
+            <span>Engineering role</span>
+            <p>{project.role}</p>
+          </div>
+        </section>
+
+        <section id="architecture">
+          <p class="eyebrow">System structure</p>
+          <h2>Architecture</h2>
+          <ol class="architecture-list">
+            {
+              project.architecture.map((item, index) => (
+                <li>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{item}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </section>
+
+        <section id="interfaces">
+          <p class="eyebrow">Boundaries</p>
+          <h2>Principal interfaces</h2>
+          <div class="interface-diagram">
+            {
+              project.interfaces.map((item, index) => (
+                <>
+                  <div class="interface-node">{item}</div>
+                  {index < project.interfaces.length - 1 && <span aria-hidden="true">↔</span>}
+                </>
+              ))
+            }
+          </div>
+        </section>
+
+        <section id="decisions">
+          <p class="eyebrow">Judgement</p>
+          <h2>Engineering decisions</h2>
+          <div class="decision-grid">
+            {
+              project.decisions.map((item) => (
+                <article>
+                  <span aria-hidden="true">◇</span>
+                  <p>{item}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section id="quality">
+          <p class="eyebrow">Confidence model</p>
+          <h2>Delivery, validation, and maintenance</h2>
+          <ul class="quality-list">
+            {project.quality.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        <section id="evidence">
+          <p class="eyebrow">Direct sources</p>
+          <h2>Inspect the evidence</h2>
+          <div class="external-evidence">
+            {
+              project.evidenceLinks.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <strong>{link.label}</strong>
+                    <small>{new URL(link.url).hostname}</small>
+                  </span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))
+            }
+          </div>
+          {
+            linkedCapabilities.length > 0 && (
+              <div class="linked-capabilities">
+                <h3>Capabilities evidenced here</h3>
+                <ul class="tag-list">
+                  {linkedCapabilities.map((capability) => (
+                    <li>
+                      <a href={`${base}#capability-${capability.id}`}>{capability.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+        </section>
+      </div>
+    </div>
+
+    <nav class="case-pagination section-shell" aria-label="Project case studies">
+      <a href={`${base}projects/${previous.slug}/`}>
+        <span>Previous brief</span>
+        <strong>← {previous.name}</strong>
+      </a>
+      <a href={`${base}projects/${next.slug}/`}>
+        <span>Next brief</span>
+        <strong>{next.name} →</strong>
+      </a>
+    </nav>
+  </article>
+</BaseLayout>

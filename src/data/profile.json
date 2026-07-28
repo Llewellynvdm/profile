@@ -1,0 +1,384 @@
+{
+  "identity": {
+    "name": "Llewellyn van der Merwe",
+    "title": "Director | Senior Architectural Engineer of Intelligent Software and Systems",
+    "location": "Windhoek, Namibia",
+    "email": "llewellyn@vdm.io",
+    "telephone": "+264 81 248 7770",
+    "website": "https://vdm.io/llewellyn",
+    "github": "https://github.com/Llewellynvdm",
+    "summary": "An independently operating software and systems architect who works from problem definition and data modelling through implementation, release engineering, hosting, security, maintenance, and intelligent automation.",
+    "positioning": "I design systems that make difficult engineering work repeatable: generators, typed interfaces, build pipelines, deployment environments, operational controls, and maintainable open-source ecosystems."
+  },
+  "differentiators": [
+    {
+      "label": "Full-lifecycle ownership",
+      "detail": "Architecture, implementation, delivery, production operation, security, and long-term maintenance are treated as one engineering system."
+    },
+    {
+      "label": "Systems that build systems",
+      "detail": "A sustained record of compilers, generators, reusable code registries, deterministic data pipelines, and developer tooling."
+    },
+    {
+      "label": "Architecture grounded in operations",
+      "detail": "Design decisions are informed by Linux administration, container delivery, CI/CD, incident response, and real maintenance constraints."
+    },
+    {
+      "label": "AI with engineering controls",
+      "detail": "Current agent and MCP work extends established architecture practice with explicit boundaries, auditability, and guarded write operations."
+    }
+  ],
+  "proof": [
+    {
+      "value": "Since 2008",
+      "label": "software engineering",
+      "note": "including Joomla engineering from 2008"
+    },
+    {
+      "value": "2014/15–present",
+      "label": "JCB architecture and stewardship",
+      "note": "public canonical Git history from 2016"
+    },
+    {
+      "value": "25.17M",
+      "label": "known changed-line lower bound",
+      "note": "primarily public Git evidence after selected mirror deduplication"
+    },
+    {
+      "value": "2016–present",
+      "label": "official Joomla volunteer record",
+      "note": "distinct from Joomla engineering since 2008"
+    }
+  ],
+  "capabilityGroups": [
+    {
+      "id": "architecture",
+      "label": "Architecture",
+      "description": "Boundaries, contracts, data models, generators, and maintainable platform structure."
+    },
+    {
+      "id": "delivery",
+      "label": "Delivery",
+      "description": "Build pipelines, containers, CI/CD, infrastructure, release engineering, and production operations."
+    },
+    {
+      "id": "intelligence",
+      "label": "Intelligent systems",
+      "description": "Guarded agents, MCP integration, deterministic transformation, and human-auditable automation."
+    },
+    {
+      "id": "leadership",
+      "label": "Stewardship",
+      "description": "Open-source maintenance, technical direction, teaching, documentation, and community service."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "systems-architecture",
+      "group": "architecture",
+      "symbol": "◇",
+      "title": "Software & systems architecture",
+      "summary": "Designing coherent systems across domain models, interfaces, generators, runtime boundaries, delivery, and maintenance.",
+      "application": "JCB’s compiler-oriented platform, the GetBible v3 publication pipeline, reusable Power registries, and client systems maintained across long operational lifecycles.",
+      "evidence": ["jcb", "getbible-v3", "super-powers"],
+      "technologies": ["Domain modelling", "Contracts", "Versioning", "Dependency injection"]
+    },
+    {
+      "id": "php-joomla",
+      "group": "architecture",
+      "symbol": "P",
+      "title": "PHP & Joomla engineering",
+      "summary": "Deep framework, extension, compiler, package, migration, and production experience across Joomla generations.",
+      "application": "Joomla Component Builder, Sermon Distributor, client platforms, official volunteer teams, maintenance work, and framework strategy.",
+      "evidence": ["jcb", "super-powers", "joomla-service"],
+      "technologies": ["PHP", "Joomla 3–6", "Composer", "MVC", "CLI"]
+    },
+    {
+      "id": "python",
+      "group": "intelligence",
+      "symbol": "Py",
+      "title": "Python pipelines & tooling",
+      "summary": "Deterministic transformation, validation, release orchestration, data integrity, and engineering automation.",
+      "application": "The GetBible v3 builder turns SWORD module output into a validated, checksummed static API and fails closed when contracts are violated.",
+      "evidence": ["getbible-v3"],
+      "technologies": ["Python 3.12", "NDJSON", "Checksums", "Validation"]
+    },
+    {
+      "id": "native-systems",
+      "group": "architecture",
+      "symbol": "C+",
+      "title": "C & C++ systems work",
+      "summary": "Native interfaces, CLI tooling, ABI design, deterministic output, cross-platform builds, and conformance testing.",
+      "application": "GetBibleSWORD is a C++20 extraction engine with a CLI and stable C ABI, built for reproducible publication on x86_64 and arm64.",
+      "evidence": ["getbiblesword"],
+      "technologies": ["C++20", "C ABI", "CMake", "CrossWire SWORD"]
+    },
+    {
+      "id": "typescript",
+      "group": "intelligence",
+      "symbol": "TS",
+      "title": "JavaScript & TypeScript",
+      "summary": "Typed integration layers, protocol servers, web interfaces, API clients, and constrained automation.",
+      "application": "Joomla MCP exposes a source-catalogued tool surface through TypeScript with guarded writes, audit concerns, and transport boundaries.",
+      "evidence": ["joomla-mcp"],
+      "technologies": ["TypeScript", "JavaScript", "MCP", "Node.js"]
+    },
+    {
+      "id": "api-integration",
+      "group": "architecture",
+      "symbol": "↔",
+      "title": "API design & integration",
+      "summary": "Designing stable machine interfaces, route catalogues, serialization contracts, validation, and compatibility boundaries.",
+      "application": "Static API publication, C ABI design, Joomla Web Services integration, MCP route templates, and long-lived client data systems.",
+      "evidence": ["getbible-v3", "getbiblesword", "joomla-mcp"],
+      "technologies": ["REST", "MCP", "NDJSON", "JSON", "C ABI"]
+    },
+    {
+      "id": "linux-automation",
+      "group": "delivery",
+      "symbol": "$",
+      "title": "Bash, Linux & automation",
+      "summary": "Operational scripting, repeatable environments, server administration, release tooling, and fail-fast delivery workflows.",
+      "application": "Linux administration since 2010, builder automation, official image maintenance, and current Incus/OpenCode engineering environments.",
+      "evidence": ["getbible-v3", "joomla-docker", "opencode-platform"],
+      "technologies": ["Bash", "Linux", "systemd", "SSH", "Incus"]
+    },
+    {
+      "id": "containers-cicd",
+      "group": "delivery",
+      "symbol": "▣",
+      "title": "Containers, CI/CD & releases",
+      "summary": "Multi-architecture images, reproducible builds, gated publication, package release, and production-aware delivery.",
+      "application": "Official Joomla Docker image work, cross-architecture native releases, GitHub Actions, and reproducible developer VM images.",
+      "evidence": ["joomla-docker", "getbiblesword", "opencode-platform"],
+      "technologies": ["Docker", "GitHub Actions", "OCI", "x86_64", "arm64"]
+    },
+    {
+      "id": "security",
+      "group": "delivery",
+      "symbol": "⌾",
+      "title": "Security & incident response",
+      "summary": "Operational hardening, credential boundaries, guarded changes, recovery, auditing, and maintainable controls.",
+      "application": "Production server responsibility, Vaultwarden-backed operations, explicit MCP write guards, and isolated development environments.",
+      "evidence": ["joomla-mcp", "opencode-platform", "professional-record"],
+      "technologies": ["Secrets boundaries", "Audit", "Recovery", "Least privilege"]
+    },
+    {
+      "id": "data-migration",
+      "group": "architecture",
+      "symbol": "⇢",
+      "title": "Data transformation & migration",
+      "summary": "Schema-aware transformation, import/export workflows, integrity checks, version migration, and deterministic publication.",
+      "application": "JCB schema and extension generation, GetBible module extraction, static API building, and institutional document/database systems.",
+      "evidence": ["jcb", "getbible-v3", "professional-record"],
+      "technologies": ["SQL", "Schema design", "ETL", "Validation"]
+    },
+    {
+      "id": "developer-tooling",
+      "group": "architecture",
+      "symbol": "⌘",
+      "title": "Developer tooling",
+      "summary": "Tools that encode architecture, reduce drift, and make correct work repeatable across teams and projects.",
+      "application": "JCB, Super Powers, GetBible builders, native extraction tooling, MCP integration, and reproducible engineering environments.",
+      "evidence": ["jcb", "super-powers", "getbible-v3", "opencode-platform"],
+      "technologies": ["Generators", "Registries", "CLI", "Build systems"]
+    },
+    {
+      "id": "ai-mcp",
+      "group": "intelligence",
+      "symbol": "AI",
+      "title": "AI & MCP integration",
+      "summary": "Connecting reasoning systems to real engineering environments through typed, constrained, auditable interfaces.",
+      "application": "Joomla MCP and OpenCode platform work combine protocol tooling with credential, network, write, and environment boundaries.",
+      "evidence": ["joomla-mcp", "opencode-platform"],
+      "technologies": ["MCP", "Agents", "Tool contracts", "Guarded writes"]
+    },
+    {
+      "id": "open-source",
+      "group": "leadership",
+      "symbol": "OS",
+      "title": "Open-source leadership",
+      "summary": "Architecture, release stewardship, maintenance, contributor support, and responsibility for systems used beyond one organization.",
+      "application": "Long-term JCB stewardship, official Joomla service, Joomla Docker work, and maintained GetBible tooling.",
+      "evidence": ["jcb", "joomla-service", "joomla-docker", "getbible-v3"],
+      "technologies": ["Maintenance", "Releases", "Governance", "Community"]
+    },
+    {
+      "id": "documentation",
+      "group": "leadership",
+      "symbol": "¶",
+      "title": "Documentation & communication",
+      "summary": "Making complex systems legible through specifications, reference material, implementation notes, talks, and teaching.",
+      "application": "Project documentation, Joomla community service, conference sessions, mentoring, and technical training.",
+      "evidence": ["jcb", "joomla-service", "professional-record"],
+      "technologies": ["Technical writing", "Teaching", "Conference speaking", "Mentoring"]
+    }
+  ],
+  "technologyDomains": [
+    {
+      "name": "PHP",
+      "context": "Framework, compiler, extension, API and long-lived production systems",
+      "evidence": ["jcb", "super-powers"]
+    },
+    {
+      "name": "C++",
+      "context": "Native extraction engine, CLI, stable C ABI and cross-architecture release",
+      "evidence": ["getbiblesword"]
+    },
+    {
+      "name": "Python",
+      "context": "Deterministic data pipelines, validation and release orchestration",
+      "evidence": ["getbible-v3"]
+    },
+    {
+      "name": "TypeScript",
+      "context": "Protocol integration, typed tools and guarded automation",
+      "evidence": ["joomla-mcp"]
+    },
+    {
+      "name": "JavaScript",
+      "context": "Web applications, user interfaces and integration layers",
+      "evidence": ["jcb", "professional-record"]
+    },
+    {
+      "name": "Bash",
+      "context": "Linux automation, builds, operations and reproducible environments",
+      "evidence": ["getbible-v3", "opencode-platform"]
+    },
+    {
+      "name": "SQL",
+      "context": "Schema design, migration, content systems and application data",
+      "evidence": ["jcb", "professional-record"]
+    },
+    {
+      "name": "Dart",
+      "context": "Typed cross-platform application architecture with Flutter",
+      "evidence": ["getbible-flutter"]
+    },
+    {
+      "name": "CSS",
+      "context": "Responsive interfaces and maintainable presentation systems",
+      "evidence": ["professional-record"]
+    },
+    {
+      "name": "YAML",
+      "context": "CI/CD, image builds, environment and automation configuration",
+      "evidence": ["joomla-docker", "opencode-platform"]
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2008",
+      "title": "Software and Joomla engineering begins",
+      "detail": "The start of a sustained engineering practice spanning web systems, framework work, automation, and architecture."
+    },
+    {
+      "period": "2010",
+      "title": "Linux and systems administration",
+      "detail": "Production-oriented server administration becomes part of the engineering scope."
+    },
+    {
+      "period": "2013–present",
+      "title": "Founder and Director, Vast Development Method",
+      "detail": "Independent responsibility for architecture, delivery, hosting, security, maintenance, and client systems."
+    },
+    {
+      "period": "2014/15–present",
+      "title": "Joomla Component Builder",
+      "detail": "Architecture and stewardship of a generator platform; public canonical Git history begins in 2016."
+    },
+    {
+      "period": "2016–present",
+      "title": "Official Joomla volunteer service",
+      "detail": "Service across production, infrastructure, strategy, directory, language, testing, and leadership responsibilities."
+    },
+    {
+      "period": "2016–present",
+      "title": "Long-running operational systems",
+      "detail": "Sustained client platform work includes NamPharm and Logo Embroidery, with ongoing operational responsibility."
+    },
+    {
+      "period": "2017–present",
+      "title": "East African Community systems",
+      "detail": "Website, document and expert database systems, hosting, and support."
+    },
+    {
+      "period": "2019–present",
+      "title": "EU–EAC MARKUP programme work",
+      "detail": "Website and application work in the EAC, ITC, and EU programme context."
+    },
+    {
+      "period": "2020",
+      "title": "Certified C++ Programmer",
+      "detail": "Concentrated Studies in C++ Programming; completed college study also records a 4.000 GPA across 30 credits."
+    },
+    {
+      "period": "Current",
+      "title": "Native, intelligent, and reproducible systems",
+      "detail": "C++ extraction, Python publication pipelines, TypeScript MCP integration, and isolated multi-language engineering environments."
+    }
+  ],
+  "professionalRecord": [
+    {
+      "name": "Vast Development Method",
+      "period": "2013–present",
+      "role": "Founder and Director",
+      "scope": "Independent software architecture, systems delivery, hosting, security, maintenance, and technical leadership."
+    },
+    {
+      "name": "NamPharm",
+      "period": "2016–present",
+      "role": "Platform engineering and operations",
+      "scope": "Pharmacist-facing ordering portal and, from 2022, Gitea, Vaultwarden, and multiple-server operational systems."
+    },
+    {
+      "name": "East African Community",
+      "period": "2017–present",
+      "role": "Web and information systems",
+      "scope": "Main website, document and expert database systems, hosting, and support."
+    },
+    {
+      "name": "EU–EAC MARKUP",
+      "period": "2019–present",
+      "role": "Website and application work",
+      "scope": "Engineering work in the EAC, International Trade Centre, and European Union programme context."
+    },
+    {
+      "name": "Logo Embroidery",
+      "period": "2016–present",
+      "role": "Workflow system engineering",
+      "scope": "Job tracking and operational workflow."
+    },
+    {
+      "name": "Coral",
+      "period": "2019",
+      "role": "Application engineering",
+      "scope": "Biokinetics evaluation, reporting, practice, and member platform."
+    }
+  ],
+  "education": [
+    {
+      "year": "2020",
+      "title": "Certified C++ Programmer",
+      "institution": "Concentrated Studies in C++ Programming"
+    },
+    {
+      "year": "2019–2022",
+      "title": "B.S. Web Design and Development study",
+      "institution": "Champlain College — degree not completed; supplied 2020 audit records 30 credits and a 4.000 GPA"
+    },
+    {
+      "year": "2011–2015",
+      "title": "34 supplemental technical and design courses",
+      "institution": "Professional continuing education"
+    }
+  ],
+  "service": [
+    "Joomla community sites development, capital team, webmasters infrastructure and production",
+    "Production department, Service Providers Directory, Afrikaans CMS language and CMS maintenance",
+    "Joomla Docker, Framework Working Group and Software Architecture & Strategy",
+    "Past operations coordination, Joomla Extensions Directory leadership, automated testing and Google Summer of Code mentoring",
+    "Conference and community teaching in Marbella, JoomlaDay USA and the Anabaptist Code Blocks Summit",
+    "Scheduled Joomla World Conference 2026 speaker"
+  ]
+}

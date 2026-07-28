@@ -1,0 +1,179 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import profile from "../../data/profile.json";
+import projects from "../../data/projects.json";
+
+const base = import.meta.env.BASE_URL;
+const featured = projects.filter((project) => project.featured);
+---
+
+<BaseLayout
+  title="Detailed CV | Llewellyn van der Merwe"
+  description="Detailed, evidence-backed professional record of Llewellyn van der Merwe, Senior Architectural Engineer of Intelligent Software and Systems."
+  pageClass="cv-page"
+>
+  <article class="cv-document section-shell">
+    <header class="cv-header">
+      <div class="cv-identity">
+        <p class="eyebrow">Detailed professional record</p>
+        <h1>{profile.identity.name}</h1>
+        <p class="cv-title">{profile.identity.title}</p>
+        <p class="cv-summary">{profile.identity.summary}</p>
+      </div>
+      <div class="cv-contact">
+        <img
+          src={`${base}assets/llewellyn-van-der-merwe.webp`}
+          width="180"
+          height="180"
+          alt="Llewellyn van der Merwe"
+        />
+        <address>
+          <span>{profile.identity.location}</span>
+          <a href={`mailto:${profile.identity.email}`}>{profile.identity.email}</a>
+          <a href={`tel:${profile.identity.telephone.replaceAll(" ", "")}`}
+            >{profile.identity.telephone}</a
+          >
+          <a href={profile.identity.github}>github.com/Llewellynvdm</a>
+        </address>
+      </div>
+      <div class="cv-tools" data-print-hidden>
+        <button class="button button-primary" type="button" data-print>Print / save as PDF</button>
+        <a
+          class="button button-secondary"
+          href={`${base}documents/llewellyn-van-der-merwe-executive-cv.pdf`}
+          >Original executive CV</a
+        >
+      </div>
+    </header>
+
+    <div class="cv-grid">
+      <div class="cv-main">
+        <section>
+          <p class="eyebrow">Executive value</p>
+          <h2>Systems that build systems</h2>
+          <p class="large-copy">{profile.identity.positioning}</p>
+          <div class="cv-differentiators">
+            {
+              profile.differentiators.map((item) => (
+                <article>
+                  <h3>{item.label}</h3>
+                  <p>{item.detail}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section>
+          <p class="eyebrow">Professional record</p>
+          <h2>Selected roles and systems</h2>
+          <div class="record-list">
+            {
+              profile.professionalRecord.map((item) => (
+                <article>
+                  <div>
+                    <h3>{item.name}</h3>
+                    <span>{item.period}</span>
+                  </div>
+                  <strong>{item.role}</strong>
+                  <p>{item.scope}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section>
+          <p class="eyebrow">Selected technical work</p>
+          <h2>Public engineering evidence</h2>
+          <div class="cv-projects">
+            {
+              featured.map((project) => (
+                <article>
+                  <div>
+                    <h3>{project.name}</h3>
+                    <span>{project.status}</span>
+                  </div>
+                  <p>{project.summary}</p>
+                  <p>
+                    <strong>Role:</strong> {project.role}
+                  </p>
+                  <a href={`${base}projects/${project.slug}/`}>Technical brief →</a>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section>
+          <p class="eyebrow">Open-source leadership</p>
+          <h2>Service, maintenance, and communication</h2>
+          <ul class="quality-list">
+            {profile.service.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      </div>
+
+      <aside class="cv-sidebar">
+        <section>
+          <p class="eyebrow">Core capabilities</p>
+          <h2>Engineering scope</h2>
+          <ul class="cv-capabilities">
+            {
+              profile.capabilities.map((capability) => (
+                <li>
+                  <strong>{capability.title}</strong>
+                  <span>{capability.summary}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section>
+          <p class="eyebrow">Languages & platforms</p>
+          <h2>Applied technologies</h2>
+          <ul class="cv-technologies">
+            {
+              profile.technologyDomains.map((technology) => (
+                <li>
+                  <strong>{technology.name}</strong>
+                  <span>{technology.context}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section>
+          <p class="eyebrow">Education</p>
+          <h2>Formal and continuing study</h2>
+          <div class="education-list">
+            {
+              profile.education.map((item) => (
+                <article>
+                  <span>{item.year}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.institution}</p>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <section>
+          <p class="eyebrow">Evidence note</p>
+          <h2>Factual scope</h2>
+          <p>
+            This web CV separates Joomla engineering since 2008 from official Joomla volunteer
+            service since 2016. Public Git figures are scoped lower bounds, not claims about
+            surviving code, hours, or quality.
+          </p>
+          <a href={`${base}documents/llewellyn-van-der-merwe-professional-dossier.pdf`}>
+            Download professional dossier
+          </a>
+        </section>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

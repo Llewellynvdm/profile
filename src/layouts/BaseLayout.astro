@@ -1,0 +1,151 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  pageClass?: string;
+}
+
+const {
+  title = "Llewellyn van der Merwe | Senior Architectural Engineer",
+  description = "Evidence-backed professional profile of Llewellyn van der Merwe: senior software and systems architecture, open-source stewardship, developer tooling, infrastructure, and intelligent systems.",
+  image = `${import.meta.env.BASE_URL}assets/social-preview.png`,
+  pageClass = "",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+const base = import.meta.env.BASE_URL;
+
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Llewellyn van der Merwe",
+  jobTitle: "Director | Senior Architectural Engineer of Intelligent Software and Systems",
+  email: "mailto:llewellyn@vdm.io",
+  telephone: "+264 81 248 7770",
+  url: new URL(base, Astro.site).href,
+  image: imageUrl.href,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Windhoek",
+    addressCountry: "NA",
+  },
+  sameAs: ["https://github.com/Llewellynvdm", "https://vdm.io/llewellyn"],
+  knowsAbout: [
+    "Software architecture",
+    "Systems architecture",
+    "PHP",
+    "Joomla",
+    "C++",
+    "Python",
+    "TypeScript",
+    "Linux",
+    "Docker",
+    "Developer tooling",
+    "Model Context Protocol",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f7f9fc" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Llewellyn van der Merwe" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${base}assets/favicon.svg`} />
+    <link rel="manifest" href={`${base}site.webmanifest`} />
+    <link rel="sitemap" href={`${base}sitemap.xml`} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="profile:first_name" content="Llewellyn" />
+    <meta property="profile:last_name" content="van der Merwe" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <title>{title}</title>
+    <script is:inline>
+      (() => {
+        document.documentElement.classList.add("js");
+        try {
+          const theme = localStorage.getItem("lvdm-theme");
+          if (theme === "light" || theme === "dark") {
+            document.documentElement.dataset.theme = theme;
+          }
+        } catch {
+          // The system colour scheme remains the accessible fallback.
+        }
+      })();
+    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body class={pageClass}>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <dialog class="command-dialog" id="command-palette" aria-labelledby="command-title">
+      <form method="dialog" class="command-shell">
+        <div class="command-head">
+          <div>
+            <p class="eyebrow">Rapid navigation</p>
+            <h2 id="command-title">Go to</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="Close command palette">×</button>
+        </div>
+        <label class="command-search">
+          <span class="sr-only">Filter destinations</span>
+          <input
+            id="command-query"
+            type="search"
+            placeholder="Capabilities, projects, CV…"
+            autocomplete="off"
+          />
+        </label>
+        <nav class="command-results" aria-label="Rapid navigation destinations">
+          <a href={`${base}#profile`} data-command="executive profile identity">Executive profile</a
+          >
+          <a href={`${base}#capabilities`} data-command="capabilities skills evidence"
+            >Capability map</a
+          >
+          <a href={`${base}#projects`} data-command="projects case studies repositories"
+            >Project evidence</a
+          >
+          <a href={`${base}#timeline`} data-command="timeline career history">Timeline</a>
+          <a href={`${base}#technology`} data-command="technology languages stacks"
+            >Technology domains</a
+          >
+          <a href={`${base}cv/`} data-command="cv resume print professional record">Detailed CV</a>
+          <a
+            href="https://github.com/Llewellynvdm"
+            data-command="github source repositories"
+            rel="noreferrer">GitHub profile <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+        <p class="command-hint"><kbd>↑</kbd><kbd>↓</kbd> navigate <kbd>Enter</kbd> open</p>
+      </form>
+    </dialog>
+    <script>
+      import "../scripts/site";
+    </script>
+  </body>
+</html>

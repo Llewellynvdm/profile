@@ -1,0 +1,44 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <a class="brand footer-brand" href={base}>
+        <svg viewBox="0 0 42 42" aria-hidden="true">
+          <path d="M21 3 37 12v18L21 39 5 30V12Z"></path>
+          <path d="m13 17 8 5 8-5M21 22v10"></path>
+        </svg>
+        <span>
+          <strong>Llewellyn van der Merwe</strong>
+          <small>Systems that build systems.</small>
+        </span>
+      </a>
+      <p class="footer-note">
+        Claims on this site are grounded in the supplied professional record or linked public
+        evidence. Repository metrics are presented as scoped evidence, not as a proxy for quality.
+      </p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <h2>Explore</h2>
+      <a href={`${base}#capabilities`}>Capabilities</a>
+      <a href={`${base}#projects`}>Case studies</a>
+      <a href={`${base}cv/`}>Detailed CV</a>
+    </nav>
+    <nav aria-label="Professional links">
+      <h2>Connect</h2>
+      <a href="mailto:llewellyn@vdm.io">Email</a>
+      <a href="https://github.com/Llewellynvdm" rel="noreferrer"
+        >GitHub <span aria-hidden="true">↗</span></a
+      >
+      <a href="https://vdm.io/llewellyn" rel="noreferrer"
+        >vdm.io <span aria-hidden="true">↗</span></a
+      >
+    </nav>
+  </div>
+  <div class="footer-base">
+    <span>© {new Date().getFullYear()} Llewellyn van der Merwe</span>
+    <a href="#main-content">Back to top ↑</a>
+  </div>
+</footer>
