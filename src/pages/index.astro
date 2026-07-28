@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import CapabilityMap from "../components/CapabilityMap.astro";
+import EvidenceEstate from "../components/EvidenceEstate.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
 import profile from "../data/profile.json";
 import projects from "../data/projects.json";
@@ -58,6 +59,7 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
 
   <CapabilityMap />
   <ProjectGrid />
+  <EvidenceEstate />
 
   <section
     class="section-shell section-block system-profile"
