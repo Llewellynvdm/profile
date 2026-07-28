@@ -5,6 +5,7 @@ export const GET: APIRoute = ({ site }) => {
   const paths = [
     "profile/",
     "profile/cv/",
+    "profile/evidence/",
     ...projects.map((project) => `profile/projects/${project.slug}/`),
   ];
   const urls = paths.map((path) => `<url><loc>${new URL(path, site).href}</loc></url>`).join("");
