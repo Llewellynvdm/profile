@@ -50,7 +50,7 @@
     "name": "GetBible v3 publication pipeline",
     "eyebrow": "Python · deterministic data engineering",
     "status": "Active public engineering",
-    "featured": true,
+    "featured": false,
     "summary": "A Python 3.12 build system that converts SWORD module output into a deterministic, validated, checksummed static API.",
     "value": "The pipeline creates a controlled publication boundary between native source extraction and downstream consumers. It validates framing and contracts, produces deterministic artifacts, and refuses publication when integrity conditions fail.",
     "role": "Principal pipeline architect and maintainer.",
@@ -136,7 +136,7 @@
     "name": "Joomla MCP",
     "eyebrow": "TypeScript · intelligent systems integration",
     "status": "Active validation",
-    "featured": true,
+    "featured": false,
     "summary": "A TypeScript MCP server that maps a source-catalogued Joomla Web Services surface into structured tools with guarded write operations.",
     "value": "The project connects agent reasoning to a real application platform while keeping tool contracts, write permissions, audit concerns, and transport boundaries explicit.",
     "role": "Architect and maintainer.",
@@ -405,6 +405,342 @@
       {
         "label": "EU–EAC MARKUP context",
         "url": "https://www.intracen.org/our-work/projects/eu-eac-market-access-upgrade-programme-markup"
+      }
+    ]
+  },
+  {
+    "id": "octojoom",
+    "slug": "octojoom-shell-deployment-platform",
+    "name": "OctoJoom",
+    "eyebrow": "Shell · Docker · cross-platform operations",
+    "status": "Maintained public system",
+    "featured": true,
+    "summary": "A substantial Bash control plane for deploying and managing Dockerized Joomla and OpenSSH development environments across Linux, macOS, and Windows.",
+    "value": "OctoJoom demonstrates Shell engineering as product engineering: operating-system detection, dependency management, persistent configuration, interactive and non-interactive control paths, container lifecycle, update behavior, and clean removal are designed as one maintained system.",
+    "role": "Original author and long-term maintainer; the repository README directly credits Llewellyn van der Merwe.",
+    "stack": ["Bash", "Docker", "Docker Compose", "OpenSSH", "whiptail", "ShellCheck"],
+    "architecture": [
+      "A command dispatcher supports both interactive whiptail operation and explicit flags for repeatable automation.",
+      "Persistent environment configuration separates remembered deployment intent from executable Shell logic.",
+      "Joomla and OpenSSH container concerns are modelled as related but distinct deployment types.",
+      "Operating-system detection selects supported installation and dependency paths while keeping one public command surface."
+    ],
+    "interfaces": [
+      "Interactive terminal menus",
+      "Direct CLI flags and environment values",
+      "Docker Engine and Compose",
+      "Joomla and OpenSSH container boundaries"
+    ],
+    "decisions": [
+      "Keep the operational logic inspectable in Shell and validate it with ShellCheck.",
+      "Provide one tool for guided human use and unattended automation instead of maintaining separate implementations.",
+      "Treat update and uninstall behavior as product lifecycle features."
+    ],
+    "quality": [
+      "ShellCheck-gated public source",
+      "Documented Linux, macOS, and Windows paths",
+      "Dry, update, help, and selective-uninstall behaviors",
+      "Public maintenance history since 2021"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/octoleo/octojoom"
+      },
+      {
+        "label": "Octoleo organization",
+        "url": "https://github.com/octoleo"
+      }
+    ]
+  },
+  {
+    "id": "joomengine-containers",
+    "slug": "joomengine-container-release-engine",
+    "name": "JoomEngine container release engine",
+    "eyebrow": "Shell · deterministic image production",
+    "status": "Active public engineering",
+    "featured": true,
+    "summary": "The official Shell-based Docker image build system for Joomla Component Builder, generating build matrices, manifests, tags, and published images from upstream release evidence.",
+    "value": "The system makes container publication auditable. Release discovery, integrity hashes, Joomla/PHP/runtime expansion, stable and prerelease tag leadership, generated build contexts, state tracking, and registry publication are implemented in reviewable Shell rather than hidden inside CI YAML.",
+    "role": "Architect, author, and maintainer of the build engine and release model.",
+    "stack": ["Bash", "Docker", "AWK", "jq", "NDJSON", "GitHub Actions"],
+    "architecture": [
+      "Upstream JCB release XML is converted into verified release inputs with required SHA-512 hashes.",
+      "A declarative compatibility matrix expands Joomla versions, PHP versions, and Apache/FPM runtime variants.",
+      "Generated Docker contexts remain output; authoritative behavior lives in the Shell engine and templates.",
+      "An NDJSON manifest records each independently buildable image and its complete tag set."
+    ],
+    "interfaces": [
+      "JCB release and update metadata",
+      "Declarative version configuration",
+      "Docker build contexts and registry tags",
+      "NDJSON build manifest and GitHub Actions"
+    ],
+    "decisions": [
+      "Keep CI thin so the exact production behavior can be executed and reviewed locally.",
+      "Refuse releases without integrity hashes and prevent tag collisions between stable and prerelease channels.",
+      "Track processed build combinations to avoid unnecessary registry work."
+    ],
+    "quality": [
+      "Locally reproducible build engine",
+      "Dry-run, quiet, force, and build-only modes",
+      "Deterministic tagging policy",
+      "Machine-readable build manifest"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/octoleo/joomengine"
+      },
+      {
+        "label": "Published images",
+        "url": "https://hub.docker.com/r/octoleo/joomengine"
+      }
+    ]
+  },
+  {
+    "id": "getbible-ecosystem",
+    "slug": "getbible-engineering-ecosystem",
+    "name": "GetBible engineering ecosystem",
+    "eyebrow": "Native engine · APIs · libraries · applications",
+    "status": "Long-running public ecosystem",
+    "featured": true,
+    "summary": "A complete public engineering estate spanning Shell and Python builders, static APIs, C/C++ native interfaces, PHP and Python libraries, MCP, Joomla, Telegram, web, desktop, and cross-platform clients.",
+    "value": "GetBible is not one repository or interface. It is a maintained chain from source-module extraction and integrity validation through versioned publication, language libraries, application APIs, CMS delivery, interactive services, and end-user clients. The public organization shows how those boundaries are designed to evolve independently without losing data integrity.",
+    "role": "Architect, author, and maintainer across the public GetBible organization; the user has identified every project in the organization as his work.",
+    "stack": ["C++", "C", "PHP", "Python", "Bash", "TypeScript", "JavaScript", "Dart"],
+    "architecture": [
+      "Native SWORD extraction is isolated behind deterministic contracts and a stable C ABI.",
+      "Versioned builders transform validated inputs into static APIs and integrity manifests.",
+      "Language libraries and extensions provide Python, PHP, Shell, TypeScript/MCP, and application-specific boundaries.",
+      "Joomla, Telegram, web, desktop, and Flutter surfaces consume maintained service and publication contracts."
+    ],
+    "interfaces": [
+      "CrossWire SWORD modules and native ABI",
+      "Versioned static JSON APIs and hashes",
+      "Python, PHP, Shell, MCP, and JavaScript integration layers",
+      "Joomla, Telegram, web, desktop, and Flutter applications"
+    ],
+    "decisions": [
+      "Keep generated API repositories visible but do not use their data volume as a substitute for source engineering evidence.",
+      "Separate extraction, validation, transformation, publication, library, and application responsibilities.",
+      "Preserve historical systems and deprecation evidence while directing current consumers to maintained interfaces."
+    ],
+    "quality": [
+      "Direct evidence across 28 public organization repositories",
+      "Versioned releases, PyPI and native package paths",
+      "Checksum-aware and fail-closed publication systems",
+      "Public documentation, CI, deployment, and operational tooling"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "GetBible organization",
+        "url": "https://github.com/getbible"
+      },
+      {
+        "label": "API v2 builder",
+        "url": "https://github.com/getbible/v2_builder"
+      },
+      {
+        "label": "Python Librarian",
+        "url": "https://github.com/getbible/librarian"
+      },
+      {
+        "label": "Telegram Robot",
+        "url": "https://github.com/getbible/robot"
+      },
+      {
+        "label": "Native PHP extension",
+        "url": "https://github.com/getbible/sword"
+      },
+      {
+        "label": "PHP Scripture layer",
+        "url": "https://github.com/getbible/scripture"
+      }
+    ]
+  },
+  {
+    "id": "octoleo-automation",
+    "slug": "octoleo-shell-automation-estate",
+    "name": "Octoleo Shell automation estate",
+    "eyebrow": "Shell · repository and infrastructure tooling",
+    "status": "Public authored tool family",
+    "featured": false,
+    "summary": "A family of authored Octo-prefixed Shell systems covering repository synchronization, Joomla packaging, reusable-code operations, infrastructure, archives, diagnostics, and delivery.",
+    "value": "The Octoleo repositories demonstrate repeated productization of operational knowledge. Instead of documenting fragile manual sequences, the projects encode them into reviewable command surfaces with configuration, dry-run behavior, automation paths, and focused responsibilities.",
+    "role": "Original author and maintainer of the Octo-prefixed projects, JoomEngine, and PlantUML-for-Gitea integration identified by the user.",
+    "stack": ["Bash", "Git", "GitHub Actions", "Docker", "AWK", "JavaScript"],
+    "architecture": [
+      "OctoSync models repository-to-repository movement through explicit source and target configuration.",
+      "Packaging and archive utilities keep release operations small, composable, and callable from larger workflows.",
+      "Infrastructure and diagnostic tools encode repeatable operator decisions without requiring an application runtime.",
+      "PlantUML-for-Gitea extends developer documentation through a focused browser integration."
+    ],
+    "interfaces": [
+      "Shell commands and configuration files",
+      "Git repositories, branches, forks, and pull requests",
+      "Joomla packages and JCB reusable-code registries",
+      "Gitea pages and PlantUML servers"
+    ],
+    "decisions": [
+      "Prefer composable utilities with explicit help and inspectable behavior.",
+      "Keep public mirrors connected to their primary VDM-hosted source where applicable.",
+      "Separate original Octoleo systems from unrelated third-party organization forks."
+    ],
+    "quality": [
+      "Direct public links to every identified authored repository",
+      "Longitudinal Shell evidence from 2017 through current work",
+      "Configuration and dry-run patterns",
+      "Source-controlled operational knowledge"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Octoleo organization",
+        "url": "https://github.com/octoleo"
+      },
+      {
+        "label": "OctoSync",
+        "url": "https://github.com/octoleo/octosync"
+      },
+      {
+        "label": "PlantUML for Gitea",
+        "url": "https://github.com/octoleo/plantuml-gitea"
+      }
+    ]
+  },
+  {
+    "id": "truechristian-publishing",
+    "slug": "truechristian-publication-systems",
+    "name": "TrueChristian publication systems",
+    "eyebrow": "Shell · Python · Joomla publishing",
+    "status": "Maintained public ecosystem",
+    "featured": false,
+    "summary": "A focused engineering estate for scheduled Scripture and devotional publication, Joomla delivery, sermon distribution, and print-ready hymn production.",
+    "value": "These projects connect automation to real publication outputs: scheduled Shell workflows, CMS modules and components, and a Python document-production engine. They show small operational systems and larger publishing products in one maintained domain.",
+    "role": "Architect, author, and maintainer across the public TrueChristian organization, as identified by the user.",
+    "stack": ["Shell", "Python", "PHP", "Joomla", "Markdown", "PDF"],
+    "architecture": [
+      "Shell projects maintain recurring Daily Light, Daily Scripture, and web witness publication.",
+      "Joomla modules and the Sermon Distributor connect maintained content streams to CMS delivery.",
+      "The Hymn Booklet Generator converts structured Markdown and TOML into reading and imposed print PDFs."
+    ],
+    "interfaces": [
+      "Scheduled Shell publication",
+      "Joomla modules and components",
+      "Markdown and TOML authoring",
+      "Digital and press-ready PDF output"
+    ],
+    "decisions": [
+      "Keep generated content distinct from the automation and application source that produces it.",
+      "Use formats maintainers can author directly while automating layout and distribution."
+    ],
+    "quality": [
+      "Seven directly linked public repositories",
+      "Long-running scheduled publication",
+      "Source-controlled Joomla delivery",
+      "Deterministic document generation"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "TrueChristian organization",
+        "url": "https://github.com/trueChristian"
+      },
+      {
+        "label": "Daily Light",
+        "url": "https://github.com/trueChristian/daily-light"
+      },
+      {
+        "label": "Witnesses",
+        "url": "https://github.com/trueChristian/witnesses"
+      }
+    ]
+  },
+  {
+    "id": "hymnbook-creator",
+    "slug": "hymn-booklet-generator",
+    "name": "Hymn Booklet Generator",
+    "eyebrow": "Python · document engineering · print",
+    "status": "Public production tool",
+    "featured": false,
+    "summary": "A Python document-production system that transforms simple Markdown hymns into indexed digital booklets and saddle-stitch-imposed print PDFs.",
+    "value": "The project turns a difficult typography and print-production workflow into a reliable command. It measures content before placement, preserves stanza structure, packs columns, generates indexes and publisher matter, pads signatures, and imposes pages for physical folding and stapling.",
+    "role": "Original author and maintainer.",
+    "stack": ["Python", "ReportLab", "pypdf", "Markdown", "TOML", "PDF"],
+    "architecture": [
+      "A structured Markdown parser retains title, number, stanza, and optional credit boundaries.",
+      "Pre-measurement and greedy packing place complete hymns across two-column pages.",
+      "Reading-copy rendering and saddle-stitch imposition are separate output responsibilities.",
+      "Publisher metadata remains optional and declarative through TOML."
+    ],
+    "interfaces": [
+      "Markdown hymn source",
+      "Optional TOML publisher configuration",
+      "Environment-level layout controls",
+      "Reading and imposed print PDFs"
+    ],
+    "decisions": [
+      "Use direct canvas drawing for predictable pagination instead of a layout engine that can split content unexpectedly.",
+      "Generate digital and physical-print outputs from one source in a single workflow.",
+      "Support diacritics through known fonts and preserve authored line breaks."
+    ],
+    "quality": [
+      "Automatic page measurement and packing",
+      "A5/A4 page-size behavior",
+      "Index, credits, publisher pages, and signature padding",
+      "Documented print procedure and source format"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository",
+        "url": "https://github.com/trueChristian/hymnbook-creator"
+      }
+    ]
+  },
+  {
+    "id": "cpp-public-lineage",
+    "slug": "cpp-public-engineering-lineage",
+    "name": "C++ public engineering lineage",
+    "eyebrow": "C++ · CMake · native system evolution",
+    "status": "Public evidence from 2020",
+    "featured": false,
+    "summary": "Public C++ work includes Conway's Game of Life and Go Fish from 2020, preceding the current GetBibleSWORD native engine and its stable C interoperability boundary.",
+    "value": "The public chronology matters: recent C++20 work is not the beginning of native-language capability. The smaller 2020 applications provide earlier inspectable evidence; GetBibleSWORD shows how that capability is now applied to ABI design, native dependencies, deterministic protocols, conformance, packaging, and cross-architecture delivery.",
+    "role": "Author of the public 2020 C++ implementations and architect/developer of the current GetBibleSWORD engine.",
+    "stack": ["C++", "C", "CMake", "C++20", "Native ABI", "Linux"],
+    "architecture": [
+      "Game of Life models state transitions and simulation rules in a portable CMake project.",
+      "Go Fish provides a second public object-oriented C++ application from 2020.",
+      "GetBibleSWORD advances the public record into a native engine, CLI, C ABI, and deterministic streaming contract."
+    ],
+    "interfaces": [
+      "CMake application builds",
+      "Interactive native application logic",
+      "Command-line extraction",
+      "Stable C ABI and NDJSON protocol"
+    ],
+    "decisions": [
+      "Present repository dates as the start of public evidence, not the start of professional language experience.",
+      "Show progression from smaller applications to maintained native platform infrastructure.",
+      "Keep the README's acknowledged starting point for Game of Life visible rather than erasing provenance."
+    ],
+    "quality": [
+      "Two directly inspectable C++ repositories from 2020",
+      "Portable CMake build documentation",
+      "Current conformance and ABI evidence through GetBibleSWORD",
+      "No arbitrary proficiency score"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Game of Life",
+        "url": "https://github.com/Llewellynvdm/game-of-life"
+      },
+      {
+        "label": "Go Fish",
+        "url": "https://github.com/Llewellynvdm/GoFish"
+      },
+      {
+        "label": "GetBibleSWORD",
+        "url": "https://github.com/getbible/getbiblesword"
       }
     ]
   }
