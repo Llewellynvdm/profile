@@ -27,6 +27,7 @@ test("production output contains the required static routes and official CV file
     "projects/getbible-v3-publication-pipeline/index.html",
     "documents/llewellyn-van-der-merwe-executive-cv.pdf",
     "documents/llewellyn-van-der-merwe-exhaustive-cv.pdf",
+    "CNAME",
     "robots.txt",
     "sitemap.xml",
   ];
@@ -36,14 +37,27 @@ test("production output contains the required static routes and official CV file
   }
 });
 
-test("the home page is semantic and correctly based for GitHub Pages", () => {
+test("the home page is semantic and correctly rooted at the custom domain", () => {
   assert.match(index, /<main id="main-content">/);
   assert.match(index, /<nav class="primary-nav" aria-label="Primary navigation">/);
-  assert.match(index, /href="\/profile\/cv\/"/);
-  assert.match(index, /href="\/profile\/record\/"/);
-  assert.match(index, /src="\/profile\/assets\/llewellyn-van-der-merwe\.webp"/);
-  assert.match(index, /https:\/\/llewellynvdm\.github\.io\/profile\/assets\/social-preview\.png/);
+  assert.match(index, /href="\/cv\/"/);
+  assert.match(index, /href="\/record\/"/);
+  assert.match(index, /src="\/assets\/llewellyn-van-der-merwe\.webp"/);
+  assert.match(index, /https:\/\/llewellyn\.vdm\.io\/assets\/social-preview\.png/);
+  assert.doesNotMatch(index, /(?:href|src)="\/profile\//);
   assert.match(index, /application\/ld\+json/);
+});
+
+test("the Pages artifact declares and indexes the custom domain", () => {
+  const cname = readFileSync(new URL("CNAME", dist), "utf8").trim();
+  const robots = readFileSync(new URL("robots.txt", dist), "utf8");
+  const sitemap = readFileSync(new URL("sitemap.xml", dist), "utf8");
+
+  assert.equal(cname, "llewellyn.vdm.io");
+  assert.match(robots, /Sitemap: https:\/\/llewellyn\.vdm\.io\/sitemap\.xml/);
+  assert.match(sitemap, /<loc>https:\/\/llewellyn\.vdm\.io\/<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/llewellyn\.vdm\.io\/cv\/<\/loc>/);
+  assert.doesNotMatch(sitemap, /llewellynvdm\.github\.io|\/profile\//);
 });
 
 test("core content is server-rendered and reflects the canonical source priorities", () => {

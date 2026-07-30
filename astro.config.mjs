@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://llewellynvdm.github.io",
-  base: "/profile",
+  site: "https://llewellyn.vdm.io",
   output: "static",
   trailingSlash: "always",
   build: {

@@ -6,7 +6,7 @@ résumé template: visitors can move from an executive overview to capabilities,
 architectural decisions, and direct public sources.
 
 Expected production URL:
-[https://llewellynvdm.github.io/profile/](https://llewellynvdm.github.io/profile/)
+[https://llewellyn.vdm.io/](https://llewellyn.vdm.io/)
 
 Production publication is intentionally limited to the `main` branch. Feature branches and pull
 requests validate the complete static output but do not publish the live site.
@@ -24,8 +24,8 @@ requests validate the complete static output but do not publish the live site.
   geometry, layering, and motion language in both light and dark themes.
 - **No backend, database, tracking, runtime secrets, web-font request, or required SaaS.**
 
-The Astro `base` is `/profile`, and all internal routes and public assets are built for the GitHub
-Pages project URL.
+Astro builds all internal routes and public assets from `/`, matching the custom domain root. The
+`public/CNAME` file keeps the deployed Pages artifact aligned with `llewellyn.vdm.io`.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ npm ci
 npm run dev
 ```
 
-Astro prints the local preview URL. The production base path remains `/profile/`.
+Astro prints the local preview URL. The production site is served from the domain root.
 
 ## Validated commands
 
@@ -174,8 +174,8 @@ After review and merge, configure **Settings → Pages → Build and deployment 
   accessibility text, or image overlays. Telegram is the primary public contact route.
 - A print-specific CV presentation removes navigation and dark treatments, preserves evidence, and
   avoids hiding core content.
-- The internal link checker verifies the `/profile/` base path, generated routes, assets, and
-  anchors after every build.
+- The internal link checker verifies custom-domain root routes, generated pages, assets, and anchors
+  after every build.
 
 The portrait is the real image embedded in the supplied executive CV. No generated representation
 of Llewellyn is used.
