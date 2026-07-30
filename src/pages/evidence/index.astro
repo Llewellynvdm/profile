@@ -1,0 +1,332 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import projects from "../../data/projects.json";
+import repositories from "../../data/repositories.json";
+
+const base = import.meta.env.BASE_URL;
+const tierOrder = {
+  flagship: 0,
+  major: 1,
+  supporting: 2,
+  "historical / foundation": 3,
+};
+const orderedRepositories = [...repositories].sort(
+  (left, right) =>
+    tierOrder[left.tier as keyof typeof tierOrder] -
+      tierOrder[right.tier as keyof typeof tierOrder] || left.rank - right.rank,
+);
+const ecosystems = [...new Set(repositories.map((repository) => repository.ecosystem))].sort(
+  (left, right) => {
+    const leftRank = Math.min(
+      ...repositories
+        .filter((repository) => repository.ecosystem === left)
+        .map((item) => item.rank),
+    );
+    const rightRank = Math.min(
+      ...repositories
+        .filter((repository) => repository.ecosystem === right)
+        .map((item) => item.rank),
+    );
+    return leftRank - rightRank;
+  },
+);
+const primaryTechnologies = [
+  ...new Set(repositories.map((repository) => repository.technologies[0]).filter(Boolean)),
+].sort();
+const flagshipCount = repositories.filter((repository) => repository.tier === "flagship").length;
+const projectMap = new Map(projects.map((project) => [project.id, project]));
+const tierLabels = {
+  flagship: "Flagship",
+  major: "Major system",
+  supporting: "Supporting",
+  "historical / foundation": "Historical / foundation",
+};
+const formatNumber = (value: number | null) =>
+  typeof value === "number" ? new Intl.NumberFormat("en").format(value) : null;
+---
+
+<BaseLayout
+  title="Canonical Public Engineering Evidence | Llewellyn van der Merwe"
+  description="A complete, searchable and de-duplicated index of 109 attributable public engineering repositories, ordered by professional significance."
+  pageClass="evidence-page"
+>
+  <header class="evidence-hero section-shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={base}>Profile</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Public evidence</span>
+    </nav>
+    <div class="evidence-hero-grid">
+      <div>
+        <p class="eyebrow">Canonical public engineering record</p>
+        <h1>Inspect the systems. Follow the source. Keep the context.</h1>
+        <p class="evidence-lead">
+          The complete record separates source systems from supporting work and catalogue history.
+          It preserves authorship, continuity, technical purpose and professional significance
+          without using repository volume as a quality score.
+        </p>
+      </div>
+      <dl class="evidence-metrics">
+        <div>
+          <dt>Canonical repositories</dt>
+          <dd>{repositories.length}</dd>
+        </div>
+        <div>
+          <dt>Flagship records</dt>
+          <dd>{flagshipCount}</dd>
+        </div>
+        <div>
+          <dt>Forks included</dt>
+          <dd>0</dd>
+        </div>
+        <div>
+          <dt>Source freshness</dt>
+          <dd>29 Jul 2026</dd>
+        </div>
+      </dl>
+    </div>
+  </header>
+
+  <section class="section-shell evidence-method" aria-labelledby="evidence-method-title">
+    <div>
+      <p class="eyebrow">Evidence hierarchy</p>
+      <h2 id="evidence-method-title">Prominence follows professional significance.</h2>
+    </div>
+    <div class="tier-explainer">
+      <article>
+        <span class="tier-dot tier-dot-flagship" aria-hidden="true"></span>
+        <div>
+          <h3>Flagship</h3>
+          <p>
+            The 12 source-reviewed records that carry the strongest current case-study and CV
+            significance.
+          </p>
+        </div>
+      </article>
+      <article>
+        <span class="tier-dot tier-dot-system" aria-hidden="true"></span>
+        <div>
+          <h3>Major</h3>
+          <p>
+            Substantial source systems and long-running projects with strong independent
+            professional significance.
+          </p>
+        </div>
+      </article>
+      <article>
+        <span class="tier-dot tier-dot-supporting" aria-hidden="true"></span>
+        <div>
+          <h3>Supporting</h3>
+          <p>
+            Libraries, applications, tools, documentation and operational systems with direct
+            relevance to the wider engineering estate.
+          </p>
+        </div>
+      </article>
+      <article>
+        <span class="tier-dot tier-dot-catalogue" aria-hidden="true"></span>
+        <div>
+          <h3>Historical / foundation</h3>
+          <p>
+            Earlier applications, formal-study work, generated delivery and foundational records
+            retained without outranking current source systems.
+          </p>
+        </div>
+      </article>
+    </div>
+    <p class="evidence-scope-note">
+      Public repository history is a lower bound on the professional record. Confidential commercial
+      and institutional systems, private infrastructure and internal methods are intentionally not
+      exposed. Dated metrics remain attached to their individual evidence snapshots and are not
+      summed into vanity totals.
+    </p>
+  </section>
+
+  <section
+    class="section-shell section-block repository-section"
+    id="repository-index"
+    aria-labelledby="repository-title"
+  >
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Repository evidence index</p>
+        <h2 id="repository-title">Complete, filterable and directly linked.</h2>
+      </div>
+      <p>
+        Search the record or narrow it by engineering ecosystem, evidence tier and primary
+        technology signal. The full index remains readable without JavaScript.
+      </p>
+    </div>
+
+    <form class="repository-filters" data-repository-filters>
+      <label class="repository-search">
+        <span>Search repositories and engineering context</span>
+        <input
+          type="search"
+          name="query"
+          placeholder="Joomla MCP, C++, deployment, Scripture…"
+          autocomplete="off"
+          data-repository-query
+        />
+      </label>
+      <label>
+        <span>Engineering ecosystem</span>
+        <select name="owner" data-repository-owner>
+          <option value="all">All ecosystems</option>
+          {ecosystems.map((ecosystem) => <option value={ecosystem}>{ecosystem}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>Evidence tier</span>
+        <select name="tier" data-repository-tier>
+          <option value="all">All tiers</option>
+          <option value="flagship">Flagship records</option>
+          <option value="major">Major systems</option>
+          <option value="supporting">Supporting systems</option>
+          <option value="historical / foundation">Historical and foundation</option>
+        </select>
+      </label>
+      <label>
+        <span>Primary technology signal</span>
+        <select name="language" data-repository-language>
+          <option value="all">All technologies</option>
+          {
+            primaryTechnologies.map((technology) => (
+              <option value={technology}>{technology}</option>
+            ))
+          }
+        </select>
+      </label>
+      <button class="button button-secondary repository-reset" type="reset" data-repository-reset>
+        Reset filters
+      </button>
+    </form>
+
+    <div class="repository-result-bar">
+      <p aria-live="polite">
+        Showing <strong data-repository-count>{orderedRepositories.length}</strong> of {
+          repositories.length
+        } repositories
+      </p>
+      <a href="https://github.com/Llewellynvdm" target="_blank" rel="noopener noreferrer">
+        Open GitHub profile <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="repository-grid" data-repository-grid>
+      {
+        orderedRepositories.map((repository) => {
+          const linkedProject = repository.projectId
+            ? projectMap.get(repository.projectId)
+            : undefined;
+          const primaryTechnology = repository.technologies[0] ?? "Mixed";
+          const tierClass =
+            repository.tier === "historical / foundation" ? "historical" : repository.tier;
+          const evidenceSpan =
+            repository.firstEvidence && repository.latestEvidence
+              ? `${repository.firstEvidence} → ${repository.latestEvidence}`
+              : repository.latestEvidence
+                ? `To ${repository.latestEvidence}`
+                : repository.firstEvidence
+                  ? `From ${repository.firstEvidence}`
+                  : "Historical source record";
+          const searchCorpus = [
+            repository.repository,
+            repository.owner,
+            repository.ecosystem,
+            repository.status,
+            repository.role,
+            repository.assessment,
+            repository.purpose,
+            repository.significance,
+            ...repository.technologies,
+          ].join(" ");
+
+          return (
+            <article
+              class={`repository-card repository-card-${tierClass}`}
+              data-repository-card
+              data-owner={repository.ecosystem}
+              data-tier={repository.tier}
+              data-language={primaryTechnology}
+              data-search={searchCorpus}
+            >
+              <div class="repository-card-head">
+                <span class={`repository-tier repository-tier-${tierClass}`}>
+                  {tierLabels[repository.tier as keyof typeof tierLabels]}
+                </span>
+                <span class="repository-year">#{repository.rank}</span>
+              </div>
+              <p class="repository-owner">{repository.repository}</p>
+              <h3>{repository.name}</h3>
+              <p class="repository-summary">{repository.purpose}</p>
+              <dl class="repository-meta">
+                <div>
+                  <dt>Ecosystem</dt>
+                  <dd>{repository.ecosystem}</dd>
+                </div>
+                <div>
+                  <dt>Verified role</dt>
+                  <dd>{repository.role}</dd>
+                </div>
+                <div>
+                  <dt>Evidence span</dt>
+                  <dd>{evidenceSpan}</dd>
+                </div>
+                <div>
+                  <dt>Primary signal</dt>
+                  <dd>{primaryTechnology}</dd>
+                </div>
+              </dl>
+              <details>
+                <summary>Professional and technical evidence</summary>
+                <p>{repository.significance}</p>
+                <ul>
+                  {repository.technologies.map((technology) => (
+                    <li>{technology}</li>
+                  ))}
+                </ul>
+                <dl class="repository-evidence-metrics">
+                  {repository.metrics.commits !== null && (
+                    <div>
+                      <dt>Verified commits</dt>
+                      <dd>{formatNumber(repository.metrics.commits)}</dd>
+                    </div>
+                  )}
+                  {repository.metrics.activeMonths !== null && (
+                    <div>
+                      <dt>Active months</dt>
+                      <dd>{formatNumber(repository.metrics.activeMonths)}</dd>
+                    </div>
+                  )}
+                  {repository.metrics.changedLines !== null && (
+                    <div>
+                      <dt>Recorded changed lines</dt>
+                      <dd>{formatNumber(repository.metrics.changedLines)}</dd>
+                    </div>
+                  )}
+                </dl>
+                <small>{repository.note}</small>
+              </details>
+              <div class="repository-actions">
+                <a href={repository.url} target="_blank" rel="noopener noreferrer">
+                  Inspect repository <span aria-hidden="true">↗</span>
+                </a>
+                {linkedProject && (
+                  <a href={`${base}projects/${linkedProject.slug}/`}>
+                    Engineering brief <span aria-hidden="true">→</span>
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <div class="repository-empty" data-repository-empty hidden>
+      <h3>No repository matches these filters.</h3>
+      <p>Reset the filters or broaden the search terms.</p>
+    </div>
+  </section>
+</BaseLayout>

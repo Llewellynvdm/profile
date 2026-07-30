@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Page not found | Llewellyn van der Merwe"
+  description="The requested engineering profile page could not be found."
+  pageClass="not-found-page"
+>
+  <section class="not-found section-shell">
+    <div class="not-found-code" aria-hidden="true">
+      <span>4</span>
+      <svg viewBox="0 0 160 160">
+        <path d="M80 14 139 47v66l-59 33-59-33V47Z"></path>
+        <path d="m47 62 33 19 33-19M80 81v39"></path>
+      </svg>
+      <span>4</span>
+    </div>
+    <p class="eyebrow">Unresolved route</p>
+    <h1>This interface has no implementation.</h1>
+    <p>
+      The address does not map to a published section. Return to the professional profile or open
+      the evidence index.
+    </p>
+    <div class="hero-actions">
+      <a class="button button-primary" href={base}>Return to profile</a>
+      <a class="button button-secondary" href={`${base}#projects`}>Browse evidence</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,99 @@
+---
+import repositories from "../data/repositories.json";
+
+const base = import.meta.env.BASE_URL;
+const featuredEcosystems = [
+  {
+    name: "Joomla Component Builder & JoomEngine",
+    label: "JCB & JoomEngine",
+    mark: "J",
+    summary:
+      "Compiler-oriented Joomla development, reusable-code registries, packages, documentation and distribution.",
+  },
+  {
+    name: "JoomEngine AI / MCP",
+    label: "Joomla MCP",
+    mark: "M",
+    summary:
+      "Typed, bounded and auditable Joomla administration for modern agent and intelligent-system workflows.",
+  },
+  {
+    name: "OctoLeo Automation & Deployment",
+    label: "OctoLeo",
+    mark: "$",
+    summary:
+      "Bash-centred deployment, container, repository, release, networking and operator automation.",
+  },
+  {
+    name: "GetBible Scripture Platform",
+    label: "GetBible",
+    mark: "G",
+    summary:
+      "Native integration, Python services, modern PHP, deterministic pipelines and public application surfaces.",
+  },
+  {
+    name: "Official Joomla Container Engineering",
+    label: "Official Joomla Docker",
+    mark: "D",
+    summary:
+      "Independent official-project evidence of container compatibility, maintenance and production distribution.",
+  },
+  {
+    name: "VDM Platforms & Applied AI",
+    label: "Applied AI platforms",
+    mark: "A",
+    summary:
+      "Hardened agent environments and practical local-inference infrastructure with explicit operational boundaries.",
+  },
+].map((ecosystem) => ({
+  ...ecosystem,
+  count: repositories.filter((repository) => repository.ecosystem === ecosystem.name).length,
+}));
+---
+
+<section
+  class="section-shell section-block estate-section"
+  id="public-estate"
+  aria-labelledby="estate-title"
+>
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">Canonical public engineering record</p>
+      <h2 id="estate-title">The evidence is an ecosystem, not a shortlist.</h2>
+    </div>
+    <p>
+      {repositories.length} attributable, de-duplicated public repository lineages are organised by engineering
+      significance. Forks, mirrors and generated delivery are not allowed to inflate the record.
+    </p>
+  </div>
+
+  <div class="estate-grid">
+    {
+      featuredEcosystems.map((ecosystem) => (
+        <a href={`${base}evidence/?owner=${encodeURIComponent(ecosystem.name)}#repository-index`}>
+          <span class="estate-mark" aria-hidden="true">
+            {ecosystem.mark}
+          </span>
+          <span>
+            <strong>{ecosystem.label}</strong>
+            <small>{ecosystem.count} canonical repositories</small>
+            <p>{ecosystem.summary}</p>
+          </span>
+          <span class="estate-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="estate-action">
+    <a class="button button-primary" href={`${base}evidence/`}>
+      Explore all public evidence <span aria-hidden="true">→</span>
+    </a>
+    <p>
+      Search the complete record by ecosystem, tier, technology and professional significance. Every
+      entry links directly to public source.
+    </p>
+  </div>
+</section>
