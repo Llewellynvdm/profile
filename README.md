@@ -67,8 +67,11 @@ The professional source model is intentionally small:
 - `src/data/projects.json` — project summaries and deep-dive architecture, interfaces, decisions,
   validation, and evidence links.
 - `src/data/repositories.json` — the curated public repository estate, including evidence tier,
-  principal language, engineering role, summary, technical signals, and optional project-brief
+  canonical rank, ecosystem, attributable date span, technology signals, verified role,
+  professional significance, dated metrics, interpretation note, and optional project-brief
   relationship.
+- `sources/Executive_CV.md`, `sources/Exhaustive_CV.md`, and `sources/Evidence_Ledger.xlsx` — the
+  current professional and evidentiary authority from which the public content is derived.
 
 To add a project:
 
@@ -96,8 +99,9 @@ native disclosures remain usable without JavaScript.
 
 ## Evidence discipline
 
-The supplied executive CV and professional dossier are the primary sources of truth. Public project
-links are used to substantiate implementation details. The site deliberately:
+The supplied executive CV, exhaustive CV, and canonical professional source workbook are the
+primary sources of truth. Public project links substantiate implementation details. The site
+deliberately:
 
 - separates Joomla engineering since 2008 from the official volunteer record beginning in 2016;
 - identifies current previews and active validation work without presenting them as completed
@@ -105,9 +109,10 @@ links are used to substantiate implementation details. The site deliberately:
 - marks incomplete degree study explicitly;
 - avoids invented outcomes, client metrics, skill percentages, proficiency bars, and unverifiable
   rankings;
-- presents `25.17M` changed lines only as a scoped, conservative lower bound from primarily public
-  Git history after selected mirror deduplication—not as surviving code, keystrokes, hours, or a
-  quality score.
+- preserves 109 attributable, de-duplicated public repository lineages and excludes forks;
+- presents the 12 source-reviewed flagship records in their canonical professional order;
+- keeps repository metrics attached to dated individual snapshots instead of summing them into
+  vanity totals.
 
 Update claims only when they are supported by the professional record or a stable public source.
 
@@ -144,13 +149,14 @@ After review and merge, configure **Settings → Pages → Build and deployment 
 ├── .github/workflows/       CI and production-only Pages deployment
 ├── public/
 │   ├── assets/              Approved SVGs, portrait, favicon, social preview
-│   └── documents/           Supplied executive CV and professional dossier
+│   └── documents/           Official executive and exhaustive CV downloads
+├── sources/                 Current CV source text and canonical evidence authority
 ├── scripts/                 Built-output link validation
 ├── src/
 │   ├── components/          Shared site components
 │   ├── data/                Profile, project briefs, and repository evidence
 │   ├── layouts/             Metadata, navigation, JSON-LD, and global shell
-│   ├── pages/               Home, CV, evidence index, project briefs, sitemap, robots, 404
+│   ├── pages/               Home, executive CV, exhaustive record, evidence, briefs, sitemap, 404
 │   ├── scripts/             Progressive-enhancement TypeScript
 │   └── styles/              Design tokens, responsive layout, print CSS
 └── tests/                   Data, interaction logic, and output assertions
@@ -164,6 +170,8 @@ After review and merge, configure **Settings → Pages → Build and deployment 
   layout designed independently from the desktop composition.
 - System fonts, one small browser script, no client framework, no tracking, and no runtime
   dependency on third-party services.
+- No direct telephone number or email address in visible content, links, metadata, structured data,
+  accessibility text, or image overlays. Telegram is the primary public contact route.
 - A print-specific CV presentation removes navigation and dark treatments, preserves evidence, and
   avoids hiding core content.
 - The internal link checker verifies the `/profile/` base path, generated routes, assets, and

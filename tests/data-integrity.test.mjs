@@ -43,70 +43,135 @@ test("each project provides technical depth and direct HTTPS evidence", () => {
   }
 });
 
-test("historical distinctions and education limits remain explicit", () => {
+test("the 12 flagship briefs preserve canonical order and interpretation limits", () => {
+  const flagships = projects
+    .filter((project) => project.flagship)
+    .sort((left, right) => left.rank - right.rank);
+
+  assert.equal(flagships.length, 12);
+  assert.deepEqual(
+    flagships.map((project) => project.id),
+    [
+      "jcb",
+      "joomla-mcp",
+      "octojoom",
+      "joomengine-containers",
+      "librarian",
+      "joomla-docker",
+      "robot",
+      "sword",
+      "scripture",
+      "opencode-platform",
+      "colibri-setup",
+      "getbible-v3",
+    ],
+  );
+
+  for (const project of flagships) {
+    assert.ok(project.keyEvidence.length > 60);
+    assert.ok(project.evidenceLimits.length > 40);
+    assert.match(project.reviewedTo, /^2026-\d{2}-\d{2}$/);
+  }
+});
+
+test("chronology, title, education limits, confidentiality and contact policy remain explicit", () => {
   const serialized = JSON.stringify(profile);
-  assert.match(serialized, /Joomla engineering from 2008/);
-  assert.match(serialized, /official Joomla volunteer record/);
+  assert.equal(
+    profile.identity.title,
+    "Director | Senior Architectural Engineer of Intelligent Software and Systems",
+  );
+  assert.ok(profile.timeline.some((item) => item.period === "2008–present"));
+  assert.ok(profile.timeline.some((item) => item.period === "2010–present"));
+  assert.ok(profile.timeline.some((item) => /official Joomla volunteer service/i.test(item.title)));
   assert.match(serialized, /degree not completed/);
+  assert.match(serialized, /confidential/i);
+  assert.equal(profile.identity.telegram, "https://t.me/llewellynvdm");
+  assert.equal(Object.hasOwn(profile.identity, "email"), false);
+  assert.equal(Object.hasOwn(profile.identity, "telephone"), false);
   assert.doesNotMatch(serialized, /top 3%/i);
   assert.doesNotMatch(serialized, /GitBible version 2|Summon index/i);
 });
 
-test("the public repository estate is complete, layered, and directly linked", () => {
-  assert.equal(repositories.length, 95);
-  assert.equal(new Set(repositories.map((repository) => repository.id)).size, repositories.length);
+test("the canonical repository record contains 109 unique, directly linked lineages", () => {
+  assert.equal(repositories.length, 109);
+  assert.equal(
+    new Set(repositories.map((repository) => repository.repository)).size,
+    repositories.length,
+  );
   assert.equal(new Set(repositories.map((repository) => repository.url)).size, repositories.length);
-
-  const expectedOwnerCounts = {
-    Llewellynvdm: 20,
-    getbible: 28,
-    joomengine: 27,
-    octoleo: 13,
-    trueChristian: 7,
-  };
-
-  for (const [owner, expected] of Object.entries(expectedOwnerCounts)) {
-    assert.equal(
-      repositories.filter((repository) => repository.owner === owner).length,
-      expected,
-      `${owner} evidence count changed`,
-    );
-  }
+  assert.deepEqual(
+    Object.fromEntries(
+      Object.entries(Object.groupBy(repositories, (repository) => repository.tier)).map(
+        ([tier, records]) => [tier, records.length],
+      ),
+    ),
+    {
+      flagship: 12,
+      major: 24,
+      supporting: 35,
+      "historical / foundation": 38,
+    },
+  );
 
   for (const repository of repositories) {
-    assert.ok(repository.summary.length > 40, `${repository.id} needs meaningful context`);
-    assert.ok(repository.signals.length > 0, `${repository.id} needs technical evidence`);
+    assert.ok(repository.rank >= 1 && repository.rank <= 109);
+    assert.ok(repository.purpose.length > 20, `${repository.repository} needs meaningful purpose`);
+    assert.ok(
+      repository.significance.length > 20,
+      `${repository.repository} needs professional significance`,
+    );
+    assert.ok(Array.isArray(repository.technologies));
     assert.equal(new URL(repository.url).hostname, "github.com");
-    if (/Generated JSON/.test(repository.language)) {
-      assert.equal(repository.tier, "catalogue");
+    if (repository.firstEvidence) {
+      assert.match(repository.firstEvidence, /^\d{4}-\d{2}-\d{2}$/);
+    }
+    if (repository.latestEvidence) {
+      assert.match(repository.latestEvidence, /^\d{4}-\d{2}-\d{2}$/);
+    }
+    if (repository.projectId) {
+      assert.ok(
+        projectIds.has(repository.projectId),
+        `${repository.repository} references missing project ${repository.projectId}`,
+      );
     }
   }
 });
 
-test("Shell and C++ evidence is represented beyond recent projects", () => {
-  const repositoryIds = new Set(repositories.map((repository) => repository.id));
-  for (const id of [
-    "octoleo-octojoom",
-    "octoleo-octosync",
-    "octoleo-joomengine",
-    "personal-backup-system",
-    "personal-coinrate",
-    "personal-game-of-life",
-    "personal-gofish",
-  ]) {
-    assert.ok(repositoryIds.has(id), `${id} is missing from the public record`);
-  }
+test("the canonical record includes the complete flagship repository order", () => {
+  const flagships = repositories
+    .filter((repository) => repository.tier === "flagship")
+    .sort((left, right) => left.rank - right.rank);
 
-  assert.ok(
-    profile.capabilities
-      .find((capability) => capability.id === "linux-automation")
-      .evidence.includes("octojoom"),
+  assert.deepEqual(
+    flagships.map((repository) => repository.repository),
+    [
+      "joomengine/Joomla-Component-Builder",
+      "joomengine/joomla-mcp",
+      "octoleo/octojoom",
+      "octoleo/joomengine",
+      "getbible/librarian",
+      "joomla-docker/docker-joomla",
+      "getbible/robot",
+      "getbible/sword",
+      "getbible/scripture",
+      "vast-development-method/opencode-platform",
+      "vast-development-method/colibri-setup",
+      "getbible/v3_builder",
+    ],
   );
-  assert.ok(
-    profile.capabilities
-      .find((capability) => capability.id === "native-systems")
-      .evidence.includes("cpp-public-lineage"),
-  );
-  assert.ok(projectIds.has("octoleo-automation"));
-  assert.ok(projectIds.has("cpp-public-lineage"));
+});
+
+test("Shell and native engineering evidence extends beyond the newest flagships", () => {
+  const repositoryNames = new Set(repositories.map((repository) => repository.repository));
+  for (const repository of [
+    "octoleo/octojoom",
+    "octoleo/octosync",
+    "octoleo/joomengine",
+    "Llewellynvdm/Backup-System",
+    "Llewellynvdm/CoinRate",
+    "Llewellynvdm/game-of-life",
+    "Llewellynvdm/GoFish",
+  ]) {
+    assert.ok(repositoryNames.has(repository), `${repository} is missing from the public record`);
+  }
 });

@@ -3,6 +3,7 @@ import projects from "../data/projects.json";
 
 const base = import.meta.env.BASE_URL;
 const featured = projects.filter((project) => project.featured);
+const flagships = projects.filter((project) => project.flagship);
 ---
 
 <section class="section-shell section-block" id="projects" aria-labelledby="projects-title">
@@ -12,8 +13,9 @@ const featured = projects.filter((project) => project.featured);
       <h2 id="projects-title">Substantial systems, not isolated keywords.</h2>
     </div>
     <p>
-      The first layer prioritizes substantial authored source systems. Each brief exposes purpose,
-      interfaces, decisions, delivery constraints, validation, and direct public evidence.
+      Twelve source-reviewed records define the current case-study order. The first six are shown
+      here; every flagship brief exposes purpose, interfaces, decisions, delivery constraints,
+      validation, evidence limits, and direct public source.
     </p>
   </div>
 
@@ -55,7 +57,7 @@ const featured = projects.filter((project) => project.featured);
   </div>
 
   <details class="project-index-panel">
-    <summary>Browse all technical briefs</summary>
+    <summary>Browse all {flagships.length} flagship briefs and supporting records</summary>
     <div class="project-index-grid">
       {
         projects.map((project) => (

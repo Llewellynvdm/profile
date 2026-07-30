@@ -1,0 +1,96 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface DocumentFrontmatter {
+  title: string;
+  description: string;
+  document: "executive" | "exhaustive";
+}
+
+interface Props {
+  frontmatter: DocumentFrontmatter;
+}
+
+const { frontmatter } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const isExecutive = frontmatter.document === "executive";
+const primaryDocument = isExecutive
+  ? `${base}documents/llewellyn-van-der-merwe-executive-cv.pdf`
+  : `${base}documents/llewellyn-van-der-merwe-exhaustive-cv.pdf`;
+const secondaryRoute = isExecutive ? `${base}record/` : `${base}cv/`;
+const secondaryLabel = isExecutive ? "Read the exhaustive record" : "Read the executive CV";
+---
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  pageClass={`document-page document-page-${frontmatter.document}`}
+>
+  <header class="document-hero section-shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={base}>Profile</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{isExecutive ? "Executive CV" : "Exhaustive record"}</span>
+    </nav>
+    <div class="document-hero-grid">
+      <div>
+        <p class="eyebrow">
+          {isExecutive ? "Executive curriculum vitae" : "Complete professional record"}
+        </p>
+        <h1>
+          {
+            isExecutive
+              ? "Decision-ready profile. Direct evidence."
+              : "Architecture, implementation, delivery and stewardship in full."
+          }
+        </h1>
+        <p>
+          {
+            isExecutive
+              ? "A concise professional account for senior architecture, platform engineering, technical leadership and applied intelligent-systems work."
+              : "The complete narrative: technical capability, chronology, public engineering ecosystems, institutional delivery, teaching, education, mission and the canonical public catalogue."
+          }
+        </p>
+        <div class="hero-actions" data-print-hidden>
+          <a class="button button-primary" href={primaryDocument}>
+            Download official PDF <span aria-hidden="true">↓</span>
+          </a>
+          <a class="button button-secondary" href={secondaryRoute}>{secondaryLabel}</a>
+          <button class="text-button" type="button" data-print>
+            Print this page <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </div>
+      <figure class="document-portrait">
+        <img
+          src={`${base}assets/llewellyn-van-der-merwe-closer.webp`}
+          width="1600"
+          height="1067"
+          alt="Llewellyn van der Merwe"
+        />
+        <figcaption>
+          <span>Windhoek, Namibia</span>
+          <strong>Architecture → production → evolution</strong>
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <div class="document-toolbar section-shell" data-print-hidden>
+    <p>
+      {
+        isExecutive
+          ? "For the complete technical and professional account, continue into the exhaustive record."
+          : "This page intentionally preserves the full professional record. Use the executive CV when a shorter decision document is more appropriate."
+      }
+    </p>
+    <div>
+      <a href={`${base}documents/llewellyn-van-der-merwe-executive-cv.pdf`}> Executive PDF </a>
+      <a href={`${base}documents/llewellyn-van-der-merwe-exhaustive-cv.pdf`}> Exhaustive PDF </a>
+    </div>
+  </div>
+
+  <article class="document-content section-shell">
+    <slot />
+  </article>
+</BaseLayout>

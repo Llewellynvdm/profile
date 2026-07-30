@@ -51,9 +51,8 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
       }
     </div>
     <p class="proof-note">
-      The 25.17M figure is a conservative evidence-ledger lower bound for changed lines in primarily
-      public Git history after selected mirror deduplication. It is not presented as surviving lines
-      of code, manual keystrokes, hours, or a quality score.
+      Repository metrics are dated, scoped evidence snapshots. They are not summed into vanity
+      totals and are never presented as a substitute for engineering context.
     </p>
   </section>
 
@@ -75,7 +74,7 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
         interfaces, evidence at the edge, and production responsibility at the base.
       </p>
     </div>
-    <a class="profile-map-link" href={`${base}cv/`} aria-label="Open the detailed CV">
+    <a class="profile-map-link" href={`${base}record/`} aria-label="Open the exhaustive record">
       <img
         class="profile-map profile-map-dark"
         src={`${base}assets/profile-v4-dark.svg`}
@@ -89,7 +88,7 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
         loading="lazy"
       />
       <span class="map-action"
-        >Open the detailed professional record <span aria-hidden="true">→</span></span
+        >Open the exhaustive professional record <span aria-hidden="true">→</span></span
       >
     </a>
   </section>
@@ -171,6 +170,49 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
   </section>
 
   <section
+    class="section-shell section-block professional-context-section"
+    id="professional-context"
+    aria-labelledby="professional-context-title"
+  >
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Professional context</p>
+        <h2 id="professional-context-title">Company leadership and long-term delivery.</h2>
+      </div>
+      <p>
+        Client and institutional work is delivered through Vast Development Method. Named
+        engagements are professional programmes and relationships—not a list of unrelated employers.
+      </p>
+    </div>
+
+    <div class="engagement-grid">
+      {
+        profile.professionalRecord.map((record) => (
+          <article>
+            <div>
+              <span>{record.period}</span>
+              <h3>{record.name}</h3>
+            </div>
+            <strong>{record.role}</strong>
+            <p>{record.scope}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <aside class="confidentiality-panel">
+      <span aria-hidden="true">◇</span>
+      <div>
+        <p class="eyebrow">{profile.confidentiality.title}</p>
+        <p>{profile.confidentiality.detail}</p>
+      </div>
+      <a href="https://git.vdm.dev/" rel="noreferrer">
+        Company engineering estate <span aria-hidden="true">↗</span>
+      </a>
+    </aside>
+  </section>
+
+  <section
     class="section-shell section-block technology-section"
     id="technology"
     aria-labelledby="technology-title"
@@ -223,6 +265,42 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
     </div>
   </section>
 
+  <section class="section-shell section-block knowledge-section" aria-labelledby="knowledge-title">
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow">Teaching, mentoring and service</p>
+        <h2 id="knowledge-title">Technical leadership includes making systems understandable.</h2>
+      </div>
+      <p>{profile.teaching.summary}</p>
+    </div>
+    <div class="knowledge-grid">
+      <article>
+        <span class="knowledge-mark" aria-hidden="true">01</span>
+        <h3>Knowledge transfer</h3>
+        <ul>
+          {profile.teaching.activities.map((activity) => <li>{activity}</li>)}
+        </ul>
+      </article>
+      <article>
+        <span class="knowledge-mark" aria-hidden="true">02</span>
+        <h3>Mission and long-form communication</h3>
+        <p>{profile.mission.summary}</p>
+        <p>{profile.mission.evidence}</p>
+      </article>
+    </div>
+    <a
+      class="project-catalogue-link"
+      href={`${base}record/#teaching-speaking-mentoring-and-knowledge-transfer`}
+    >
+      <span>
+        <strong>Continue into the complete professional record</strong>
+        <small>Teaching, speaking, mentoring, education, mission and the canonical catalogue.</small
+        >
+      </span>
+      <span aria-hidden="true">Read the exhaustive record →</span>
+    </a>
+  </section>
+
   <section
     class="section-shell section-block leadership-section"
     aria-labelledby="leadership-title"
@@ -263,14 +341,17 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
         </p>
       </div>
       <div class="contact-actions">
-        <a class="button button-primary" href={`mailto:${profile.identity.email}`}
-          >Start a conversation</a
+        <a class="button button-primary" href={profile.identity.telegram} rel="noreferrer"
+          >Contact via Telegram <span aria-hidden="true">↗</span></a
         >
         <a class="button button-secondary" href="https://github.com/Llewellynvdm" rel="noreferrer">
           Inspect GitHub <span aria-hidden="true">↗</span>
         </a>
         <a class="text-button" href={`${base}documents/llewellyn-van-der-merwe-executive-cv.pdf`}>
           Download executive CV <span aria-hidden="true">↓</span>
+        </a>
+        <a class="text-button" href={`${base}documents/llewellyn-van-der-merwe-exhaustive-cv.pdf`}>
+          Download exhaustive CV <span aria-hidden="true">↓</span>
         </a>
       </div>
     </div>

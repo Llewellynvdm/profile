@@ -7,3 +7,6 @@ dist/
 package-lock.json
 public/assets/profile-v4-dark.svg
 public/assets/profile-v4-light.svg
+sources/
+src/pages/cv/index.md
+src/pages/record/index.md

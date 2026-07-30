@@ -2,45 +2,52 @@
 import repositories from "../data/repositories.json";
 
 const base = import.meta.env.BASE_URL;
-const estates = [
+const featuredEcosystems = [
   {
-    owner: "joomengine",
-    label: "JoomEngine",
+    name: "Joomla Component Builder & JoomEngine",
+    label: "JCB & JoomEngine",
     mark: "J",
     summary:
-      "JCB, reusable code registries, packages, Joomla applications, documentation, Docker, and MCP.",
+      "Compiler-oriented Joomla development, reusable-code registries, packages, documentation and distribution.",
   },
   {
-    owner: "getbible",
+    name: "JoomEngine AI / MCP",
+    label: "Joomla MCP",
+    mark: "M",
+    summary:
+      "Typed, bounded and auditable Joomla administration for modern agent and intelligent-system workflows.",
+  },
+  {
+    name: "OctoLeo Automation & Deployment",
+    label: "OctoLeo",
+    mark: "$",
+    summary:
+      "Bash-centred deployment, container, repository, release, networking and operator automation.",
+  },
+  {
+    name: "GetBible Scripture Platform",
     label: "GetBible",
     mark: "G",
     summary:
-      "Native engines, builders, APIs, libraries, Joomla, Telegram, MCP, and cross-platform clients.",
+      "Native integration, Python services, modern PHP, deterministic pipelines and public application surfaces.",
   },
   {
-    owner: "octoleo",
-    label: "Octoleo",
-    mark: "$",
+    name: "Official Joomla Container Engineering",
+    label: "Official Joomla Docker",
+    mark: "D",
     summary:
-      "Authored Shell systems for deployments, repositories, packages, containers, and operations.",
+      "Independent official-project evidence of container compatibility, maintenance and production distribution.",
   },
   {
-    owner: "trueChristian",
-    label: "TrueChristian",
-    mark: "T",
+    name: "VDM Platforms & Applied AI",
+    label: "Applied AI platforms",
+    mark: "A",
     summary:
-      "Scheduled publication, Joomla delivery, sermon distribution, and print-document engineering.",
+      "Hardened agent environments and practical local-inference infrastructure with explicit operational boundaries.",
   },
-  {
-    owner: "Llewellynvdm",
-    label: "Personal record",
-    mark: "L",
-    summary:
-      "Earlier Joomla, Shell, C++, Python, developer-tool, and professional-profile evidence.",
-  },
-].map((estate) => ({
-  ...estate,
-  count: repositories.filter((repository) => repository.owner === estate.owner).length,
+].map((ecosystem) => ({
+  ...ecosystem,
+  count: repositories.filter((repository) => repository.ecosystem === ecosystem.name).length,
 }));
 ---
 
@@ -51,27 +58,26 @@ const estates = [
 >
   <div class="section-intro">
     <div>
-      <p class="eyebrow">Complete public engineering estate</p>
+      <p class="eyebrow">Canonical public engineering record</p>
       <h2 id="estate-title">The evidence is an ecosystem, not a shortlist.</h2>
     </div>
     <p>
-      {repositories.length} authored or directly maintained public repositories are organized by engineering
-      significance. Generated data and package outputs remain visible, but they are not allowed to outrank
-      the source systems that produce them.
+      {repositories.length} attributable, de-duplicated public repository lineages are organised by engineering
+      significance. Forks, mirrors and generated delivery are not allowed to inflate the record.
     </p>
   </div>
 
   <div class="estate-grid">
     {
-      estates.map((estate) => (
-        <a href={`${base}evidence/?owner=${estate.owner}#repository-index`}>
+      featuredEcosystems.map((ecosystem) => (
+        <a href={`${base}evidence/?owner=${encodeURIComponent(ecosystem.name)}#repository-index`}>
           <span class="estate-mark" aria-hidden="true">
-            {estate.mark}
+            {ecosystem.mark}
           </span>
           <span>
-            <strong>{estate.label}</strong>
-            <small>{estate.count} repositories in the curated record</small>
-            <p>{estate.summary}</p>
+            <strong>{ecosystem.label}</strong>
+            <small>{ecosystem.count} canonical repositories</small>
+            <p>{ecosystem.summary}</p>
           </span>
           <span class="estate-arrow" aria-hidden="true">
             →
@@ -86,8 +92,8 @@ const estates = [
       Explore all public evidence <span aria-hidden="true">→</span>
     </a>
     <p>
-      Search by repository, organization, language, evidence tier, or technical purpose. Every
-      record links directly to public source.
+      Search the complete record by ecosystem, tier, technology and professional significance. Every
+      entry links directly to public source.
     </p>
   </div>
 </section>

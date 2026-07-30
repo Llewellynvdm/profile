@@ -20,17 +20,22 @@ test("capability filtering preserves the all view and exact groups", () => {
   assert.equal(matchesCapability("intelligence", "leadership"), false);
 });
 
-test("repository filtering combines text, estate, tier, and language", () => {
+test("repository filtering combines text, ecosystem, tier, and technology", () => {
   const repository = {
     search: "OctoJoom Bash Docker Joomla deployment",
-    owner: "octoleo",
+    owner: "OctoLeo Automation & Deployment",
     tier: "flagship",
-    language: "Shell",
+    language: "Shell/Bash",
   };
 
   assert.equal(
     matchesRepository(
-      { query: "bash deployment", owner: "octoleo", tier: "flagship", language: "Shell" },
+      {
+        query: "bash deployment",
+        owner: "OctoLeo Automation & Deployment",
+        tier: "flagship",
+        language: "Shell/Bash",
+      },
       repository,
     ),
     true,
@@ -40,7 +45,10 @@ test("repository filtering combines text, estate, tier, and language", () => {
     false,
   );
   assert.equal(
-    matchesRepository({ query: "", owner: "getbible", tier: "all", language: "all" }, repository),
+    matchesRepository(
+      { query: "", owner: "GetBible Scripture Platform", tier: "all", language: "all" },
+      repository,
+    ),
     false,
   );
 });

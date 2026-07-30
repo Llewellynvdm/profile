@@ -5,6 +5,7 @@ export const GET: APIRoute = ({ site }) => {
   const paths = [
     "profile/",
     "profile/cv/",
+    "profile/record/",
     "profile/evidence/",
     ...projects.map((project) => `profile/projects/${project.slug}/`),
   ];

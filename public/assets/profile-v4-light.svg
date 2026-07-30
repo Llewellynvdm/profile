@@ -388,9 +388,9 @@
     <text x="68" y="1209" class="v4-sans v4-faint" font-size="9.8">four major generations</text>
 
     <rect x="372" y="1134" width="300" height="82" rx="10" class="v4-subcard"/>
-    <text x="392" y="1170" class="v4-mono v4-primary" font-size="25" font-weight="850">25.17M</text>
-    <text x="392" y="1193" class="v4-sans v4-secondary v4-label">PUBLIC CHANGE FLOOR</text>
-    <text x="392" y="1209" class="v4-sans v4-faint" font-size="9.8">additions + deletions</text>
+    <text x="392" y="1170" class="v4-mono v4-primary" font-size="25" font-weight="850">109</text>
+    <text x="392" y="1193" class="v4-sans v4-secondary v4-label">CANONICAL REPOSITORIES</text>
+    <text x="392" y="1209" class="v4-sans v4-faint" font-size="9.8">attributable · de-duplicated</text>
 
     <text x="48" y="1246" class="v4-sans v4-primary" font-size="13.5"
           font-weight="820" letter-spacing="0.62">CURRENT TECHNOLOGY SYSTEM</text>

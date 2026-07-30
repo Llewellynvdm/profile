@@ -4,32 +4,50 @@ import projects from "../../data/projects.json";
 import repositories from "../../data/repositories.json";
 
 const base = import.meta.env.BASE_URL;
-const tierOrder = { flagship: 0, system: 1, catalogue: 2 };
+const tierOrder = {
+  flagship: 0,
+  major: 1,
+  supporting: 2,
+  "historical / foundation": 3,
+};
 const orderedRepositories = [...repositories].sort(
   (left, right) =>
     tierOrder[left.tier as keyof typeof tierOrder] -
-      tierOrder[right.tier as keyof typeof tierOrder] ||
-    left.owner.localeCompare(right.owner) ||
-    left.title.localeCompare(right.title),
+      tierOrder[right.tier as keyof typeof tierOrder] || left.rank - right.rank,
 );
-const owners = [...new Set(repositories.map((repository) => repository.owner))];
-const languages = [...new Set(repositories.map((repository) => repository.language))].sort();
+const ecosystems = [...new Set(repositories.map((repository) => repository.ecosystem))].sort(
+  (left, right) => {
+    const leftRank = Math.min(
+      ...repositories
+        .filter((repository) => repository.ecosystem === left)
+        .map((item) => item.rank),
+    );
+    const rightRank = Math.min(
+      ...repositories
+        .filter((repository) => repository.ecosystem === right)
+        .map((item) => item.rank),
+    );
+    return leftRank - rightRank;
+  },
+);
+const primaryTechnologies = [
+  ...new Set(repositories.map((repository) => repository.technologies[0]).filter(Boolean)),
+].sort();
 const flagshipCount = repositories.filter((repository) => repository.tier === "flagship").length;
-const sourceCount = repositories.filter((repository) => repository.tier !== "catalogue").length;
 const projectMap = new Map(projects.map((project) => [project.id, project]));
-
-const ownerLabels = {
-  Llewellynvdm: "Personal record",
-  getbible: "GetBible",
-  joomengine: "JoomEngine",
-  octoleo: "Octoleo",
-  trueChristian: "TrueChristian",
+const tierLabels = {
+  flagship: "Flagship",
+  major: "Major system",
+  supporting: "Supporting",
+  "historical / foundation": "Historical / foundation",
 };
+const formatNumber = (value: number | null) =>
+  typeof value === "number" ? new Intl.NumberFormat("en").format(value) : null;
 ---
 
 <BaseLayout
-  title="Public Engineering Evidence | Llewellyn van der Merwe"
-  description="A complete, searchable, evidence-layered index of Llewellyn van der Merwe's authored and directly maintained public engineering repositories."
+  title="Canonical Public Engineering Evidence | Llewellyn van der Merwe"
+  description="A complete, searchable and de-duplicated index of 109 attributable public engineering repositories, ordered by professional significance."
   pageClass="evidence-page"
 >
   <header class="evidence-hero section-shell">
@@ -40,30 +58,30 @@ const ownerLabels = {
     </nav>
     <div class="evidence-hero-grid">
       <div>
-        <p class="eyebrow">Public engineering record</p>
-        <h1>Inspect the systems, then follow the source.</h1>
+        <p class="eyebrow">Canonical public engineering record</p>
+        <h1>Inspect the systems. Follow the source. Keep the context.</h1>
         <p class="evidence-lead">
-          This catalogue covers authored and directly maintained work across JoomEngine, GetBible,
-          Octoleo, TrueChristian, and the personal public record. It distinguishes flagship source
-          systems from supporting projects and generated or historical outputs.
+          The complete record separates source systems from supporting work and catalogue history.
+          It preserves authorship, continuity, technical purpose and professional significance
+          without using repository volume as a quality score.
         </p>
       </div>
       <dl class="evidence-metrics">
         <div>
-          <dt>Curated repositories</dt>
+          <dt>Canonical repositories</dt>
           <dd>{repositories.length}</dd>
         </div>
         <div>
-          <dt>Flagship systems</dt>
+          <dt>Flagship records</dt>
           <dd>{flagshipCount}</dd>
         </div>
         <div>
-          <dt>Source systems</dt>
-          <dd>{sourceCount}</dd>
+          <dt>Forks included</dt>
+          <dd>0</dd>
         </div>
         <div>
-          <dt>Public estates</dt>
-          <dd>{owners.length}</dd>
+          <dt>Source freshness</dt>
+          <dd>29 Jul 2026</dd>
         </div>
       </dl>
     </div>
@@ -72,7 +90,7 @@ const ownerLabels = {
   <section class="section-shell evidence-method" aria-labelledby="evidence-method-title">
     <div>
       <p class="eyebrow">Evidence hierarchy</p>
-      <h2 id="evidence-method-title">Large numbers do not replace engineering context.</h2>
+      <h2 id="evidence-method-title">Prominence follows professional significance.</h2>
     </div>
     <div class="tier-explainer">
       <article>
@@ -80,37 +98,47 @@ const ownerLabels = {
         <div>
           <h3>Flagship</h3>
           <p>
-            Substantial source systems that best demonstrate architecture, implementation, and
-            stewardship.
+            The 12 source-reviewed records that carry the strongest current case-study and CV
+            significance.
           </p>
         </div>
       </article>
       <article>
         <span class="tier-dot tier-dot-system" aria-hidden="true"></span>
         <div>
-          <h3>Supporting system</h3>
+          <h3>Major</h3>
           <p>
-            Libraries, integrations, applications, and operational tools with direct technical
-            relevance.
+            Substantial source systems and long-running projects with strong independent
+            professional significance.
+          </p>
+        </div>
+      </article>
+      <article>
+        <span class="tier-dot tier-dot-supporting" aria-hidden="true"></span>
+        <div>
+          <h3>Supporting</h3>
+          <p>
+            Libraries, applications, tools, documentation and operational systems with direct
+            relevance to the wider engineering estate.
           </p>
         </div>
       </article>
       <article>
         <span class="tier-dot tier-dot-catalogue" aria-hidden="true"></span>
         <div>
-          <h3>Catalogue</h3>
+          <h3>Historical / foundation</h3>
           <p>
-            Generated packages, static APIs, mirrors, organization metadata, and historical records
-            retained for completeness.
+            Earlier applications, formal-study work, generated delivery and foundational records
+            retained without outranking current source systems.
           </p>
         </div>
       </article>
     </div>
     <p class="evidence-scope-note">
-      Repository creation dates indicate public evidence, not the beginning of professional
-      experience. Generated JSON and package volume is deliberately excluded from source-code
-      prominence. Public repositories are professional calling cards; additional proprietary and
-      private systems are not exposed here.
+      Public repository history is a lower bound on the professional record. Confidential commercial
+      and institutional systems, private infrastructure and internal methods are intentionally not
+      exposed. Dated metrics remain attached to their individual evidence snapshots and are not
+      summed into vanity totals.
     </p>
   </section>
 
@@ -122,11 +150,11 @@ const ownerLabels = {
     <div class="section-intro">
       <div>
         <p class="eyebrow">Repository evidence index</p>
-        <h2 id="repository-title">Complete, filterable, and directly linked.</h2>
+        <h2 id="repository-title">Complete, filterable and directly linked.</h2>
       </div>
       <p>
-        Search the record or narrow it by public estate, evidence tier, and principal language. Core
-        content remains available when JavaScript is disabled.
+        Search the record or narrow it by engineering ecosystem, evidence tier and primary
+        technology signal. The full index remains readable without JavaScript.
       </p>
     </div>
 
@@ -136,38 +164,37 @@ const ownerLabels = {
         <input
           type="search"
           name="query"
-          placeholder="OctoJoom, C++, deployment, MCP…"
+          placeholder="Joomla MCP, C++, deployment, Scripture…"
           autocomplete="off"
           data-repository-query
         />
       </label>
       <label>
-        <span>Public estate</span>
+        <span>Engineering ecosystem</span>
         <select name="owner" data-repository-owner>
-          <option value="all">All estates</option>
-          {
-            owners.map((owner) => (
-              <option value={owner}>
-                {ownerLabels[owner as keyof typeof ownerLabels] ?? owner}
-              </option>
-            ))
-          }
+          <option value="all">All ecosystems</option>
+          {ecosystems.map((ecosystem) => <option value={ecosystem}>{ecosystem}</option>)}
         </select>
       </label>
       <label>
         <span>Evidence tier</span>
         <select name="tier" data-repository-tier>
           <option value="all">All tiers</option>
-          <option value="flagship">Flagship systems</option>
-          <option value="system">Supporting systems</option>
-          <option value="catalogue">Catalogue and history</option>
+          <option value="flagship">Flagship records</option>
+          <option value="major">Major systems</option>
+          <option value="supporting">Supporting systems</option>
+          <option value="historical / foundation">Historical and foundation</option>
         </select>
       </label>
       <label>
-        <span>Principal language</span>
+        <span>Primary technology signal</span>
         <select name="language" data-repository-language>
-          <option value="all">All languages</option>
-          {languages.map((language) => <option value={language}>{language}</option>)}
+          <option value="all">All technologies</option>
+          {
+            primaryTechnologies.map((technology) => (
+              <option value={technology}>{technology}</option>
+            ))
+          }
         </select>
       </label>
       <button class="button button-secondary repository-reset" type="reset" data-repository-reset>
@@ -192,57 +219,94 @@ const ownerLabels = {
           const linkedProject = repository.projectId
             ? projectMap.get(repository.projectId)
             : undefined;
+          const primaryTechnology = repository.technologies[0] ?? "Mixed";
+          const tierClass =
+            repository.tier === "historical / foundation" ? "historical" : repository.tier;
+          const evidenceSpan =
+            repository.firstEvidence && repository.latestEvidence
+              ? `${repository.firstEvidence} → ${repository.latestEvidence}`
+              : repository.latestEvidence
+                ? `To ${repository.latestEvidence}`
+                : repository.firstEvidence
+                  ? `From ${repository.firstEvidence}`
+                  : "Historical source record";
           const searchCorpus = [
-            repository.title,
-            repository.name,
+            repository.repository,
             repository.owner,
-            repository.language,
-            repository.type,
-            repository.summary,
-            ...repository.signals,
+            repository.ecosystem,
+            repository.status,
+            repository.role,
+            repository.assessment,
+            repository.purpose,
+            repository.significance,
+            ...repository.technologies,
           ].join(" ");
 
           return (
             <article
-              class={`repository-card repository-card-${repository.tier}`}
+              class={`repository-card repository-card-${tierClass}`}
               data-repository-card
-              data-owner={repository.owner}
+              data-owner={repository.ecosystem}
               data-tier={repository.tier}
-              data-language={repository.language}
+              data-language={primaryTechnology}
               data-search={searchCorpus}
             >
               <div class="repository-card-head">
-                <span class={`repository-tier repository-tier-${repository.tier}`}>
-                  {repository.tier === "flagship"
-                    ? "Flagship"
-                    : repository.tier === "system"
-                      ? "System"
-                      : "Catalogue"}
+                <span class={`repository-tier repository-tier-${tierClass}`}>
+                  {tierLabels[repository.tier as keyof typeof tierLabels]}
                 </span>
-                <span class="repository-year">Public since {repository.since}</span>
+                <span class="repository-year">#{repository.rank}</span>
               </div>
-              <p class="repository-owner">
-                {repository.owner} / {repository.name}
-              </p>
-              <h3>{repository.title}</h3>
-              <p class="repository-summary">{repository.summary}</p>
+              <p class="repository-owner">{repository.repository}</p>
+              <h3>{repository.name}</h3>
+              <p class="repository-summary">{repository.purpose}</p>
               <dl class="repository-meta">
                 <div>
-                  <dt>Principal language</dt>
-                  <dd>{repository.language}</dd>
+                  <dt>Ecosystem</dt>
+                  <dd>{repository.ecosystem}</dd>
                 </div>
                 <div>
-                  <dt>Engineering role</dt>
-                  <dd>{repository.type}</dd>
+                  <dt>Verified role</dt>
+                  <dd>{repository.role}</dd>
+                </div>
+                <div>
+                  <dt>Evidence span</dt>
+                  <dd>{evidenceSpan}</dd>
+                </div>
+                <div>
+                  <dt>Primary signal</dt>
+                  <dd>{primaryTechnology}</dd>
                 </div>
               </dl>
               <details>
-                <summary>Technical evidence</summary>
+                <summary>Professional and technical evidence</summary>
+                <p>{repository.significance}</p>
                 <ul>
-                  {repository.signals.map((signal) => (
-                    <li>{signal}</li>
+                  {repository.technologies.map((technology) => (
+                    <li>{technology}</li>
                   ))}
                 </ul>
+                <dl class="repository-evidence-metrics">
+                  {repository.metrics.commits !== null && (
+                    <div>
+                      <dt>Verified commits</dt>
+                      <dd>{formatNumber(repository.metrics.commits)}</dd>
+                    </div>
+                  )}
+                  {repository.metrics.activeMonths !== null && (
+                    <div>
+                      <dt>Active months</dt>
+                      <dd>{formatNumber(repository.metrics.activeMonths)}</dd>
+                    </div>
+                  )}
+                  {repository.metrics.changedLines !== null && (
+                    <div>
+                      <dt>Recorded changed lines</dt>
+                      <dd>{formatNumber(repository.metrics.changedLines)}</dd>
+                    </div>
+                  )}
+                </dl>
+                <small>{repository.note}</small>
               </details>
               <div class="repository-actions">
                 <a href={repository.url} target="_blank" rel="noopener noreferrer">
@@ -261,8 +325,8 @@ const ownerLabels = {
     </div>
 
     <div class="repository-empty" data-repository-empty hidden>
-      <h3>No repository matches those filters.</h3>
-      <p>Reset the filters or search with a broader engineering term.</p>
+      <h3>No repository matches these filters.</h3>
+      <p>Reset the filters or broaden the search terms.</p>
     </div>
   </section>
 </BaseLayout>

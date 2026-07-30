@@ -143,6 +143,21 @@ const next = projects[(currentIndex + 1) % projects.length];
         <section id="evidence">
           <p class="eyebrow">Direct sources</p>
           <h2>Inspect the evidence</h2>
+          {
+            "keyEvidence" in project && project.keyEvidence && (
+              <div class="evidence-snapshot">
+                <div>
+                  <span>Current verified scope</span>
+                  <p>{project.keyEvidence}</p>
+                </div>
+                <div>
+                  <span>Interpretation boundary</span>
+                  <p>{project.evidenceLimits}</p>
+                </div>
+                <small>Source reviewed to {project.reviewedTo}</small>
+              </div>
+            )
+          }
           <div class="external-evidence">
             {
               project.evidenceLinks.map((link) => (

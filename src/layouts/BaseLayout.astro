@@ -26,8 +26,6 @@ const person = {
   "@type": "Person",
   name: "Llewellyn van der Merwe",
   jobTitle: "Director | Senior Architectural Engineer of Intelligent Software and Systems",
-  email: "mailto:llewellyn@vdm.io",
-  telephone: "+264 81 248 7770",
   url: new URL(base, Astro.site).href,
   image: imageUrl.href,
   address: {
@@ -35,7 +33,12 @@ const person = {
     addressLocality: "Windhoek",
     addressCountry: "NA",
   },
-  sameAs: ["https://github.com/Llewellynvdm", "https://vdm.io/llewellyn"],
+  sameAs: [
+    "https://t.me/llewellynvdm",
+    "https://github.com/Llewellynvdm",
+    "https://vdm.io/llewellyn",
+    "https://git.vdm.dev/",
+  ],
   knowsAbout: [
     "Software architecture",
     "Systems architecture",
@@ -117,7 +120,7 @@ const person = {
           <input
             id="command-query"
             type="search"
-            placeholder="Capabilities, projects, CV…"
+            placeholder="Capabilities, projects, record…"
             autocomplete="off"
           />
         </label>
@@ -139,7 +142,14 @@ const person = {
           <a href={`${base}#technology`} data-command="technology languages stacks"
             >Technology domains</a
           >
-          <a href={`${base}cv/`} data-command="cv resume print professional record">Detailed CV</a>
+          <a href={`${base}cv/`} data-command="executive cv resume decision document"
+            >Executive CV</a
+          >
+          <a
+            href={`${base}record/`}
+            data-command="exhaustive complete professional record chronology catalogue"
+            >Exhaustive record</a
+          >
           <a
             href="https://github.com/Llewellynvdm"
             data-command="github source repositories"
