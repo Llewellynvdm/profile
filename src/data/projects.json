@@ -241,7 +241,7 @@
       },
       {
         "label": "PyPI package",
-        "url": "https://pypi.org/project/getbible-librarian/"
+        "url": "https://pypi.org/project/getbible/"
       }
     ]
   },
@@ -968,7 +968,7 @@
       },
       {
         "label": "EU–EAC MARKUP context",
-        "url": "https://www.intracen.org/our-work/projects/eu-eac-market-access-upgrade-programme-markup"
+        "url": "https://www.eacmarkup.org/"
       }
     ],
     "flagship": false,
