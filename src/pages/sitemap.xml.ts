@@ -3,11 +3,11 @@ import projects from "../data/projects.json";
 
 export const GET: APIRoute = ({ site }) => {
   const paths = [
-    "profile/",
-    "profile/cv/",
-    "profile/record/",
-    "profile/evidence/",
-    ...projects.map((project) => `profile/projects/${project.slug}/`),
+    "",
+    "cv/",
+    "record/",
+    "evidence/",
+    ...projects.map((project) => `projects/${project.slug}/`),
   ];
   const urls = paths.map((path) => `<url><loc>${new URL(path, site).href}</loc></url>`).join("");
   const body = `<?xml version="1.0" encoding="UTF-8"?>

@@ -4,6 +4,7 @@ import { extname, join, relative } from "node:path";
 const root = new URL("../dist/", import.meta.url);
 const rootPath = root.pathname;
 const htmlFiles = [];
+const productionOrigin = "https://llewellyn.vdm.io";
 
 function walk(directory) {
   for (const name of readdirSync(directory)) {
@@ -17,7 +18,7 @@ function walk(directory) {
 }
 
 function outputTarget(pathname) {
-  const sitePath = pathname.replace(/^\/profile\/?/, "");
+  const sitePath = pathname.replace(/^\/+/, "");
   if (!sitePath) return join(rootPath, "index.html");
   const direct = join(rootPath, sitePath);
   if (existsSync(direct) && !statSync(direct).isDirectory()) return direct;
@@ -30,14 +31,15 @@ walk(rootPath);
 for (const file of htmlFiles) {
   const html = readFileSync(file, "utf8");
   const ids = new Set(Array.from(html.matchAll(/\sid="([^"]+)"/g), (match) => match[1]));
-  const hrefs = Array.from(html.matchAll(/\shref="([^"]+)"/g), (match) => match[1]);
+  const references = Array.from(html.matchAll(/\s(?:href|src)="([^"]+)"/g), (match) => match[1]);
 
-  for (const href of hrefs) {
+  for (const href of references) {
     if (
       href.startsWith("http://") ||
       href.startsWith("https://") ||
       href.startsWith("mailto:") ||
-      href.startsWith("tel:")
+      href.startsWith("tel:") ||
+      href.startsWith("data:")
     ) {
       continue;
     }
@@ -50,9 +52,9 @@ for (const file of htmlFiles) {
       continue;
     }
 
-    const parsed = new URL(href, "https://local.invalid/profile/");
-    if (!parsed.pathname.startsWith("/profile/")) {
-      errors.push(`${relative(rootPath, file)}: route escapes /profile/: ${href}`);
+    const parsed = new URL(href, `${productionOrigin}/`);
+    if (parsed.origin !== productionOrigin) {
+      errors.push(`${relative(rootPath, file)}: unexpected protocol-relative route ${href}`);
       continue;
     }
 

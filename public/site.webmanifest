@@ -2,13 +2,14 @@
   "name": "Llewellyn van der Merwe — Professional Profile",
   "short_name": "LvdM Profile",
   "description": "Evidence-backed professional profile of a senior software and systems architect.",
-  "start_url": "/profile/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#0d1117",
   "icons": [
     {
-      "src": "/profile/assets/favicon.svg",
+      "src": "/assets/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
