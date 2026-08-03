@@ -11,7 +11,7 @@ document: executive
 **Primary contact:** [Contact via Telegram](https://t.me/llewellynvdm)  
 [Professional website](https://vdm.io/llewellyn) · [GitHub](https://github.com/Llewellynvdm) · [Company engineering estate](https://git.vdm.dev/)
 
-**Current to 29 July 2026**
+**Current**
 
 Llewellyn van der Merwe is a senior, hands-on software and systems architect who combines direct engineering depth with company leadership, client responsibility, infrastructure ownership and long-term open-source stewardship. His work spans the complete engineering lifecycle:
 
