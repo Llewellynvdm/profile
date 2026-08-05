@@ -27,6 +27,8 @@ test("production output contains the required static routes and official CV file
     "projects/getbible-v3-publication-pipeline/index.html",
     "documents/llewellyn-van-der-merwe-executive-cv.pdf",
     "documents/llewellyn-van-der-merwe-exhaustive-cv.pdf",
+    "assets/favicon.svg",
+    "site.webmanifest",
     "CNAME",
     "robots.txt",
     "sitemap.xml",
@@ -35,6 +37,21 @@ test("production output contains the required static routes and official CV file
   for (const file of required) {
     assert.ok(existsSync(new URL(file, dist)), `${file} was not generated`);
   }
+});
+
+test("the official portrait icon is the only site identity mark", () => {
+  const icon = readFileSync(new URL("assets/favicon.svg", dist), "utf8");
+  const manifest = JSON.parse(readFileSync(new URL("site.webmanifest", dist), "utf8"));
+  const visibleIconReferences = index.match(/src="\/assets\/favicon\.svg"/g) ?? [];
+
+  assert.equal(visibleIconReferences.length, 2);
+  assert.match(index, /<link rel="icon" type="image\/svg\+xml" href="\/assets\/favicon\.svg">/);
+  assert.doesNotMatch(index, /M21 3 37 12v18L21 39 5 30V12Z/);
+  assert.match(icon, /viewBox="0 0 720 720"/);
+  assert.doesNotMatch(icon, /<script|<foreignObject|\son\w+=|javascript:/i);
+  assert.equal(manifest.icons[0].src, "/assets/favicon.svg");
+  assert.equal(manifest.icons[0].type, "image/svg+xml");
+  assert.equal(manifest.icons[0].sizes, "any");
 });
 
 test("the home page is semantic and correctly rooted at the custom domain", () => {

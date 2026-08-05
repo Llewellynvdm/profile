@@ -351,14 +351,11 @@
     color: var(--text);
   }
 
-  .brand svg {
-    width: 2.25rem;
+  .brand .site-icon {
+    width: 2.5rem;
+    height: 2.5rem;
     flex: 0 0 auto;
-    fill: color-mix(in srgb, var(--blue) 12%, transparent);
-    stroke: var(--blue);
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.5;
+    object-fit: contain;
   }
 
   .brand span {
