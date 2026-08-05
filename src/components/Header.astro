@@ -5,10 +5,14 @@ const base = import.meta.env.BASE_URL;
 <header class="site-header" data-header>
   <div class="header-inner">
     <a class="brand" href={base} aria-label="Llewellyn van der Merwe — profile home">
-      <svg viewBox="0 0 42 42" aria-hidden="true">
-        <path d="M21 3 37 12v18L21 39 5 30V12Z"></path>
-        <path d="m13 17 8 5 8-5M21 22v10"></path>
-      </svg>
+      <img
+        class="site-icon"
+        src={`${base}assets/favicon.svg`}
+        alt=""
+        width="42"
+        height="42"
+        decoding="async"
+      />
       <span>
         <strong>Llewellyn van der Merwe</strong>
         <small>Architectural engineering</small>
