@@ -48,7 +48,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # GitHub Pages can remain queued during service-side congestion. Keep the
+    # runner alive longer than the deployment action so a healthy deployment
+    # is not cancelled merely because it exceeded the former 10-minute limit.
+    timeout-minutes: 25
     permissions:
       contents: read
       pages: write
@@ -60,4 +63,6 @@ jobs:
     steps:
       - name: Deploy GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 1200000
