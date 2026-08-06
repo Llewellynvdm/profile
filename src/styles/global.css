@@ -352,10 +352,30 @@
   }
 
   .brand .site-icon {
+    display: block;
     width: 2.5rem;
     height: 2.5rem;
     flex: 0 0 auto;
     object-fit: contain;
+  }
+
+  .brand .site-icon-dark,
+  :root[data-theme="dark"] .brand .site-icon-light {
+    display: none;
+  }
+
+  :root[data-theme="dark"] .brand .site-icon-dark {
+    display: block;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .brand .site-icon-light {
+      display: none;
+    }
+
+    :root:not([data-theme]) .brand .site-icon-dark {
+      display: block;
+    }
   }
 
   .brand span {
