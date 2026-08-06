@@ -27,7 +27,8 @@ test("production output contains the required static routes and official CV file
     "projects/getbible-v3-publication-pipeline/index.html",
     "documents/llewellyn-van-der-merwe-executive-cv.pdf",
     "documents/llewellyn-van-der-merwe-exhaustive-cv.pdf",
-    "assets/favicon.svg",
+    "assets/llewellyn-icon-light.svg",
+    "assets/llewellyn-icon-dark.svg",
     "site.webmanifest",
     "CNAME",
     "robots.txt",
@@ -39,17 +40,25 @@ test("production output contains the required static routes and official CV file
   }
 });
 
-test("the official portrait icon is the only site identity mark", () => {
-  const icon = readFileSync(new URL("assets/favicon.svg", dist), "utf8");
+test("the official portrait icons follow the selected colour mode", () => {
+  const lightIcon = readFileSync(new URL("assets/llewellyn-icon-light.svg", dist), "utf8");
+  const darkIcon = readFileSync(new URL("assets/llewellyn-icon-dark.svg", dist), "utf8");
   const manifest = JSON.parse(readFileSync(new URL("site.webmanifest", dist), "utf8"));
-  const visibleIconReferences = index.match(/src="\/assets\/favicon\.svg"/g) ?? [];
+  const lightIconReferences = index.match(/src="\/assets\/llewellyn-icon-light\.svg"/g) ?? [];
+  const darkIconReferences = index.match(/src="\/assets\/llewellyn-icon-dark\.svg"/g) ?? [];
 
-  assert.equal(visibleIconReferences.length, 2);
-  assert.match(index, /<link rel="icon" type="image\/svg\+xml" href="\/assets\/favicon\.svg">/);
+  assert.equal(lightIconReferences.length, 2);
+  assert.equal(darkIconReferences.length, 2);
+  assert.match(
+    index,
+    /<link rel="icon" type="image\/svg\+xml" href="\/assets\/llewellyn-icon-dark\.svg">/,
+  );
   assert.doesNotMatch(index, /M21 3 37 12v18L21 39 5 30V12Z/);
-  assert.match(icon, /viewBox="0 0 720 720"/);
-  assert.doesNotMatch(icon, /<script|<foreignObject|\son\w+=|javascript:/i);
-  assert.equal(manifest.icons[0].src, "/assets/favicon.svg");
+  assert.match(lightIcon, /Right-facing pure vector portrait in plum, peach, gray, and blue/);
+  assert.match(darkIcon, /Right-facing pure vector portrait in neutral grayscale/);
+  assert.doesNotMatch(lightIcon, /<script|<foreignObject|\son\w+=|javascript:/i);
+  assert.doesNotMatch(darkIcon, /<script|<foreignObject|\son\w+=|javascript:/i);
+  assert.equal(manifest.icons[0].src, "/assets/llewellyn-icon-dark.svg");
   assert.equal(manifest.icons[0].type, "image/svg+xml");
   assert.equal(manifest.icons[0].sizes, "any");
 });
