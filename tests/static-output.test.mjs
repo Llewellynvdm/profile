@@ -18,6 +18,7 @@ test("production output contains the required static routes and official CV file
     "projects/octojoom-shell-deployment-platform/index.html",
     "projects/joomengine-container-release-engine/index.html",
     "projects/getbible-librarian/index.html",
+    "projects/kumwe-cms-business-platform/index.html",
     "projects/joomla-docker/index.html",
     "projects/getbible-robot-mini-app/index.html",
     "projects/getbible-sword-php-extension/index.html",
@@ -74,6 +75,26 @@ test("the home page is semantic and correctly rooted at the custom domain", () =
   assert.match(index, /application\/ld\+json/);
 });
 
+test("theme controls expose system, light, and dark preferences", () => {
+  assert.match(index, /<select data-theme-select aria-label="Colour theme preference">/);
+  assert.match(index, /<option value="system">System<\/option>/);
+  assert.match(index, /<option value="light">Light<\/option>/);
+  assert.match(index, /<option value="dark">Dark<\/option>/);
+  assert.match(index, /role="status" aria-live="polite" data-theme-status/);
+  assert.match(index, /matchMedia\("\(prefers-color-scheme: dark\)"\)/);
+});
+
+test("the engineering overview is semantic HTML with no retired overview SVGs", () => {
+  assert.match(index, /<section class="section-shell section-block system-profile"/);
+  assert.match(index, /<div class="profile-overview">/);
+  assert.match(index, /<dl class="profile-overview-axes"/);
+  assert.match(index, /Architectural judgement, carried through delivery/);
+  assert.match(index, /Professional engineering focus/);
+  assert.doesNotMatch(index, /profile-v4-(?:light|dark)\.svg/);
+  assert.equal(existsSync(new URL("assets/profile-v4-light.svg", dist)), false);
+  assert.equal(existsSync(new URL("assets/profile-v4-dark.svg", dist)), false);
+});
+
 test("the Pages artifact declares and indexes the custom domain", () => {
   const cname = readFileSync(new URL("CNAME", dist), "utf8").trim();
   const robots = readFileSync(new URL("robots.txt", dist), "utf8");
@@ -83,17 +104,23 @@ test("the Pages artifact declares and indexes the custom domain", () => {
   assert.match(robots, /Sitemap: https:\/\/llewellyn\.vdm\.io\/sitemap\.xml/);
   assert.match(sitemap, /<loc>https:\/\/llewellyn\.vdm\.io\/<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/llewellyn\.vdm\.io\/cv\/<\/loc>/);
+  assert.match(
+    sitemap,
+    /<loc>https:\/\/llewellyn\.vdm\.io\/projects\/kumwe-cms-business-platform\/<\/loc>/,
+  );
   assert.doesNotMatch(sitemap, /llewellynvdm\.github\.io|\/profile\//);
 });
 
 test("core content is server-rendered and reflects the canonical source priorities", () => {
   assert.match(index, /Capability is shown through application/);
   assert.match(index, /Substantial systems, not isolated keywords/);
+  assert.match(index, /Thirteen source-reviewed records define the current case-study order/);
   assert.match(index, /Canonical public engineering record/);
-  assert.match(index, /109 attributable, de-duplicated public repository lineages/);
+  assert.match(index, /108 attributable, de-duplicated public repository lineages/);
   assert.match(index, /Company leadership and long-term delivery/);
   assert.match(index, /Sustained responsibility, not isolated snapshots/);
   assert.match(index, /Joomla Component Builder/);
+  assert.match(index, /Kumwe CMS/);
   assert.match(index, /Contact via Telegram/);
 });
 

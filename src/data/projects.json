@@ -246,6 +246,72 @@
     ]
   },
   {
+    "id": "kumwe-cms",
+    "slug": "kumwe-cms-business-platform",
+    "name": "Kumwe CMS",
+    "eyebrow": "Modern CMS · business application platform",
+    "status": "Active public platform · current source reviewed",
+    "featured": true,
+    "summary": "A modern content-management system and typed business application platform whose administrator, portal, REST, CLI, MCP, worker, and scheduler surfaces share the same application rules.",
+    "value": "Kumwe unifies governed publishing and business operations without splitting policy across channels. Managed content, typed business definitions, generated operational surfaces, extension delivery, approvals, audit, and durable automation all pass through shared application services.",
+    "role": "Principal architect, lead implementer and maintainer",
+    "stack": [
+      "PHP 8.5",
+      "Mezzio",
+      "Joomla Framework",
+      "Doctrine DBAL",
+      "Redis",
+      "TypeScript",
+      "Docker",
+      "MCP"
+    ],
+    "architecture": [
+      "Content management and the typed business runtime share application services, so administrator, portal, REST, CLI, MCP, worker, and scheduler paths enforce the same rules.",
+      "Business definitions declare typed entities, relationships, views, actions, safe formulas, policies, and approvals from which operational surfaces and contracts are generated.",
+      "A signed extension pipeline installs plugins, components, templates, and languages into a compiled and verified runtime without rebuilding the application image.",
+      "Doctrine DBAL provides one portable persistence boundary across MariaDB, MySQL, and PostgreSQL, while Redis supplies cache, locks, rate limits, and coordination.",
+      "Database-backed queues, leases, bounded retries, recurring schedules, inbox/outbox delivery, and isolated portal sessions make automation and external integration explicit runtime capabilities."
+    ],
+    "interfaces": [
+      "Graphical administrator and isolated client portal",
+      "Versioned REST/OpenAPI, CLI, and MCP contracts",
+      "Installable extensions, templates, and demo profiles",
+      "Workers, scheduler, queues, reports, events, and integration SDK"
+    ],
+    "decisions": [
+      "Apply one authorization, validation, workflow, and audit model across every delivery channel instead of maintaining divergent browser and API behavior.",
+      "Generate business surfaces from typed definitions while retaining extension-owned custom handlers for domain-specific behavior.",
+      "Install extensions through a signed, compiled, verified lifecycle rather than coupling extension delivery to application-image rebuilds.",
+      "Keep persistence portable and production automation durable through explicit database, Redis, queue, lease, retry, and recovery boundaries."
+    ],
+    "quality": [
+      "Architecture and dependency policy enforced by the merge gate",
+      "PHPStan at maximum level, PSR-12 checks, API documentation checks, and unit/integration suites",
+      "Compiled OpenAPI contract verification and browser regression coverage",
+      "The same services and migrations exercised across MariaDB, MySQL 8.4, and PostgreSQL 17",
+      "Normative Kumwe Interface Standard for administrator, portal, generated, extension, and template surfaces"
+    ],
+    "evidenceLinks": [
+      {
+        "label": "Source repository and opening brief",
+        "url": "https://github.com/kumwe/cms"
+      },
+      {
+        "label": "Documentation index",
+        "url": "https://github.com/kumwe/cms/blob/master/docs/README.md"
+      },
+      {
+        "label": "Architecture guide",
+        "url": "https://github.com/kumwe/cms/tree/master/docs/architecture"
+      }
+    ],
+    "flagship": true,
+    "rank": 6,
+    "keyEvidence": "The 13 August 2026 master snapshot contains 331 attributable commits across 2,054 unique paths and documents a working CMS and business runtime with governed content, typed definitions, generated administrator and portal surfaces, REST/OpenAPI, CLI, MCP, signed extensions, durable automation, and three supported SQL engines.",
+    "evidenceLimits": "The project is active and evolving; this brief follows current public documentation and does not invent adoption, deployment-scale, performance, or production-certification claims.",
+    "reviewedTo": "2026-08-13"
+  },
+  {
     "id": "joomla-docker",
     "slug": "joomla-docker",
     "name": "Joomla Docker",
@@ -287,7 +353,7 @@
       }
     ],
     "flagship": true,
-    "rank": 6,
+    "rank": 7,
     "keyEvidence": "185 attributable commits and 154,396 recorded changed lines in the dated audit; public activity current through July 2026.",
     "evidenceLimits": "The verified maintainer and contributor role is stated accurately; sole ownership is not claimed.",
     "reviewedTo": "2026-07-29"
@@ -300,7 +366,7 @@
     "status": "Robot 2.1.0 · active public service engineering",
     "featured": false,
     "flagship": true,
-    "rank": 7,
+    "rank": 8,
     "summary": "A hardened Telegram Scripture service and authenticated Mini App with bounded browsing and posting, a responsive full-screen Bible reader, persistent translation preferences and polling or webhook delivery.",
     "value": "Robot combines hostile-input boundaries, asynchronous service engineering, accessible browser UX and operator-ready deployment in a public-facing Scripture product.",
     "role": "Project architect, principal implementer and maintainer",
@@ -359,7 +425,7 @@
     "status": "Reproducible native-integration engineering",
     "featured": false,
     "flagship": true,
-    "rank": 8,
+    "rank": 9,
     "summary": "A native PHP extension exposing the released getBibleSword C ABI through streamed PHP APIs without subprocess startup or an ambient SWORD shared-library dependency.",
     "value": "The extension turns a native C/C++ engine into a deterministic, packageable PHP boundary while preserving ABI separation, failure visibility and reproducible evidence.",
     "role": "Principal architect, native-integration engineer and maintainer",
@@ -409,7 +475,7 @@
     "status": "Current application-layer engineering",
     "featured": false,
     "flagship": true,
-    "rank": 9,
+    "rank": 10,
     "summary": "An object-oriented PHP application layer over the native extension that validates the NDJSON contract and exposes immutable, lazy Bible-domain objects with controlled refresh and integration paths.",
     "value": "Scripture converts a native streaming interface into maintainable application semantics: validated contracts, immutable models, dependency injection, bounded locks, snapshots and scheduled refresh.",
     "role": "Principal application-layer architect and maintainer",
@@ -500,7 +566,7 @@
       }
     ],
     "flagship": true,
-    "rank": 10,
+    "rank": 11,
     "keyEvidence": "41 default-branch commits in the complete reviewed history; six Ubuntu 24.04 image variants with manifest-owned policy, build limits, provenance and MCP integration.",
     "evidenceLimits": "Documented production gates are preserved; every environment is not implied to be production-certified.",
     "reviewedTo": "2026-07-29"
@@ -513,7 +579,7 @@
     "status": "Active source-reviewed infrastructure",
     "featured": false,
     "flagship": true,
-    "rank": 11,
+    "rank": 12,
     "summary": "An operator-focused toolkit for a persistent CPU/NVMe-backed Colibri service that keeps the GPU available, verifies and surgically repairs model weights, derives adaptive resource profiles and integrates with Open WebUI.",
     "value": "Colibri Setup demonstrates practical large-model operations under real resource constraints: exact revision control, checksum repair, RAM ceilings, CPU-only enforcement, multi-NVMe reads and recoverable service management.",
     "role": "Systems architect, principal implementer and maintainer",
@@ -604,7 +670,7 @@
       }
     ],
     "flagship": true,
-    "rank": 12,
+    "rank": 13,
     "keyEvidence": "307 attributable commits and 23,507 recorded changed lines in the dated audit; current chapter-editorial schema and native-publication safeguards reviewed in July 2026.",
     "evidenceLimits": "Generated corpus volume is separate from hand-authored source metrics.",
     "reviewedTo": "2026-07-29"

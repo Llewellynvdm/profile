@@ -1470,6 +1470,26 @@
     grid-column: span 6;
   }
 
+  .project-card-6,
+  .project-card-7 {
+    grid-column: span 6;
+  }
+
+  .project-card-6 {
+    border-color: color-mix(in srgb, var(--blue) 54%, var(--line));
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--blue) 8%, transparent), transparent 56%),
+      var(--surface);
+  }
+
+  .project-card-6::before {
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--cyan) 22%, transparent),
+      transparent 66%
+    );
+  }
+
   .project-card-top {
     position: relative;
     z-index: 1;

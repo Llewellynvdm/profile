@@ -43,12 +43,12 @@ test("each project provides technical depth and direct HTTPS evidence", () => {
   }
 });
 
-test("the 12 flagship briefs preserve canonical order and interpretation limits", () => {
+test("the 13 flagship briefs preserve canonical order and interpretation limits", () => {
   const flagships = projects
     .filter((project) => project.flagship)
     .sort((left, right) => left.rank - right.rank);
 
-  assert.equal(flagships.length, 12);
+  assert.equal(flagships.length, 13);
   assert.deepEqual(
     flagships.map((project) => project.id),
     [
@@ -57,6 +57,7 @@ test("the 12 flagship briefs preserve canonical order and interpretation limits"
       "octojoom",
       "joomengine-containers",
       "librarian",
+      "kumwe-cms",
       "joomla-docker",
       "robot",
       "sword",
@@ -92,8 +93,8 @@ test("chronology, title, education limits, confidentiality and contact policy re
   assert.doesNotMatch(serialized, /GitBible version 2|Summon index/i);
 });
 
-test("the canonical repository record contains 109 unique, directly linked lineages", () => {
-  assert.equal(repositories.length, 109);
+test("the canonical repository record contains 108 unique, directly linked lineages", () => {
+  assert.equal(repositories.length, 108);
   assert.equal(
     new Set(repositories.map((repository) => repository.repository)).size,
     repositories.length,
@@ -106,15 +107,15 @@ test("the canonical repository record contains 109 unique, directly linked linea
       ),
     ),
     {
-      flagship: 12,
+      flagship: 13,
       major: 24,
       supporting: 35,
-      "historical / foundation": 38,
+      "historical / foundation": 36,
     },
   );
 
   for (const repository of repositories) {
-    assert.ok(repository.rank >= 1 && repository.rank <= 109);
+    assert.ok(repository.rank >= 1 && repository.rank <= 108);
     assert.ok(repository.purpose.length > 20, `${repository.repository} needs meaningful purpose`);
     assert.ok(
       repository.significance.length > 20,
@@ -150,6 +151,7 @@ test("the canonical record includes the complete flagship repository order", () 
       "octoleo/octojoom",
       "octoleo/joomengine",
       "getbible/librarian",
+      "Kumwe/cms",
       "joomla-docker/docker-joomla",
       "getbible/robot",
       "getbible/sword",
@@ -159,6 +161,24 @@ test("the canonical record includes the complete flagship repository order", () 
       "getbible/v3_builder",
     ],
   );
+});
+
+test("Kumwe is current flagship evidence after the portfolio retirement", () => {
+  const kumweProject = projects.find((project) => project.id === "kumwe-cms");
+  const kumweRepository = repositories.find((repository) => repository.repository === "Kumwe/cms");
+  assert.ok(kumweProject);
+  assert.equal(kumweProject.flagship, true);
+  assert.equal(kumweProject.rank, 6);
+  assert.equal(kumweProject.featured, true);
+  assert.equal(kumweProject.reviewedTo, "2026-08-13");
+
+  assert.ok(kumweRepository);
+  assert.equal(kumweRepository.tier, "flagship");
+  assert.equal(kumweRepository.rank, 6);
+  assert.equal(kumweRepository.projectId, "kumwe-cms");
+  assert.equal(kumweRepository.latestEvidence, "2026-08-13");
+  assert.equal(kumweRepository.metrics.commits, 331);
+  assert.equal(kumweRepository.metrics.uniquePaths, 2054);
 });
 
 test("Shell and native engineering evidence extends beyond the newest flagships", () => {

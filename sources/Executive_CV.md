@@ -10,7 +10,7 @@
 **Primary contact:** [Contact via Telegram](https://t.me/llewellynvdm)  
 [Professional website](https://vdm.io/llewellyn) · [GitHub](https://github.com/Llewellynvdm) · [Company engineering estate](https://git.vdm.dev/)
 
-**Current to 29 July 2026**
+**Current to 13 August 2026**
 
 Llewellyn van der Merwe is a senior, hands-on software and systems architect who combines direct engineering depth with company leadership, client responsibility, infrastructure ownership and long-term open-source stewardship. His work spans the complete engineering lifecycle:
 
@@ -103,6 +103,16 @@ JoomEngine demonstrates container build architecture, reproducibility, registry 
 A Python library for Bible-reference resolution, Scripture retrieval and Unicode-aware search, with bounded, checksum-verified caching, PyPI distribution and separate Query and Search service integration.
 
 Librarian demonstrates Python library architecture, multilingual and Unicode data handling, cache integrity, HTTP API integration, packaging and production hardening. It is part of the broader GetBible platform, where data pipelines, services, applications and distribution channels must agree on durable Scripture contracts.
+
+## Kumwe CMS
+
+**[Kumwe/cms](https://github.com/kumwe/cms)**
+
+**Principal architect, lead implementer and maintainer**
+
+Kumwe is a modern CMS and typed business application platform governed by one set of application rules. Managed pages, media, nested menus and publishing workflows share a runtime with typed business definitions and records, policies, approvals, reports, an isolated client portal, durable workers and scheduled automation.
+
+Its architecture projects the same services into the graphical administrator, portal, REST/OpenAPI, CLI and MCP interfaces. Signed extensions install into a compiled and verified runtime without rebuilding the application image; Doctrine DBAL supports MariaDB, MySQL and PostgreSQL behind one persistence boundary; Redis supplies cache, locking, rate limiting and coordination. The 13 August 2026 master snapshot contains 331 attributable commits across 2,054 unique paths. Changed-line volume includes generated and delivered artefacts and is not presented as manually typed source. The project is active, so no adoption, deployment-scale or production-certification claim is inferred beyond the published evidence.
 
 ## Official Joomla Docker Images
 
