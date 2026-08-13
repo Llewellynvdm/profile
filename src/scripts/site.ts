@@ -1,33 +1,64 @@
 import { matchesCapability, matchesCommand, matchesRepository } from "./filters.mjs";
+import {
+  describeThemePreference,
+  normalizeThemePreference,
+  resolveThemePreference,
+  THEME_STORAGE_KEY,
+} from "./theme.mjs";
 
 document.documentElement.classList.add("js");
 
 const root = document.documentElement;
-const themeButton = document.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+const themeSelect = document.querySelector<HTMLSelectElement>("[data-theme-select]");
+const themeStatus = document.querySelector<HTMLElement>("[data-theme-status]");
+const themeColour = document.querySelector<HTMLMetaElement>("[data-theme-colour]");
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-function resolvedTheme(): "light" | "dark" {
-  const explicit = root.dataset.theme;
-  if (explicit === "light" || explicit === "dark") return explicit;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
-function updateThemeLabel() {
-  if (!themeButton) return;
-  const next = resolvedTheme() === "dark" ? "light" : "dark";
-  themeButton.setAttribute("aria-label", `Switch to ${next} colour theme`);
-}
-
-themeButton?.addEventListener("click", () => {
-  const next = resolvedTheme() === "dark" ? "light" : "dark";
-  root.dataset.theme = next;
+function readThemePreference() {
   try {
-    localStorage.setItem("lvdm-theme", next);
+    return normalizeThemePreference(localStorage.getItem(THEME_STORAGE_KEY));
   } catch {
     // Theme persistence is optional.
+    return "system";
   }
-  updateThemeLabel();
+}
+
+let themePreference = readThemePreference();
+
+function applyThemePreference(preference: "system" | "light" | "dark", persist = false) {
+  themePreference = normalizeThemePreference(preference);
+
+  if (themePreference === "system") delete root.dataset.theme;
+  else root.dataset.theme = themePreference;
+
+  root.dataset.themePreference = themePreference;
+  if (themeSelect) themeSelect.value = themePreference;
+
+  const resolvedTheme = resolveThemePreference(themePreference, systemTheme.matches);
+  if (themeStatus) {
+    themeStatus.textContent = describeThemePreference(themePreference, resolvedTheme);
+  }
+  if (themeColour) {
+    themeColour.content = resolvedTheme === "dark" ? "#0d1117" : "#f7f9fc";
+  }
+
+  if (!persist) return;
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, themePreference);
+  } catch {
+    // The selected theme still applies for the current page view.
+  }
+}
+
+themeSelect?.addEventListener("change", () => {
+  applyThemePreference(normalizeThemePreference(themeSelect.value), true);
 });
-updateThemeLabel();
+
+systemTheme.addEventListener("change", () => {
+  if (themePreference === "system") applyThemePreference("system");
+});
+
+applyThemePreference(themePreference);
 
 const header = document.querySelector<HTMLElement>("[data-header]");
 const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 8);

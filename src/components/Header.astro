@@ -46,7 +46,12 @@ const base = import.meta.env.BASE_URL;
         </svg>
         <span class="key-hint">⌘K</span>
       </button>
-      <button class="icon-button" type="button" aria-label="Switch colour theme" data-theme-toggle>
+      <label class="theme-control">
+        <span class="sr-only">Colour theme</span>
+        <svg class="theme-icon theme-icon-system" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+          <path d="M8 21h8m-4-4v4"></path>
+        </svg>
         <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="3.5"></circle>
           <path
@@ -56,7 +61,16 @@ const base = import.meta.env.BASE_URL;
         <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path>
         </svg>
-      </button>
+        <span class="theme-option-label theme-option-system" aria-hidden="true">System</span>
+        <span class="theme-option-label theme-option-light" aria-hidden="true">Light</span>
+        <span class="theme-option-label theme-option-dark" aria-hidden="true">Dark</span>
+        <select data-theme-select aria-label="Colour theme preference">
+          <option value="system">System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
+      <span class="sr-only" role="status" aria-live="polite" data-theme-status></span>
       <button
         class="icon-button menu-button"
         type="button"

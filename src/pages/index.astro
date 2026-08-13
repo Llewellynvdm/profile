@@ -64,33 +64,30 @@ const projectMap = new Map(projects.map((project) => [project.id, project]));
     class="section-shell section-block system-profile"
     aria-labelledby="system-profile-title"
   >
-    <div class="section-intro">
-      <div>
-        <p class="eyebrow">Approved engineering profile</p>
-        <h2 id="system-profile-title">The whole system, in one view.</h2>
-      </div>
-      <p>
-        The profile graphic is also the site’s design grammar: layered architecture, explicit
-        interfaces, evidence at the edge, and production responsibility at the base.
-      </p>
+    <div class="profile-overview">
+      <header class="profile-overview-lead">
+        <p class="eyebrow">Engineering overview</p>
+        <h2 id="system-profile-title">Architectural judgement, carried through delivery.</h2>
+        <p>{profile.identity.positioning}</p>
+        <a href={`${base}record/`}>
+          Open the exhaustive professional record <span aria-hidden="true">→</span>
+        </a>
+      </header>
+
+      <dl class="profile-overview-axes" aria-label="Professional engineering focus">
+        {
+          profile.capabilityGroups.map((group, index) => (
+            <div>
+              <dt>
+                <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                {group.label}
+              </dt>
+              <dd>{group.description}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
-    <a class="profile-map-link" href={`${base}record/`} aria-label="Open the exhaustive record">
-      <img
-        class="profile-map profile-map-dark"
-        src={`${base}assets/profile-v4-dark.svg`}
-        alt="Dark engineering profile dashboard showing architecture, platform, production, technical capabilities, and career evidence"
-        loading="lazy"
-      />
-      <img
-        class="profile-map profile-map-light"
-        src={`${base}assets/profile-v4-light.svg`}
-        alt="Light engineering profile dashboard showing architecture, platform, production, technical capabilities, and career evidence"
-        loading="lazy"
-      />
-      <span class="map-action"
-        >Open the exhaustive professional record <span aria-hidden="true">→</span></span
-      >
-    </a>
   </section>
 
   <section
