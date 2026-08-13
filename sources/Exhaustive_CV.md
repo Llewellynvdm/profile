@@ -9,7 +9,7 @@
 Windhoek, Namibia  
 [Contact via Telegram](https://t.me/llewellynvdm) · [Professional website](https://vdm.io/llewellyn) · [GitHub](https://github.com/Llewellynvdm) · [Company engineering estate](https://git.vdm.dev/)
 
-**Current to 29 July 2026**
+**Current to 13 August 2026**
 
 ---
 
@@ -19,7 +19,7 @@ Llewellyn van der Merwe is a senior, hands-on software and systems architect who
 
 His strongest technical centre is PHP and Joomla platform engineering, but the defining feature of his work is broader: he takes responsibility for the complete engineering lifecycle. That responsibility regularly spans discovery, domain modelling, architecture, implementation, data, integration, testing, packaging, deployment, infrastructure, security, release, maintenance and technical leadership.
 
-He builds platforms, generators, reusable frameworks, data systems, deployment tools and engineering ecosystems rather than limiting his work to individual end-user features. Joomla Component Builder is the clearest long-term expression of that approach: a compiler-like development platform that models and generates complete Joomla extensions across multiple CMS generations. The surrounding JoomEngine, OctoLeo and GetBible programmes show the same pattern in registries, reusable services, deterministic build pipelines, container images, APIs, native integrations, public-service applications and operational automation.
+He builds platforms, generators, reusable frameworks, data systems, deployment tools and engineering ecosystems rather than limiting his work to individual end-user features. Joomla Component Builder is the clearest long-term expression of that approach: a compiler-like development platform that models and generates complete Joomla extensions across multiple CMS generations. Kumwe extends that platform thinking into a modern CMS and typed business application runtime, while the surrounding JoomEngine, OctoLeo and GetBible programmes show the same pattern in registries, reusable services, deterministic build pipelines, container images, APIs, native integrations, public-service applications and operational automation.
 
 The chronology is professionally significant. Much of the public source estate was conceived, hand-coded and placed into long-term support before modern generative coding systems. Dated repository histories show original implementation and continued maintenance across changing Joomla, PHP, Linux, container, browser and release environments.
 
@@ -35,7 +35,7 @@ Llewellyn is also a teacher, lecturer, mentor and developer coach. He deliberate
 - **Current role:** Founder, Director, Senior Architect and hands-on engineer
 - **Primary technical centre:** PHP, Joomla architecture, developer tooling and code generation
 - **Complementary engineering depth:** C/C++, Python, Bash, JavaScript/TypeScript, HTML/CSS, SQL, APIs, Docker, Linux, networking, infrastructure, security, local inference, MCP and agent workflows
-- **Public engineering record:** 109 canonical, attributable, non-fork repository lineages as reconciled through 29 July 2026
+- **Public engineering record:** 108 canonical, attributable, non-fork repository lineages, current through the Kumwe source review of 13 August 2026
 - **Primary company engineering estate:** [git.vdm.dev](https://git.vdm.dev/), containing a broader body of public, private, internal, client and mirrored work than the selective public GitHub record
 
 The public repositories provide the detailed, shareable evidence of architecture, implementation and maintenance. They are a selective lower bound rather than the complete professional estate. Vast Development Method has also delivered substantial large-scale proprietary and institutional work under contractual confidentiality and non-disclosure obligations. Those responsibilities are described at a safe professional level; client repositories, system names, internal architecture, infrastructure, data and workflows are not itemised.
@@ -603,7 +603,37 @@ These repositories show an ecosystem that spans source acquisition, normalisatio
 
 <!-- PAGE BREAK -->
 
-## 5. Official Joomla Container Engineering
+## 5. Kumwe CMS and Business Application Platform
+
+**Repository:** [Kumwe/cms](https://github.com/kumwe/cms)
+
+**Role:** Principal architect, lead implementer and maintainer
+
+**Technologies:** PHP 8.5, Mezzio, Joomla Framework, Doctrine DBAL, Redis, TypeScript, Docker, MCP
+
+Kumwe is a modern content-management system and typed business application platform governed by one set of application rules. Its content side manages pages, media, nested menus and publishing workflows with revisions and audit trails. Its business side declares typed entities, relationships, views, actions and safe formulas, then runs governed records, policies, approvals, reports and an isolated client portal.
+
+The platform is designed so delivery channels do not acquire contradictory behaviour. The graphical administrator, portal, REST/OpenAPI contract, CLI, MCP tools, workers and scheduler call the same application services; authorization, validation, workflow and audit decisions therefore remain aligned across human and machine interfaces.
+
+The current public architecture includes:
+
+- typed business definitions and relational records with bounded query and lifecycle controls;
+- generated administrator, portal, REST/OpenAPI, CLI and MCP surfaces;
+- typed policy, field disclosure, memberships, approvals, step-up checks and token boundaries;
+- signed extension installation for plugins, components, templates and languages through a compiled, verified runtime;
+- schema-4 events, inbox/outbox integration, reports, projections and an extension SDK;
+- database-backed queues, leases, bounded retries and recurring schedules;
+- Doctrine DBAL portability across MariaDB, MySQL and PostgreSQL;
+- Redis-backed cache, locks, rate limits and coordination;
+- Docker and host-native installation, workers, scheduling and production operations.
+
+Quality is part of the architecture rather than a separate release ritual. The documented merge gate enforces architecture and dependency policy, documentation-block completeness, a current compiled OpenAPI contract, PSR-12, PHPStan at maximum level and unit/integration suites. Browser checks cover the graphical surfaces, and the same services and migrations are exercised across all three supported SQL engines. The Kumwe Interface Standard is normative for administrator, portal, generated, extension and installable-template interfaces.
+
+The 13 August 2026 master snapshot contains 331 attributable commits across 2,054 unique paths. Changed-line volume includes generated and delivered artefacts and is not presented as manually typed source. The project is active and evolving; this record does not infer adoption, deployment scale, performance or production certification beyond the published evidence.
+
+<!-- PAGE BREAK -->
+
+## 6. Official Joomla Container Engineering
 
 ### Official Joomla Docker Images
 
@@ -622,7 +652,7 @@ Llewellyn contributes to the official Joomla image source used to distribute Joo
 
 The July 2026 identity-aware snapshot recorded 185 attributable commits and public activity through 7 July 2026. This is independent, official-project evidence of sustained container engineering. The role is accurately presented as maintainer and senior contributor, not sole ownership.
 
-## 6. Vast Development Method Platforms and Applied AI
+## 7. Vast Development Method Platforms and Applied AI
 
 ### OpenCode Platform
 
@@ -670,7 +700,7 @@ Its operational design includes:
 
 The complete default-branch history contained 53 commits through 29 July 2026. No performance or deployment-scale claims are made because results depend on host resources and upstream model/runtime behaviour.
 
-## 7. Developer Tooling, Packaging, Release Automation and CI/CD
+## 8. Developer Tooling, Packaging, Release Automation and CI/CD
 
 Across JCB, JoomEngine, OctoLeo, GetBible and VDM platforms, Llewellyn repeatedly converts manual release and operational work into version-controlled systems.
 
@@ -691,7 +721,7 @@ Demonstrated patterns include:
 
 This work reflects a preference for inspectable build logic, stable contracts and repeatable delivery over undocumented manual procedures.
 
-## 8. Linux, Self-Hosting, Networking and Operational Tooling
+## 9. Linux, Self-Hosting, Networking and Operational Tooling
 
 Llewellyn’s operational work supports both commercial delivery and public engineering. It includes:
 
@@ -722,7 +752,7 @@ Current public evidence includes:
 
 These repositories make the systems claim concrete without exposing client infrastructure. They show software architecture informed by actual responsibility for the services, networks, security boundaries and recovery paths on which applications depend.
 
-## 9. Historical Applications and Professional Foundations
+## 10. Historical Applications and Professional Foundations
 
 The historical public record shows how the current platform architecture developed from real applications and domain systems.
 
@@ -998,7 +1028,7 @@ GetBible, True Christian publishing systems, sermon distribution applications, d
 
 # Complete Canonical Public Engineering Catalogue
 
-This catalogue names 101 attributable, canonical, non-fork public repository lineages selected for presentation. It is intentionally broader than a flagship list: major platforms, supporting utilities, application repositories, educational foundations and historical systems are all named. Forks, duplicate code histories, superseded delivery copies and generated-package duplicates are omitted so the same engineering work is not counted twice.
+This catalogue names 100 attributable, canonical, non-fork public repository lineages selected for presentation. It is intentionally broader than a flagship list: major platforms, supporting utilities, application repositories, educational foundations and historical systems are all named. Forks, duplicate code histories, superseded delivery copies and generated-package duplicates are omitted so the same engineering work is not counted twice.
 
 The dates matter. The long-running platforms, Joomla applications and Bash automation suites were established before modern generative coding systems and reflect original hands-on engineering. Their dated histories also show continued ownership, adaptation and maintenance across changing Joomla, PHP, Linux, container and delivery environments. Newer AI and MCP projects are presented as an extension of that established engineering base, not as its origin.
 
@@ -1099,6 +1129,11 @@ The detailed public record remains a lower bound. Vast Development Method has al
 - **[getbible/txtFactory](https://github.com/getbible/txtFactory)** — Historical Bash data-acquisition utility for collecting Bible translations from the Unbound Biola source for downstream GetBible processing. **Technologies:** Shell/Bash. **Role:** Project owner and lead engineering contributor. **Dated public evidence:** 2016-07-18 to 2016-07-24 (1 calendar year represented).
 - **[getbible/v1](https://github.com/getbible/v1)** — First-generation public static JSON Bible API dataset. **Role:** Project founder, data/API architect and publisher. **Dated public evidence:** 2019-12-29 to 2019-12-29 (1 calendar year represented).
 
+## Kumwe CMS and Business Platform
+
+- **[Kumwe/cms](https://github.com/kumwe/cms)** — Modern content-management system and typed business application platform with governed pages, media, menus and publishing workflows; typed entities and records; generated administrator, portal, REST/OpenAPI, CLI and MCP surfaces; policies, approvals and reports; signed extensions; and durable workers and scheduling. **Technologies:** PHP 8.5, Mezzio, Joomla Framework, Doctrine DBAL, Redis, TypeScript, Docker, MCP. **Role:** Principal architect, lead implementer and maintainer. **Dated public evidence:** 2022-05-24 to 2026-08-13 (5 calendar years represented).
+  Demonstrates one coherent runtime across content, business operations, security, integration and automation, with portable MariaDB, MySQL and PostgreSQL persistence and a documented architecture, interface standard and merge gate.
+
 ## Vast Development Method
 
 - **[vast-development-method/opencode-platform](https://github.com/vast-development-method/opencode-platform)** — Version-controlled platform authority for hardened OpenCode agent VMs on Incus, six Ubuntu 24.04 image variants, manifest-owned composition and capacity rules, credentials/network boundaries, reproducible artifacts, and controlled Joomla MCP integration. **Technologies:** Shell/Bash, Python, YAML, Incus, systemd, Docker/OCI, TypeScript tooling. **Role:** Platform architect, principal implementer and maintainer.
@@ -1168,14 +1203,6 @@ The detailed public record remains a lower bound. Vast Development Method has al
 - **[namibia/CBP-Joomla-2-Component](https://github.com/namibia/CBP-Joomla-2-Component)** — Historical Joomla 2 cost-benefit projection component implementing structured domain, data and presentation logic. **Technologies:** PHP, HTML, JavaScript, CSS/SCSS, XML, SQL. **Role:** Principal or sole recorded author. **Dated public evidence:** 2014-03-31 to 2014-05-21 (1 calendar year represented).
 - **[namibia/dropboxlinks](https://github.com/namibia/dropboxlinks)** — Historical PHP utility for generating shareable links from an organised Dropbox audio collection. **Technologies:** PHP. **Role:** Principal or sole recorded author. **Dated public evidence:** 2015-07-01 to 2015-07-01 (1 calendar year represented).
 - **[namibia/ipdata-joomla-3-component](https://github.com/namibia/ipdata-joomla-3-component)** — Historical Joomla 3 component for maintaining and presenting IP-related reference data; retained as a superseded application lineage. **Technologies:** PHP, HTML, JavaScript, XML, CSS/SCSS, SQL. **Role:** Principal or sole recorded author. **Dated public evidence:** 2015-01-03 to 2017-02-02 (3 calendar years represented).
-
-## Framework Experimentation
-
-- **[Kumwe/cms](https://github.com/Kumwe/cms)** — Little cms build with Joomla Framework **Technologies:** PHP, HTML, JavaScript, CSS/SCSS, SQL. **Role:** Principal or sole recorded author.
-
-## Sentinel Systems
-
-- **[sentinel-mx/server](https://github.com/sentinel-mx/server)** — PHP-based server application combining administrative interfaces, structured data and deployment workflow within the Sentinel MX system. **Technologies:** PHP, CSS/SCSS, HTML, JavaScript, XML, SQL, YAML/CI. **Role:** Principal or sole recorded author. **Dated public evidence:** 2020-02-26 to 2020-02-26 (1 calendar year represented).
 
 ---
 

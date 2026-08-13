@@ -109,8 +109,8 @@ deliberately:
 - marks incomplete degree study explicitly;
 - avoids invented outcomes, client metrics, skill percentages, proficiency bars, and unverifiable
   rankings;
-- preserves 109 attributable, de-duplicated public repository lineages and excludes forks;
-- presents the 12 source-reviewed flagship records in their canonical professional order;
+- preserves 108 attributable, de-duplicated public repository lineages and excludes forks;
+- presents the 13 source-reviewed flagship records in their canonical professional order;
 - keeps repository metrics attached to dated individual snapshots instead of summing them into
   vanity totals.
 

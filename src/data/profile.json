@@ -41,12 +41,12 @@
       "note": "continuous operational responsibility supporting engineering judgement"
     },
     {
-      "value": "109",
+      "value": "108",
       "label": "canonical public repositories",
       "note": "de-duplicated lineages; forks and mirrored histories excluded"
     },
     {
-      "value": "12",
+      "value": "13",
       "label": "source-reviewed flagship records",
       "note": "ordered by current CV and case-study significance"
     }
@@ -80,8 +80,15 @@
       "symbol": "◇",
       "title": "Software & systems architecture",
       "summary": "Designing coherent systems across domain models, interfaces, generators, runtime boundaries, delivery, and maintenance.",
-      "application": "JCB’s compiler-oriented platform, the complete GetBible engineering estate, reusable Power registries, OctoJoom, and container release systems maintained across long operational lifecycles.",
-      "evidence": ["jcb", "joomla-mcp", "octojoom", "joomengine-containers", "scripture"],
+      "application": "JCB’s compiler-oriented platform, Kumwe’s unified CMS and business runtime, the complete GetBible engineering estate, reusable Power registries, OctoJoom, and container release systems maintained across long operational lifecycles.",
+      "evidence": [
+        "jcb",
+        "kumwe-cms",
+        "joomla-mcp",
+        "octojoom",
+        "joomengine-containers",
+        "scripture"
+      ],
       "technologies": ["Domain modelling", "Contracts", "Versioning", "Dependency injection"]
     },
     {
@@ -90,8 +97,8 @@
       "symbol": "P",
       "title": "PHP & Joomla engineering",
       "summary": "Deep framework, extension, compiler, package, migration, and production experience across Joomla generations.",
-      "application": "Joomla Component Builder, Sermon Distributor, client platforms, official volunteer teams, maintenance work, and framework strategy.",
-      "evidence": ["jcb", "sword", "scripture", "joomla-service"],
+      "application": "Joomla Component Builder, Kumwe CMS, Sermon Distributor, client platforms, official volunteer teams, maintenance work, and framework strategy.",
+      "evidence": ["jcb", "kumwe-cms", "sword", "scripture", "joomla-service"],
       "technologies": ["PHP", "Joomla 3–6", "Composer", "MVC", "CLI"]
     },
     {
@@ -130,8 +137,8 @@
       "symbol": "↔",
       "title": "API design & integration",
       "summary": "Designing stable machine interfaces, route catalogues, serialization contracts, validation, and compatibility boundaries.",
-      "application": "Versioned static API publication, C ABI design, Python and PHP libraries, Joomla Web Services, MCP contracts, web clients, and long-lived professional integrations.",
-      "evidence": ["joomla-mcp", "librarian", "robot", "scripture"],
+      "application": "Versioned static API publication, C ABI design, Python and PHP libraries, Kumwe's generated REST/OpenAPI, CLI and MCP contracts, Joomla Web Services, web clients, and long-lived professional integrations.",
+      "evidence": ["kumwe-cms", "joomla-mcp", "librarian", "robot", "scripture"],
       "technologies": ["REST", "MCP", "NDJSON", "JSON", "C ABI"]
     },
     {
@@ -166,8 +173,8 @@
       "symbol": "⌾",
       "title": "Security & incident response",
       "summary": "Operational hardening, credential boundaries, guarded changes, recovery, auditing, and maintainable controls.",
-      "application": "Production server responsibility, Vaultwarden-backed operations, explicit MCP write guards, and isolated development environments.",
-      "evidence": ["joomla-mcp", "robot", "opencode-platform", "professional-record"],
+      "application": "Production server responsibility, Vaultwarden-backed operations, Kumwe's typed policies and isolated portal, explicit MCP write guards, and isolated development environments.",
+      "evidence": ["kumwe-cms", "joomla-mcp", "robot", "opencode-platform", "professional-record"],
       "technologies": ["Secrets boundaries", "Audit", "Recovery", "Least privilege"]
     },
     {
@@ -176,8 +183,8 @@
       "symbol": "⇢",
       "title": "Data transformation & migration",
       "summary": "Schema-aware transformation, import/export workflows, integrity checks, version migration, and deterministic publication.",
-      "application": "JCB schema and extension generation, GetBible module extraction, static API building, and institutional document/database systems.",
-      "evidence": ["jcb", "getbible-v3", "scripture", "professional-record"],
+      "application": "JCB schema and extension generation, Kumwe's typed business definitions and portable transactional runtime, GetBible module extraction, static API building, and institutional document/database systems.",
+      "evidence": ["jcb", "kumwe-cms", "getbible-v3", "scripture", "professional-record"],
       "technologies": ["SQL", "Schema design", "ETL", "Validation"]
     },
     {
@@ -186,8 +193,8 @@
       "symbol": "⌘",
       "title": "Developer tooling",
       "summary": "Tools that encode architecture, reduce drift, and make correct work repeatable across teams and projects.",
-      "application": "JCB, Super Powers, Octoleo’s Shell utilities, GetBible builders and libraries, native extraction tooling, MCP integration, and reproducible engineering environments.",
-      "evidence": ["jcb", "octojoom", "joomengine-containers", "opencode-platform"],
+      "application": "JCB, Kumwe's definition-driven business runtime and extension SDK, Super Powers, Octoleo’s Shell utilities, GetBible builders and libraries, native extraction tooling, MCP integration, and reproducible engineering environments.",
+      "evidence": ["jcb", "kumwe-cms", "octojoom", "joomengine-containers", "opencode-platform"],
       "technologies": ["Generators", "Registries", "CLI", "Build systems"]
     },
     {
@@ -223,16 +230,16 @@
       "symbol": "¶",
       "title": "Documentation & communication",
       "summary": "Making complex systems legible through specifications, reference material, implementation notes, talks, and teaching.",
-      "application": "Project documentation, Joomla community service, conference sessions, mentoring, and technical training.",
-      "evidence": ["jcb", "joomla-service", "professional-record", "librarian"],
+      "application": "Project documentation, Kumwe's indexed operator and architecture manuals, Joomla community service, conference sessions, mentoring, and technical training.",
+      "evidence": ["jcb", "kumwe-cms", "joomla-service", "professional-record", "librarian"],
       "technologies": ["Technical writing", "Teaching", "Conference speaking", "Mentoring"]
     }
   ],
   "technologyDomains": [
     {
       "name": "PHP",
-      "context": "Framework, compiler, Joomla, native-extension, package, API and long-lived production systems",
-      "evidence": ["jcb", "sword", "scripture"]
+      "context": "Framework, compiler, CMS, business-runtime, native-extension, package, API and long-lived production systems",
+      "evidence": ["jcb", "kumwe-cms", "sword", "scripture"]
     },
     {
       "name": "C++",
@@ -267,12 +274,12 @@
     {
       "name": "SQL",
       "context": "Relational data modelling, schema evolution, migrations and application data",
-      "evidence": ["jcb", "professional-record"]
+      "evidence": ["jcb", "kumwe-cms", "professional-record"]
     },
     {
       "name": "Docker",
-      "context": "Official images, deterministic build matrices, service composition and hardened agent environments",
-      "evidence": ["joomla-docker", "joomengine-containers", "opencode-platform"]
+      "context": "Official images, deterministic build matrices, production service composition and hardened agent environments",
+      "evidence": ["kumwe-cms", "joomla-docker", "joomengine-containers", "opencode-platform"]
     },
     {
       "name": "Linux",

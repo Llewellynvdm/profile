@@ -168,6 +168,45 @@
   {
     "rank": 6,
     "tier": "flagship",
+    "ecosystem": "Kumwe CMS & Business Platform",
+    "repository": "Kumwe/cms",
+    "owner": "Kumwe",
+    "name": "Kumwe CMS",
+    "firstEvidence": "2022-05-24",
+    "latestEvidence": "2026-08-13",
+    "status": "Active public platform; current source reviewed through 13 August 2026",
+    "metrics": {
+      "commits": 331,
+      "activeDays": 11,
+      "activeMonths": 2,
+      "additions": 455864,
+      "deletions": 53897,
+      "changedLines": 509761,
+      "uniquePaths": 2054
+    },
+    "technologies": [
+      "PHP 8.5",
+      "Mezzio",
+      "Joomla Framework",
+      "Doctrine DBAL",
+      "Redis",
+      "TypeScript",
+      "Docker",
+      "MCP"
+    ],
+    "role": "Principal architect, lead implementer and maintainer",
+    "assessment": "Principal CMS, business-runtime and integration-platform engineering",
+    "purpose": "Modern CMS and typed business application platform with governed content, generated operational surfaces, an isolated client portal, durable automation, and one policy model across browser, REST, CLI, MCP, worker, and scheduler paths.",
+    "significance": "Demonstrates a coherent application platform spanning content workflows, typed business definitions and records, authorization and approvals, signed extensions, portable persistence, generated interfaces, events, reports, integration tooling, and production operations.",
+    "note": "Current master history, README, documentation index, architecture material, Composer manifest, and source reviewed on 13 August 2026. The dated snapshot records 331 attributable commits across 2,054 unique paths; changed-line totals include generated and delivered artefacts and are not represented as manually typed source.",
+    "url": "https://github.com/kumwe/cms",
+    "evidenceUrl": "https://github.com/kumwe/cms/commit/155a8a9aa9fd3c3aaf0a2acbb19fea58e0cb87fd",
+    "evidenceBasis": "current repository documentation and source review",
+    "projectId": "kumwe-cms"
+  },
+  {
+    "rank": 7,
+    "tier": "flagship",
     "ecosystem": "Official Joomla Container Engineering",
     "repository": "joomla-docker/docker-joomla",
     "owner": "joomla-docker",
@@ -196,7 +235,7 @@
     "projectId": "joomla-docker"
   },
   {
-    "rank": 7,
+    "rank": 8,
     "tier": "flagship",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/robot",
@@ -235,7 +274,7 @@
     "projectId": "robot"
   },
   {
-    "rank": 8,
+    "rank": 9,
     "tier": "flagship",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/sword",
@@ -273,7 +312,7 @@
     "projectId": "sword"
   },
   {
-    "rank": 9,
+    "rank": 10,
     "tier": "flagship",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/scripture",
@@ -310,7 +349,7 @@
     "projectId": "scripture"
   },
   {
-    "rank": 10,
+    "rank": 11,
     "tier": "flagship",
     "ecosystem": "VDM Platforms & Applied AI",
     "repository": "vast-development-method/opencode-platform",
@@ -348,7 +387,7 @@
     "projectId": "opencode-platform"
   },
   {
-    "rank": 11,
+    "rank": 12,
     "tier": "flagship",
     "ecosystem": "VDM Platforms & Applied AI",
     "repository": "vast-development-method/colibri-setup",
@@ -385,7 +424,7 @@
     "projectId": "colibri-setup"
   },
   {
-    "rank": 12,
+    "rank": 13,
     "tier": "flagship",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/v3_builder",
@@ -415,7 +454,7 @@
     "projectId": "getbible-v3"
   },
   {
-    "rank": 13,
+    "rank": 14,
     "tier": "major",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/gitea",
@@ -445,7 +484,7 @@
     "projectId": null
   },
   {
-    "rank": 14,
+    "rank": 15,
     "tier": "major",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/joomla-powers",
@@ -475,7 +514,7 @@
     "projectId": null
   },
   {
-    "rank": 15,
+    "rank": 16,
     "tier": "major",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/Joomla-Service-Directory",
@@ -505,7 +544,7 @@
     "projectId": null
   },
   {
-    "rank": 16,
+    "rank": 17,
     "tier": "major",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/packages",
@@ -535,7 +574,7 @@
     "projectId": null
   },
   {
-    "rank": 17,
+    "rank": 18,
     "tier": "major",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/super-powers",
@@ -565,7 +604,7 @@
     "projectId": null
   },
   {
-    "rank": 18,
+    "rank": 19,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/desktop",
@@ -595,7 +634,7 @@
     "projectId": null
   },
   {
-    "rank": 19,
+    "rank": 20,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/flutter",
@@ -625,7 +664,7 @@
     "projectId": null
   },
   {
-    "rank": 20,
+    "rank": 21,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/getbiblesword",
@@ -655,7 +694,7 @@
     "projectId": null
   },
   {
-    "rank": 21,
+    "rank": 22,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/joomla-component",
@@ -685,7 +724,7 @@
     "projectId": null
   },
   {
-    "rank": 22,
+    "rank": 23,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/mcp",
@@ -715,7 +754,7 @@
     "projectId": null
   },
   {
-    "rank": 23,
+    "rank": 24,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/v2",
@@ -745,7 +784,7 @@
     "projectId": null
   },
   {
-    "rank": 24,
+    "rank": 25,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/v2_builder",
@@ -775,7 +814,7 @@
     "projectId": null
   },
   {
-    "rank": 25,
+    "rank": 26,
     "tier": "major",
     "ecosystem": "Christian Publishing & Ministry Systems",
     "repository": "trueChristian/daily-light",
@@ -805,7 +844,7 @@
     "projectId": null
   },
   {
-    "rank": 26,
+    "rank": 27,
     "tier": "major",
     "ecosystem": "Christian Publishing & Ministry Systems",
     "repository": "trueChristian/daily-scripture",
@@ -835,7 +874,7 @@
     "projectId": null
   },
   {
-    "rank": 27,
+    "rank": 28,
     "tier": "major",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Cost-Benefit-Projection",
@@ -865,7 +904,7 @@
     "projectId": null
   },
   {
-    "rank": 28,
+    "rank": 29,
     "tier": "major",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Sermon-Distributor",
@@ -895,7 +934,7 @@
     "projectId": null
   },
   {
-    "rank": 29,
+    "rank": 30,
     "tier": "major",
     "ecosystem": "SermonIndex Data Systems",
     "repository": "sermonindex/audio_api",
@@ -925,7 +964,7 @@
     "projectId": null
   },
   {
-    "rank": 30,
+    "rank": 31,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/pkg-servicedirectory",
@@ -955,7 +994,7 @@
     "projectId": null
   },
   {
-    "rank": 31,
+    "rank": 32,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/fof",
@@ -985,7 +1024,7 @@
     "projectId": null
   },
   {
-    "rank": 32,
+    "rank": 33,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/jcb-documentation",
@@ -1015,7 +1054,7 @@
     "projectId": null
   },
   {
-    "rank": 33,
+    "rank": 34,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/jcb-external",
@@ -1045,7 +1084,7 @@
     "projectId": null
   },
   {
-    "rank": 34,
+    "rank": 35,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/joomla-fieldtypes",
@@ -1075,7 +1114,7 @@
     "projectId": null
   },
   {
-    "rank": 35,
+    "rank": 36,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/minify",
@@ -1105,7 +1144,7 @@
     "projectId": null
   },
   {
-    "rank": 36,
+    "rank": 37,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/openai",
@@ -1135,7 +1174,7 @@
     "projectId": null
   },
   {
-    "rank": 37,
+    "rank": 38,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/phpseclib",
@@ -1165,7 +1204,7 @@
     "projectId": null
   },
   {
-    "rank": 38,
+    "rank": 39,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/psr",
@@ -1195,7 +1234,7 @@
     "projectId": null
   },
   {
-    "rank": 39,
+    "rank": 40,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/repoindex",
@@ -1225,7 +1264,7 @@
     "projectId": null
   },
   {
-    "rank": 40,
+    "rank": 41,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/search",
@@ -1255,7 +1294,7 @@
     "projectId": null
   },
   {
-    "rank": 41,
+    "rank": 42,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/snippets",
@@ -1285,7 +1324,7 @@
     "projectId": null
   },
   {
-    "rank": 42,
+    "rank": 43,
     "tier": "supporting",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/uikit",
@@ -1315,7 +1354,7 @@
     "projectId": null
   },
   {
-    "rank": 43,
+    "rank": 44,
     "tier": "supporting",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/app.getbible.life",
@@ -1345,7 +1384,7 @@
     "projectId": null
   },
   {
-    "rank": 44,
+    "rank": 45,
     "tier": "supporting",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/joomla-scripture-loader",
@@ -1375,7 +1414,7 @@
     "projectId": null
   },
   {
-    "rank": 45,
+    "rank": 46,
     "tier": "supporting",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/v1_study_builder",
@@ -1405,7 +1444,7 @@
     "projectId": null
   },
   {
-    "rank": 46,
+    "rank": 47,
     "tier": "supporting",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octodinator",
@@ -1435,7 +1474,7 @@
     "projectId": null
   },
   {
-    "rank": 47,
+    "rank": 48,
     "tier": "supporting",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octoflare",
@@ -1465,7 +1504,7 @@
     "projectId": null
   },
   {
-    "rank": 48,
+    "rank": 49,
     "tier": "major",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octojpack",
@@ -1495,7 +1534,7 @@
     "projectId": null
   },
   {
-    "rank": 49,
+    "rank": 50,
     "tier": "supporting",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octolanding",
@@ -1525,7 +1564,7 @@
     "projectId": null
   },
   {
-    "rank": 50,
+    "rank": 51,
     "tier": "major",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octopower",
@@ -1555,7 +1594,7 @@
     "projectId": null
   },
   {
-    "rank": 51,
+    "rank": 52,
     "tier": "major",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octoshoom",
@@ -1585,7 +1624,7 @@
     "projectId": null
   },
   {
-    "rank": 52,
+    "rank": 53,
     "tier": "major",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octozipo",
@@ -1615,7 +1654,7 @@
     "projectId": null
   },
   {
-    "rank": 53,
+    "rank": 54,
     "tier": "supporting",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/plantuml-gitea",
@@ -1645,7 +1684,7 @@
     "projectId": null
   },
   {
-    "rank": 54,
+    "rank": 55,
     "tier": "supporting",
     "ecosystem": "Christian Publishing & Ministry Systems",
     "repository": "trueChristian/hymnbook-creator",
@@ -1675,7 +1714,7 @@
     "projectId": null
   },
   {
-    "rank": 55,
+    "rank": 56,
     "tier": "supporting",
     "ecosystem": "Christian Publishing & Ministry Systems",
     "repository": "trueChristian/Joomla-Daily-Light",
@@ -1705,7 +1744,7 @@
     "projectId": null
   },
   {
-    "rank": 56,
+    "rank": 57,
     "tier": "supporting",
     "ecosystem": "Christian Publishing & Ministry Systems",
     "repository": "trueChristian/Joomla-Daily-Scripture",
@@ -1735,7 +1774,7 @@
     "projectId": null
   },
   {
-    "rank": 57,
+    "rank": 58,
     "tier": "supporting",
     "ecosystem": "Christian Publishing & Ministry Systems",
     "repository": "trueChristian/witnesses",
@@ -1765,7 +1804,7 @@
     "projectId": null
   },
   {
-    "rank": 58,
+    "rank": 59,
     "tier": "supporting",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "Llewellynvdm/game-of-life",
@@ -1795,7 +1834,7 @@
     "projectId": null
   },
   {
-    "rank": 59,
+    "rank": 60,
     "tier": "supporting",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Daily-Scripture",
@@ -1825,7 +1864,7 @@
     "projectId": null
   },
   {
-    "rank": 60,
+    "rank": 61,
     "tier": "supporting",
     "ecosystem": "Personal Engineering Portfolio",
     "repository": "Llewellynvdm/Llewellynvdm",
@@ -1855,7 +1894,7 @@
     "projectId": null
   },
   {
-    "rank": 61,
+    "rank": 62,
     "tier": "supporting",
     "ecosystem": "Personal Operations & Automation",
     "repository": "Llewellynvdm/mastodon-secure-feed",
@@ -1885,7 +1924,7 @@
     "projectId": null
   },
   {
-    "rank": 62,
+    "rank": 63,
     "tier": "supporting",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/mod_version_calendar_svg",
@@ -1915,7 +1954,7 @@
     "projectId": null
   },
   {
-    "rank": 63,
+    "rank": 64,
     "tier": "supporting",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/PreUpVer",
@@ -1945,7 +1984,7 @@
     "projectId": null
   },
   {
-    "rank": 64,
+    "rank": 65,
     "tier": "supporting",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/PreUpVer-Plugin",
@@ -1975,7 +2014,7 @@
     "projectId": null
   },
   {
-    "rank": 65,
+    "rank": 66,
     "tier": "supporting",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/github-user",
@@ -2005,7 +2044,7 @@
     "projectId": null
   },
   {
-    "rank": 66,
+    "rank": 67,
     "tier": "supporting",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/Joomla-Docker-Fun",
@@ -2035,7 +2074,7 @@
     "projectId": null
   },
   {
-    "rank": 67,
+    "rank": 68,
     "tier": "supporting",
     "ecosystem": "Historical Namibian Joomla Applications",
     "repository": "namibia/eHealth-Portal",
@@ -2065,7 +2104,7 @@
     "projectId": null
   },
   {
-    "rank": 68,
+    "rank": 69,
     "tier": "major",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/joomla-pkg",
@@ -2095,7 +2134,7 @@
     "projectId": null
   },
   {
-    "rank": 69,
+    "rank": 70,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/getverse",
@@ -2125,7 +2164,7 @@
     "projectId": null
   },
   {
-    "rank": 70,
+    "rank": 71,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/Joomla-3-Activity-Cron-Plugin",
@@ -2155,7 +2194,7 @@
     "projectId": null
   },
   {
-    "rank": 71,
+    "rank": 72,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/Joomla-3-Component",
@@ -2185,7 +2224,7 @@
     "projectId": null
   },
   {
-    "rank": 72,
+    "rank": 73,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/Joomla-3-Load-Scripture-Plugin",
@@ -2215,7 +2254,7 @@
     "projectId": null
   },
   {
-    "rank": 73,
+    "rank": 74,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/Joomla-3-Search-Module",
@@ -2245,7 +2284,7 @@
     "projectId": null
   },
   {
-    "rank": 74,
+    "rank": 75,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/loader",
@@ -2275,7 +2314,7 @@
     "projectId": null
   },
   {
-    "rank": 75,
+    "rank": 76,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/txtFactory",
@@ -2305,7 +2344,7 @@
     "projectId": null
   },
   {
-    "rank": 76,
+    "rank": 77,
     "tier": "historical / foundation",
     "ecosystem": "GetBible Scripture Platform",
     "repository": "getbible/v1",
@@ -2335,7 +2374,7 @@
     "projectId": null
   },
   {
-    "rank": 77,
+    "rank": 78,
     "tier": "major",
     "ecosystem": "Joomla Component Builder & JoomEngine",
     "repository": "joomengine/pkg-component-builder",
@@ -2365,7 +2404,7 @@
     "projectId": null
   },
   {
-    "rank": 78,
+    "rank": 79,
     "tier": "historical / foundation",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/git-user",
@@ -2395,7 +2434,7 @@
     "projectId": null
   },
   {
-    "rank": 79,
+    "rank": 80,
     "tier": "major",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octomailtest",
@@ -2425,7 +2464,7 @@
     "projectId": null
   },
   {
-    "rank": 80,
+    "rank": 81,
     "tier": "supporting",
     "ecosystem": "OctoLeo Automation & Deployment",
     "repository": "octoleo/octosync",
@@ -2455,7 +2494,7 @@
     "projectId": null
   },
   {
-    "rank": 81,
+    "rank": 82,
     "tier": "historical / foundation",
     "ecosystem": "Personal Operations & Automation",
     "repository": "Llewellynvdm/Backup-System",
@@ -2485,7 +2524,7 @@
     "projectId": null
   },
   {
-    "rank": 82,
+    "rank": 83,
     "tier": "historical / foundation",
     "ecosystem": "Personal Operations & Automation",
     "repository": "Llewellynvdm/CoinRate",
@@ -2515,7 +2554,7 @@
     "projectId": null
   },
   {
-    "rank": 83,
+    "rank": 84,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "Llewellynvdm/GoFish",
@@ -2545,7 +2584,7 @@
     "projectId": null
   },
   {
-    "rank": 84,
+    "rank": 85,
     "tier": "historical / foundation",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Demo-Component",
@@ -2575,7 +2614,7 @@
     "projectId": null
   },
   {
-    "rank": 85,
+    "rank": 86,
     "tier": "historical / foundation",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Hello-World-Component",
@@ -2605,7 +2644,7 @@
     "projectId": null
   },
   {
-    "rank": 86,
+    "rank": 87,
     "tier": "historical / foundation",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Members-Manager",
@@ -2635,7 +2674,7 @@
     "projectId": null
   },
   {
-    "rank": 87,
+    "rank": 88,
     "tier": "historical / foundation",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Questions-and-Answers",
@@ -2665,7 +2704,7 @@
     "projectId": null
   },
   {
-    "rank": 88,
+    "rank": 89,
     "tier": "historical / foundation",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-Support-Groups",
@@ -2695,7 +2734,7 @@
     "projectId": null
   },
   {
-    "rank": 89,
+    "rank": 90,
     "tier": "historical / foundation",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/Joomla-XML-Lang-stream",
@@ -2725,7 +2764,7 @@
     "projectId": null
   },
   {
-    "rank": 90,
+    "rank": 91,
     "tier": "historical / foundation",
     "ecosystem": "Joomla Applications & Tooling",
     "repository": "Llewellynvdm/mod_pergroup",
@@ -2755,67 +2794,7 @@
     "projectId": null
   },
   {
-    "rank": 91,
-    "tier": "historical / foundation",
-    "ecosystem": "Sentinel Systems",
-    "repository": "sentinel-mx/server",
-    "owner": "sentinel-mx",
-    "name": "server",
-    "firstEvidence": "2020-02-26",
-    "latestEvidence": "2020-02-26",
-    "status": "Historical contribution",
-    "metrics": {
-      "commits": 2,
-      "activeDays": 1,
-      "activeMonths": 1,
-      "additions": 266382,
-      "deletions": 350,
-      "changedLines": 266732,
-      "uniquePaths": 780
-    },
-    "technologies": ["PHP", "CSS/SCSS", "HTML", "JavaScript", "XML", "SQL", "YAML/CI"],
-    "role": "Principal or sole recorded author",
-    "assessment": "Senior applied engineering evidence",
-    "purpose": "PHP-based server application combining administrative interfaces, structured data and deployment workflow within the Sentinel MX system.",
-    "significance": "Supporting evidence of full-stack PHP application delivery and repository-based deployment practice.",
-    "note": "Canonical inclusion refreshed 28 July 2026. Contribution metrics are the identity-aware repository snapshot from 18 July 2026 and must not be summed across repositories.",
-    "url": "https://github.com/sentinel-mx/server",
-    "evidenceUrl": "https://github.com/sentinel-mx/server/commit/d3aa86f46e2bd93594e1bcbd17f6ef43246f28e2",
-    "evidenceBasis": "extended",
-    "projectId": null
-  },
-  {
     "rank": 92,
-    "tier": "historical / foundation",
-    "ecosystem": "Framework Experiments",
-    "repository": "Kumwe/cms",
-    "owner": "Kumwe",
-    "name": "cms",
-    "firstEvidence": "2022-05-24",
-    "latestEvidence": "2022-05-24",
-    "status": "Historical contribution",
-    "metrics": {
-      "commits": 1,
-      "activeDays": 1,
-      "activeMonths": 1,
-      "additions": 21033,
-      "deletions": 0,
-      "changedLines": 21033,
-      "uniquePaths": 163
-    },
-    "technologies": ["PHP", "HTML", "JavaScript", "CSS/SCSS", "SQL"],
-    "role": "Principal or sole recorded author",
-    "assessment": "Intermediate-to-senior applied engineering evidence",
-    "purpose": "Little cms build with Joomla Framework",
-    "significance": "Delivered attributable changes across 1 commits and 163 paths in Kumwe/cms; the visible history demonstrates hands-on implementation and maintenance of little cms build with joomla framework.",
-    "note": "Canonical inclusion refreshed 28 July 2026. Contribution metrics are the identity-aware repository snapshot from 18 July 2026 and must not be summed across repositories.",
-    "url": "https://github.com/Kumwe/cms",
-    "evidenceUrl": "https://github.com/Kumwe/cms/commit/a5a45e92ae8f131071d469608f595f43ccc489bd",
-    "evidenceBasis": "extended",
-    "projectId": null
-  },
-  {
-    "rank": 93,
     "tier": "historical / foundation",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/.github",
@@ -2845,7 +2824,7 @@
     "projectId": null
   },
   {
-    "rank": 94,
+    "rank": 93,
     "tier": "historical / foundation",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/data",
@@ -2875,7 +2854,7 @@
     "projectId": null
   },
   {
-    "rank": 95,
+    "rank": 94,
     "tier": "historical / foundation",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/dynamic-ip",
@@ -2905,7 +2884,7 @@
     "projectId": null
   },
   {
-    "rank": 96,
+    "rank": 95,
     "tier": "historical / foundation",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/Joomla-Location-Data",
@@ -2935,7 +2914,7 @@
     "projectId": null
   },
   {
-    "rank": 97,
+    "rank": 96,
     "tier": "historical / foundation",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/tcpdf",
@@ -2965,7 +2944,7 @@
     "projectId": null
   },
   {
-    "rank": 98,
+    "rank": 97,
     "tier": "historical / foundation",
     "ecosystem": "Historical VDM / Joomla Public Estate",
     "repository": "vdm-io/updateForks",
@@ -2995,7 +2974,7 @@
     "projectId": null
   },
   {
-    "rank": 99,
+    "rank": 98,
     "tier": "historical / foundation",
     "ecosystem": "Historical Namibian Joomla Applications",
     "repository": "namibia/CBP-Joomla-2-Component",
@@ -3025,7 +3004,7 @@
     "projectId": null
   },
   {
-    "rank": 100,
+    "rank": 99,
     "tier": "historical / foundation",
     "ecosystem": "Historical Namibian Joomla Applications",
     "repository": "namibia/dropboxlinks",
@@ -3055,7 +3034,7 @@
     "projectId": null
   },
   {
-    "rank": 101,
+    "rank": 100,
     "tier": "historical / foundation",
     "ecosystem": "Historical Namibian Joomla Applications",
     "repository": "namibia/ipdata-joomla-3-component",
@@ -3085,7 +3064,7 @@
     "projectId": null
   },
   {
-    "rank": 102,
+    "rank": 101,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/SDEV-240-81",
@@ -3115,7 +3094,7 @@
     "projectId": null
   },
   {
-    "rank": 103,
+    "rank": 102,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/SDEV-324-81",
@@ -3145,7 +3124,7 @@
     "projectId": null
   },
   {
-    "rank": 104,
+    "rank": 103,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/SDEV-340-81",
@@ -3175,7 +3154,7 @@
     "projectId": null
   },
   {
-    "rank": 105,
+    "rank": 104,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/SDEV-415-81",
@@ -3205,7 +3184,7 @@
     "projectId": null
   },
   {
-    "rank": 106,
+    "rank": 105,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/WEBD-125-40",
@@ -3235,7 +3214,7 @@
     "projectId": null
   },
   {
-    "rank": 107,
+    "rank": 106,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/WEBD-225-40",
@@ -3265,7 +3244,7 @@
     "projectId": null
   },
   {
-    "rank": 108,
+    "rank": 107,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/WEBD-310-45",
@@ -3295,7 +3274,7 @@
     "projectId": null
   },
   {
-    "rank": 109,
+    "rank": 108,
     "tier": "historical / foundation",
     "ecosystem": "Education & C/C++ Foundations",
     "repository": "mychamplain/WEBD-325-45",
