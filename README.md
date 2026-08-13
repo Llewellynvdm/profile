@@ -17,10 +17,10 @@ requests validate the complete static output but do not publish the live site.
 - **Structured JSON content** in `src/data/` separates evidence and professional content from page
   presentation.
 - **Progressive enhancement** keeps the complete narrative readable without JavaScript. TypeScript
-  adds capability filtering, keyboard navigation, a command palette, theme persistence, mobile
-  navigation, and print controls.
+  adds capability filtering, keyboard navigation, a command palette, system-aware theme controls,
+  mobile navigation, and print controls.
 - **Native HTML disclosure** provides technical depth without hiding the primary narrative.
-- **Centralized design tokens** in `src/styles/global.css` implement the approved SVG’s colour,
+- **Centralized design tokens** in `src/styles/global.css` provide a restrained technical colour,
   geometry, layering, and motion language in both light and dark themes.
 - **No backend, database, tracking, runtime secrets, web-font request, or required SaaS.**
 
@@ -116,16 +116,17 @@ deliberately:
 
 Update claims only when they are supported by the professional record or a stable public source.
 
-## SVG and design system
+## Design system and theme behaviour
 
-The approved dark and light engineering profile SVGs live in `public/assets/`. They remain native
-SVGs with their original view boxes and are shown at full available width. The website derives its
-layered architecture model, line work, restrained blue/cyan/green/purple palette, badges, motion,
-and system-map concepts from these files.
+The homepage engineering overview is compact semantic HTML backed by the same structured profile
+data as the rest of the site. It has no overview-image dependency, remains readable without
+JavaScript, and adapts directly to the responsive layout and print presentation.
 
-The site does not depend on the SVG as a rasterized screenshot. Native HTML, CSS, and inline vector
-geometry extend the same design language into interactive, responsive components. Motion is
-disabled or shortened under `prefers-reduced-motion`.
+The colour theme follows the live operating-system preference by default. The header control offers
+explicit light and dark overrides as well as a **System** option that returns control to the
+operating system. An explicit choice is persisted locally; while **System** is selected, changes to
+the operating-system theme are reflected immediately. Motion is disabled or shortened under
+`prefers-reduced-motion`.
 
 ## GitHub Pages deployment
 
@@ -148,7 +149,7 @@ After review and merge, configure **Settings → Pages → Build and deployment 
 .
 ├── .github/workflows/       CI and production-only Pages deployment
 ├── public/
-│   ├── assets/              Approved SVGs, portrait, favicon, social preview
+│   ├── assets/              Portraits, icon SVGs, favicon, social preview
 │   └── documents/           Official executive and exhaustive CV downloads
 ├── sources/                 Current CV source text and canonical evidence authority
 ├── scripts/                 Built-output link validation
@@ -165,9 +166,10 @@ After review and merge, configure **Settings → Pages → Build and deployment 
 ## Accessibility, performance, and privacy
 
 - Semantic landmarks, heading order, skip link, keyboard navigation, visible focus, touch targets,
-  accessible disclosures, and labelled SVGs.
-- Light/dark themes, high-contrast resilience, reduced-motion support, and a responsive mobile
-  layout designed independently from the desktop composition.
+  accessible disclosures, and labelled controls.
+- Automatic system light/dark mode with explicit overrides, high-contrast resilience,
+  reduced-motion support, and a responsive mobile layout designed independently from the desktop
+  composition.
 - System fonts, one small browser script, no client framework, no tracking, and no runtime
   dependency on third-party services.
 - No direct telephone number or email address in visible content, links, metadata, structured data,
