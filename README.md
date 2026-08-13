@@ -31,6 +31,8 @@ Astro builds all internal routes and public assets from `/`, matching the custom
 
 - Node.js `24.16.0` (see `.nvmrc`)
 - npm 11 or a compatible npm release
+- PDF regeneration only: Pandoc, XeLaTeX with the standard extra LaTeX packages, DejaVu fonts, and
+  Poppler's `pdfinfo` and `pdftotext`
 
 ## Local development
 
@@ -40,6 +42,18 @@ npm run dev
 ```
 
 Astro prints the local preview URL. The production site is served from the domain root.
+
+## CV PDF regeneration
+
+The downloadable CVs are generated from the canonical Markdown in `sources/`:
+
+```bash
+npm run build:pdfs
+```
+
+The build uses the tracked Pandoc template, explicit page-break filter, and portrait in
+`scripts/pdf/`. It validates both generated files before replacing the committed downloads in
+`public/documents/`.
 
 ## Validated commands
 
@@ -152,7 +166,7 @@ After review and merge, configure **Settings → Pages → Build and deployment 
 │   ├── assets/              Portraits, icon SVGs, favicon, social preview
 │   └── documents/           Official executive and exhaustive CV downloads
 ├── sources/                 Current CV source text and canonical evidence authority
-├── scripts/                 Built-output link validation
+├── scripts/                 Built-output validation and reproducible CV PDF tooling
 ├── src/
 │   ├── components/          Shared site components
 │   ├── data/                Profile, project briefs, and repository evidence
